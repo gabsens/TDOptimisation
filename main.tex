@@ -616,7 +616,7 @@ $\impliedby$ Soient $x,y\in C$ fixés. Montrons par récurrence sur $n\geq 1$ qu
 $\bullet$ Pour $n=1$, c'est une conséquence l'hypothèse $\forall x,y \in X, \; \frac{x+y}{2} \in C $. \newline
 $\bullet$ Supposons le résultat vrai pour $n\geq 1$ et prouvons le pour $n+1$.\newline
 On remarque que $$\frac{k'}{2^n}x+ \left( 1-\frac{k'}{2^n} \right)y =  \frac{2k'}{2^{n+1}}x+ \left( 1-\frac{2k'}{2^{n+1}} \right)y$$ ce qui prouve le résultat pour tout $k$ pair dans $\llbracket 0,2^{n+1} \rrbracket$\newline
-Soit $k\in \llbracket 0,2^{n+1} \rrbracket$. Ecrivons $k=2k'+1$ où $k\in \llbracket 0,2^n \rrbracket$. Alors
+Soit $k\in \llbracket 0,2^{n+1} \rrbracket$ impair. Ecrivons $k=2k'+1$ où $k\in \llbracket 0,2^n \rrbracket$. Alors
 $$ \begin{aligned}
 \frac{k}{2^{n+1}}x+ \left( 1-\frac{k}{2^{n+1}} \right)y &= \frac{2k'+1}{2^{n+1}}x+ \left( 1-\frac{2k'+1}{2^{n+1}} \right)\\
 &= \frac{1}{2} \left[ \underbrace{\frac{k'}{2^n}x+ \left( 1-\frac{k'}{2^n} \right)y}_{\in C}  + \underbrace{\frac{k'+1}{2^n}x+ \left( 1-\frac{k'+1}{2^n} \right)y}_{\in C} \right]
