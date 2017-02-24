@@ -10,6 +10,7 @@
 \usepackage{bbm}
 \usepackage{hyperref}
 \usepackage{fancyhdr}
+\usepackage{stmaryrd}
 
 
 \pagestyle{fancy}
@@ -18,6 +19,8 @@
 
 \DeclareMathOperator{\Tr}{Tr}
 \DeclareMathOperator{\Id}{Id}
+\DeclareMathOperator{\co}{co}
+\DeclareMathOperator{\Ri}{Ri}
 
 
 \begin{document}
@@ -509,6 +512,136 @@ d(\Pi\circ df \circ \alpha)(t)(h) &= d\Pi(df\circ \alpha(t))(d(df\circ \alpha)(t
 On a donc pour tout $h\in \mathbb R$, $hd^2f(tx)(x)(x) = 2hf(x)$, donc $$d^2f(tx)(x)(x) = 2f(x)$$ ceci étant vrai pour tout $t\in \mathbb R$.
 En $t=0$ on a $$d^2f(0)(x)(x) = 2f(x)$$ comme voulu.
 
+\section{Applications de la notion de différentielle}
+
+\section{Equations différentielles}
+
+\section{Ensembles convexes}
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Trouver $K$ un convexe fermé et $f$ une application affine telle que $f(K)$ soit un ouvert.
+}}\\ 
+\\ 
+\\
+\noindent On considère simplement $\Id:\mathbb R \to \mathbb R$.
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Soit $C$ un convexe non réduit à un point.
+\begin{enumerate}
+\item Montrer l'équivalence des deux propositions suivantes:
+\begin{enumerate}
+\item $x_0 \in \Ri(C)$
+\item $\forall x\in C, \exists y,\; x_0\in [x,y[$
+\end{enumerate}
+\item Montrer que si $C$ n'est pas convexe, alors la réciproque est fausse.
+\end{enumerate}
+}}\\ 
+\\ 
+\\ ? 
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Soit $K\subset \mathbb R^n$ convexe de cardinal $n+2$. Montrer qu'il existe une partition de $K$ en $K_1 \cup K_2$ telles que les enveloppes convexes de $K_1$ et $K_2$ ne sont pas disjointes.
+}}\\ 
+\\ 
+\\
+\noindent L'hypothèse $K$ convexe est superflue. Ecrivons $K=\{a_1,\ldots, a_{n+2}\}$ et considérons la matrice $A$ à $n+1$ lignes et $n+2$ colonnes 
+$$A=\begin{pmatrix}
+\begin{pmatrix}
+\vdots \\
+a_1\\
+\vdots\\
+\end{pmatrix} & \hdots & \begin{pmatrix}
+\vdots \\
+a_{n+2}\\
+\vdots\\
+\end{pmatrix} \\
+1 & \hdots & 1
+\end{pmatrix}$$
+Elle n'est pas inversible donc il existe $(\alpha_1,\ldots,\alpha_{n+2})$ un élément non nul de $\ker A$, ce qu'on peut encore écrire $$\begin{aligned} &\sum_{i=1}^{n+2} \alpha_i a_i =0 \\
+&\sum_{i=1}^{n+2} \alpha_i =0 \end{aligned}$$
+Soit $I\subset \llbracket 1,n \rrbracket$ l'ensemble des indices tels que $\alpha_i>0$ et $J\subset \llbracket 1,n \rrbracket$ l'ensemble des indices tels que $\alpha_j\leq 0$. $I$ et $J$ sont non vides car $(\alpha_1,\ldots,\alpha_{n+2})\neq (0,\ldots,0)$ et $\sum_{i=1}^{n+2} \alpha_i =0$.\newline \newline
+On a $\sum_{i\in I} \alpha_i a_i = \sum_{j\in J} (-\alpha_j)a_j$ et $\sum_{i\in I} \alpha_i = \sum_{j\in J} (-\alpha_j)$.\newline \newline
+Posons $S=\sum_{i\in I} \alpha_i$ qui est non nul. Alors 
+$$\sum_{i\in I} \frac{\alpha_i}{S} a_i = \sum_{j\in J} \frac{(-\alpha_j)}{S} a_j$$
+ avec $$ \sum_{i\in I} \frac{\alpha_i}{S} = \sum_{j\in J} \frac{(-\alpha_j)}{S}=1$$
+$K_1=(a_i)_{i\in I}$ et $K_2=(a_j)_{i\in J}$ est donc une partition convenant.
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Soit $K$ une partie convexe de $E$ et $M$ une variété affine de $E$ telle que $M\cap \Ri(K) \neq \emptyset$. On suppose $M$ fermée.
+\begin{enumerate}
+\item Montrer que $\Ri(M\cap K) = M\cap \Ri(K)$
+\item Montrer  que $\overline{M\cap K}=M\cap \overline K$
+\end{enumerate}
+}}\\ 
+\\ 
+\\ ?
+
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Montrer que toute section plane d'un ensemble convexe est convexe.
+}}\\ 
+\\ 
+\\
+\noindent Tout hyperplan est convexe (en tant que sous-espace vectoriel) et l'intersection de deux convexes est convexe, donc toute section plane d'un convexe est convexe.
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Donner un exemple de fermé $A$ d'un evn tel que $\co A$ ne soit pas fermée.
+}}\\ 
+\\ 
+\\
+\noindent On rappelle que $\co A$ fait référence à l'enveloppe convexe de $A$. On se place dans $\mathbb R^2$ et on pose $A=(\{0\} \times [0,1] ) \cup ([0,\infty)\times \{0\})$ qui est fermé comme union de deux fermés. \newline
+Cependant $\co A= ([0,\infty) \times [0,1)) \cup \{ (0,1)\}$ (évident sur un dessin) qui n'est pas fermé.
+
+
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Soit $X$ un fermé d'un evn $E$. Montrer l'équivalence des propositions suivantes
+\begin{enumerate}
+\item $X$ convexe
+\item $\forall x,y \in X, \; \frac{x+y}{2} \in C $
+\end{enumerate}
+Donner un contre-exemple si $X$ n'est pas fermé.
+}}\\ 
+\\ 
+\\
+\noindent $\implies$ Trivial. \newline
+$\impliedby$ Soient $x,y\in C$ fixés. Montrons par récurrence sur $n\geq 1$ que $$\forall k \in \llbracket 0,2^n \rrbracket,\frac{k}{2^n}x+ \left( 1-\frac{k}{2^n} \right)y\in C$$\newline \newline 
+$\bullet$ Pour $n=1$, c'est une conséquence l'hypothèse $\forall x,y \in X, \; \frac{x+y}{2} \in C $. \newline
+$\bullet$ Supposons le résultat vrai pour $n\geq 1$ et prouvons le pour $n+1$.\newline
+On remarque que $$\frac{k'}{2^n}x+ \left( 1-\frac{k'}{2^n} \right)y =  \frac{2k'}{2^{n+1}}x+ \left( 1-\frac{2k'}{2^{n+1}} \right)y$$ ce qui prouve le résultat pour tout $k$ pair dans $\llbracket 0,2^{n+1} \rrbracket$\newline
+Soit $k\in \llbracket 0,2^{n+1} \rrbracket$. Ecrivons $k=2k'+1$ où $k\in \llbracket 0,2^n \rrbracket$. Alors
+$$ \begin{aligned}
+\frac{k}{2^{n+1}}x+ \left( 1-\frac{k}{2^{n+1}} \right)y &= \frac{2k'+1}{2^{n+1}}x+ \left( 1-\frac{2k'+1}{2^{n+1}} \right)\\
+&= \frac{1}{2} \left[ \underbrace{\frac{k'}{2^n}x+ \left( 1-\frac{k'}{2^n} \right)y}_{\in C}  + \underbrace{\frac{k'+1}{2^n}x+ \left( 1-\frac{k'+1}{2^n} \right)y}_{\in C} \right]
+\end{aligned}$$
+Ceci achève la récurrence.\newline \newline
+Soit $\lambda \in [0,1]$. La suite $\dfrac{\lfloor 2^n \lambda\rfloor}{2^n}$ converge vers $\lambda$, de sorte que la suite des $$\frac{\lfloor 2^n \lambda\rfloor}{2^n}x + \left(1- \frac{\lfloor 2^n \lambda\rfloor}{2^n}\right)y$$ est une suite d'éléments de $C$ qui converge vers $\lambda x +(1-\lambda)y$. Comme $C$ est fermé, $\lambda x +(1-\lambda)y\in C$. Ceci étant vrai pour tout $x,y,\lambda$, $C$ est convexe.\newline \newline
+Dans le cas où $C$ n'est pas fermé, $\mathbb Q$ fournit un contre-exemple évident à la réciproque.
+
+
+
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Soit $C$ un fermé de $\mathbb R^n$ tel que $\forall x,y \in C,\; ]x,y[\cap C \neq \emptyset$.\newline
+Montrer que $C$ est convexe.
+}}\\ 
+\\ 
+\\
+\noindent Supposons par l'absurde que $C$ n'est pas convexe: on dispose alors de $x,y\in C$ et $\alpha\in ]0,1[$ tel que $(1-\alpha)x+\alpha y\notin C$.\newline\newline 
+Considérons $\mu=\inf\{\lambda\geq \alpha| (1-\lambda)x+\lambda y\in C\} $ . On dispose de $\lambda_n$ une suite qui décroit vers $\mu$ avec pour tout $n$, $(1-\lambda_n)x+\lambda_n y\in C$ et $\lambda_n\geq \alpha$. En passant à la limite, comme $C$ est fermé, on a $(1-\mu)x+\mu y\in C$ et $\mu\geq \alpha$. Comme $(1-\alpha)x+\alpha y\notin C$, l'inégalité est stricte: $\mu>\alpha$ .\newline \newline
+De même, on pose $\nu=\sup\{\lambda\leq \alpha| (1-\lambda)x+\lambda y\in C\} $. On a encore $(1-\nu)x+\nu y\in C$ et $\nu< \alpha$.\newline \newline
+Posons $a=(1-\mu)x+\mu y$ et $b=(1-\nu)x+\nu y$. Alors $]a,b[\cap C\neq \emptyset$: on dispose de $\gamma\in ]0,1[$ tel que $(1-\gamma)b+\gamma a\in C$. \newline \newline
+Or $(1-\gamma)b+\gamma a = (1-[(1-\gamma)\nu + \gamma \mu])x + [(1-\gamma)\nu + \gamma \mu]y\;$ avec $$(1-\gamma)\nu + \gamma \mu\in \; ]\nu,\mu[ 
+$$
+Ceci contredit la définition de $\nu$, absurde.
 
 
 \end{document}
