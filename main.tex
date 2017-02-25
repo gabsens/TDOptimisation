@@ -11,6 +11,10 @@
 \usepackage{hyperref}
 \usepackage{fancyhdr}
 \usepackage{stmaryrd}
+\usepackage{ listings }
+\usepackage{graphicx}
+\usepackage{float}
+\graphicspath{ {images/} }
 
 
 \pagestyle{fancy}
@@ -21,6 +25,7 @@
 \DeclareMathOperator{\Id}{Id}
 \DeclareMathOperator{\co}{co}
 \DeclareMathOperator{\Ri}{Ri}
+\DeclareMathOperator{\ext}{ext}
 
 
 \begin{document}
@@ -625,9 +630,53 @@ Ceci achève la récurrence.\newline \newline
 Soit $\lambda \in [0,1]$. La suite $\dfrac{\lfloor 2^n \lambda\rfloor}{2^n}$ converge vers $\lambda$, de sorte que la suite des $$\frac{\lfloor 2^n \lambda\rfloor}{2^n}x + \left(1- \frac{\lfloor 2^n \lambda\rfloor}{2^n}\right)y$$ est une suite d'éléments de $C$ qui converge vers $\lambda x +(1-\lambda)y$. Comme $C$ est fermé, $\lambda x +(1-\lambda)y\in C$. Ceci étant vrai pour tout $x,y,\lambda$, $C$ est convexe.\newline \newline
 Dans le cas où $C$ n'est pas fermé, $\mathbb Q$ fournit un contre-exemple évident à la réciproque.
 
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Soient $A$ et $B$ deux parties d'un evn $E$.\newline
+Montrer que $\co A + \co B = \co(A+B)$
+}}\\ 
+\\ 
+\\
+\noindent $\supset$ On montre facilement que si $C$ et $C'$ sont deux convexes de $E$, $C+C'$ est convexe. $\co A$ et $\co B$ étant convexes, $\co A + \co B$ est convexe. Par ailleurs, $A\subset \co A$ et $B\subset \co B$ donc $A+B\subset \co A + \co B$.\newline
+$\co A + \co B$ est donc un convexe contenant $A+B$, donc $\co(A+B)\subset \co A + \co B $. \newline \newline 
+$\subset$ Soit $a+b\in \co A + \co B $. Il existe $n$ et $p\in \mathbb N$, $\alpha_i$, $\beta_j\in \mathbb R$, $a_i\in A$, $b_j\in B$ tels que 
+$a= \sum_{i=1}^n \alpha_i a_i  $, $b= \sum_{j=1}^p \beta_j b_j  $, $\sum_{i=1}^n \alpha_i = \sum_{j=1}^p \beta_j=1$.\newline
+Pour $1\leq j\leq p$ on pose $c_j = b_j + \sum_{i=1}^n \alpha_i a_i  = \sum_{i=1}^n \alpha_i (a_i + b_j) \in \co (A+B)$.\newline
+Alors $\underbrace{\sum_{j=1}^p  \beta_j c_j}_{\in \co(\co(A+B))}=\sum_{j=1}^p  \beta_j\left(b_j + \sum_{i=1}^n \alpha_i a_i \right) = \sum_{j=1}^p \beta_j b_j +\sum_{i=1}^n \alpha_i a_i = a+b$\newline
+Comme $\co(A+B)$ est convexe, $\co(\co(A+B))=\co(A+B)$, donc $a+b\in \co(A+B)$.
 
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+On dit qu'un point $x\in A$ est un point exposé de $A$ s'il existe un hyperplan d'appui $H$ à $A$ tel que $H\cap A = \{x\}$.\newline
+On note $\exp A$ l'ensemble des points exposés de $A$.
+\begin{enumerate}
+\item Montrer que si $C$ est convexe, on a $\exp C \subset \ext C$.
+\item Donner un exemple de convexe $C$ pour lequel $\exp C \varsubsetneqq \ext C$.
+\item Donner un exemple dans $\mathbb R^3$ qui vérifie $\exp C \varsubsetneqq \ext C \varsubsetneqq \overline{\exp C}$
+\end{enumerate}
+}}\\ 
+\\ 
+\\
+\noindent 1. Soit $C$ un convexe. On rappelle que $\ext C$ désigne l'ensemble des points extrémaux de $C$. \newline
+Soit $x^*\in \exp C$. Soit $H$ l'hyperplan d'appui à $C$ tel que $H\cap C = \{x^*\}$. Il existe $\ell\in \mathcal L_c(E,\mathbb R)$ une forme linéaire continue non-triviale et un réel $\alpha$ tels que $H=\{x\in E| \; \ell(x)=\alpha\}$. On suppose sans perte de généralité que $C\subset H^+=\{x\in E| \; \ell(x)\geq \alpha\}$.\newline
+Comme $x^*\in H$, on a $\ell(x^*)=\alpha$. Si $x\in C$ est tel que $\ell(x)=\alpha$, alors $x\in C\cap H$ et donc $x=x^*$.\newline
+Si $x\in C$ et $x\neq x^*$ on a donc $\ell(x)>\alpha$.\newline \newline
+Supposons par l'absurde que $x^*\notin \ext C$. On dispose alors de $a,b \in C$ et $\lambda\in ]0,1[$ tels que $x^*=(1-\lambda)a + \lambda b$.\newline
+Alors $\ell(x^*)=(1-\lambda)\ell(a) + \lambda \ell(b)$. \newline
+Comme $\lambda\in ]0,1[$, $(1-\lambda)\ell(a) + \lambda \ell(b)>\min(\ell(a), \ell(b))$. Comme $a\neq x^*$ et $b\neq x^*$, $\min(\ell(a), \ell(b))>\alpha$.\newline 
+Donc $\ell(x^*)=(1-\lambda)\ell(a) + \lambda \ell(b)>\alpha$ ce qui contredit $\ell(x^*)=\alpha$.\newline
+\newline
+2. Dans $\mathbb R^2$ on considère l'ensemble $A$ formé d'un demi arc de cercle au dessous duquel on colle une sorte de carré, comme sur la figure ci dessous. \newline Formellement $A=\{(x,y)|\; x^2+y^2=1 \text{ et } y\geq 0\}\cup \{(-1,y)|\; y\in [0,-2]\} \cup \{(1,y)|\; y\in [0,-2]\} \cup \{(x,-2)|\; x\in [-1,1]\}$. Le seul hyperplan d'appui contenant $B$ est la droite $x=1$ qui contient aussi $\{(1,y)|\; y\in [0,-2]\}$. Donc $B$ n'est pas exposé.\newline
+Pourtant $B$ est extrémal. \newline 
 
+\begin{figure}[t]
+\includegraphics[scale=0.5]{1}
+\centering 
+\end{figure}
 
+\noindent 3. ?
+
+\newpage
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
 Soit $C$ un fermé de $\mathbb R^n$ tel que $\forall x,y \in C,\; ]x,y[\cap C \neq \emptyset$.\newline
