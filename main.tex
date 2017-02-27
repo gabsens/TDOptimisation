@@ -633,7 +633,7 @@ Dans le cas où $C$ n'est pas fermé, $\mathbb Q$ fournit un contre-exemple évi
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
 Soient $A$ et $B$ deux parties d'un evn $E$.\newline
-Montrer que $\co A + \co B = \co(A+B)$
+Montrer que $\co A + \co B = \co(A+B)$.
 }}\\ 
 \\ 
 \\
@@ -676,6 +676,91 @@ Pourtant $B$ est extrémal. \newline
 
 \noindent 3. ?
 
+
+\newpage
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Soit $C$ un convexe compact de $\mathbb R^n$. 
+\begin{enumerate}
+\item Pour $a\in \mathbb R^n\setminus \{0\}$ on considère $\varphi:C\to \mathbb R, x\mapsto 2\langle a,x\rangle$. Montrer que $\varphi$ admet un maximum sur $C$ atteint en un point $x_0$.
+\item Soit $H_a=\{x\in \mathbb R^n|\; \langle a,x\rangle=\langle a,x_0\rangle \}$. Montrer que $H_a\cap C$ est un convexe non vide.
+\end{enumerate}
+}}\\ 
+\\ 
+\\
+\noindent 1. $\varphi$ est continue sur $\mathbb R^n$ (car linéaire à partir d'un espace de dimension finie), donc elle admet un maximum sur le compact $C$.\newline 
+2. $H_a$ contient $x_0$. Montrons que $H_a$ est convexe. Soit $x,y\in H_a$ et $\lambda\in [0,1]$. Alors $\langle a,\lambda x +(1-\lambda)y\rangle = \lambda \langle a,x\rangle + (1-\lambda) \langle a,y\rangle = \lambda \langle a,x_0\rangle + (1-\lambda) \langle a,x_0\rangle = \langle a,x_0\rangle$ donc $\lambda x +(1-\lambda)y\in H_a$ et $H_a$ est convexe.\newline 
+$H_a\cap C$ est donc convexe comme intersection de deux convexes et non vide car il contient $x_0$.
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Soient $H$ un espace de Hilbert et $C$ une partie convexe fermée non vide de $H$.
+\begin{enumerate}
+\item On considère $f:H\to \mathbb R$ définie par $f(x)=(d(x,C))^2$. Montrer que $f$ est différentiable en tout point et calculer la différentielle de $f$ en un point $x$ de $H$. (On considérera le projecteur $P$ de meilleure approximation sur $C$).
+\item Soit $\varphi: H\to \mathbb R$ définie par $\varphi(x)=\langle Ax,x\rangle + \langle f,x\rangle$ où $f\in H$ et $A\in \mathcal L_c(H,H)$ auto-adjointe. Déterminer le gradient de $\varphi$ en $x$.
+\end{enumerate}
+}}\\ 
+\\ 
+\\
+\noindent 1. On rappelle que la projection sur un convexe fermé d'un Hilbert est unique et on notera $p_C(x)$ le projeté de $x$ sur $C$. On rappelle que $p_C$ est $1$-lipschitzienne. \newline
+\newline
+Soit $x\in H$ fixé et $h\in H$. On a le développement $$\begin{aligned}
+\hspace{-2cm}d(x+h,C)^2 &= \|x+h-p_C(x+h)\|^2 \\
+&= \|x-p_C(x)+h+p_C(x)-p_C(x+h)\|^2 \\
+&= d(x,C)^2+2\langle x-p_C(x),h\rangle + 2\langle x-p_C(x),p_C(x)-p_C(x+h)\rangle + \|p_C(x)-p_C(x+h)+h\|^2\\
+&= d(x,C)^2+2\langle x-p_C(x),h\rangle + 2\langle p_C(x)-p_C(x+h),h+x-p_C(x)\rangle + \|p_C(x)-p_C(x+h)\|^2+\|h\|^2
+\end{aligned}
+$$
+Le candidat naturel pour la différentielle de $f$ en $x$ est donc $h\mapsto 2\langle x-p_C(x),h\rangle$.\newline
+Sachant que $p_C$ est $1$-lipschitzienne il facile de montrer que $\|p_C(x)-p_C(x+h)\|^2+\|h\|^2 = o(\|h\|)$.\newline \newline
+Cependant il est \textbf{remarquablement difficile} de prouver par des moyens élémentaires que $\langle p_C(x)-p_C(x+h),h+x-p_C(x)\rangle = o(\|h\|)$. (On peut montrer facilement que c'est un $O(\|h\|)$ mais c'est insuffisant).\newline 
+\newline
+On adopte une approche différente:\newline
+\textbf{Lemme}: Soit $f,g_1,g_2:H\to \mathbb R$ trois fonctions différentiables en $x\in H$ avec $U$ un voisinage de $x$ et  $$\forall y\in U, g_1(y)\leq f(y)\leq g_2(y)$$ et $g_1(x)=g_2(x)$. \newline  Alors $dg_1(x)=dg_2(x)$, $f$ est différentiable en $x$ et $df(x)=dg_1(x)$.\newline \newline
+\underline{Preuve}: Pour $h\in U-x$ on a $g_1(x+h)\leq g_2(x+h)$. On dispose de deux fonctions $\varepsilon_1$ et $\varepsilon_2:H\to \mathbb R$ nulles et continues en $0$ telles que $$g_1(x)+dg_1(x)(h)+\|h\|\varepsilon_1(h)\leq g_2(x)+dg_2(x)(h)+\|h\|\varepsilon_2(h)$$
+ie $$dg_2(x)(h) -dg_1(x)(h) + \|h\|(\varepsilon_2(h) -\varepsilon_1(h)) \geq 0$$
+Pour $t>0$ on remplace $h$ par $th$ et on obtient 
+$$t(dg_2(x)(h) -dg_1(x)(h)) + t\|h\|(\varepsilon_2(th) -\varepsilon_1(th)) \geq 0$$
+En simplifiant par $t$ puis en faisant $t\to 0$,
+$$dg_2(x)(h) -dg_1(x)(h) \geq 0$$
+En remplaçant $h$ par $-h$ dans la dernière inégalité,
+$$dg_2(x)(h) -dg_1(x)(h) \leq 0$$
+donc $dg_2(x)(h) =dg_1(x)(h)$, ceci étant vrai pour tout $h\in H$, donc $dg_2(x)=dg_1(x)$.\newline \newline
+Posons $dg(x):=dg_1(x)$ et réécrivons l'inégalité $g_1(x+h)\leq f(x+h)\leq g_2(x+h)$:
+$$f(x)+dg(x)(h)+\|h\|\varepsilon_1(h) \leq f(x+h) \leq f(x)+dg(x)(h)+\|h\|\varepsilon_2(h)$$ 
+donc 
+$$ \varepsilon_1(h)\leq \frac{f(x+h)-f(x)-dg(x)(h)}{\|h\|}\leq \varepsilon_2(h)$$
+Par encadrement, on a pour $\|h\|\to 0$, $\dfrac{f(x+h)-f(x)-dg(x)(h)}{\|h\|}\to 0 $. \newline
+\null \hfill $\square$\\
+
+\noindent Revenons au problème. Soit $x\in H\setminus C$ fixé. Posons $x^*=p_C(x)$, $e=\frac{x-x^*}{\|x-x^*\|}$ et $H$ l'hyperplan d'appui en $x^*$ de normale $e$, de sorte que $$H=\{y\in H, \langle y,e\rangle = \langle x^*,e\rangle\}$$
+\textbf{Lemme}: On note $p_H$ la projection orthogonale sur $H$ (qui est un sev fermé). Soit $y\in H^+$ et $z\in H^-$. Alors $\|y-p_H(y)\|\leq \|y-y'\|$.  \newline \newline
+\underline{Preuve}: C'est géométriquement évident (faire un dessin). Formellement, comme 
+$\begin{aligned}[t]\|y-y'\|^2&=\|y-p_H(y) + p_H(y)-y'\|^2 \\
+&= \|y-p_H(y)\|^2 + \|p_H(y)-y'\|^2 -2\langle y-p_H(y), y'-p_H(y)\rangle
+\end{aligned}$\newline
+il suffit de prouver que $\langle y-p_H(y), y'-p_H(y)\rangle \leq 0$ (ce qui est encore une évidence géométrique).\newline
+Comme $y-p_H(y)\in H^\bot$ (cf théorème de la projection orthogonale sur un sev fermé), et que $H^{\bot}=\operatorname{Vect}(e)$ on peut écrire \newline
+$y-p_H(y) = \lambda e$ d'où $\begin{aligned}[t]\langle y-p_H(y), e\rangle &= \lambda \|e\|^2=\lambda\\ 
+&= \langle y, e\rangle - \langle p_H(y), e\rangle \\
+&\geq \langle x^*, e\rangle - \langle p_H(y), e\rangle \quad \text{car }y\in H^+ \\
+&= \langle x^*, e\rangle - \langle x^*, e\rangle \quad \text{car }p_H(y)\in H \\
+&= 0 \end{aligned} $\newline 
+donc $\lambda \geq 0$.\newline
+Finalement, $\begin{aligned}[t] \langle y-p_H(y), y'-p_H(y)\rangle &= \lambda \langle e, y'-p_H(y) \rangle \\
+&= \lambda \left( \langle e, y'\rangle - \langle e, p_H(y) \rangle \right)\\
+&\leq \lambda \left( \langle e, x^*\rangle - \langle e, x^* \rangle \right) \; \text{car } \lambda\geq 0,\; z\in H^-, \;p_H(y)\in H \\
+&= 0
+\end{aligned}$\newline
+comme souhaité. \null \hfill $\square$\\
+
+\noindent Dans notre problème on dispose d'un voisinage de $x$ noté $U$ tel que $U\subset H^+$. Pour $y\in U$, comme $p_C(y)\in C\subset H^-$, le lemme donne $(d(y,H))^2\leq (d(y,C))^2$. On a aussi la majoration triviale $(d(y,C))^2\leq \|y-x^*\|^2$. En bref $$(d(y,H))^2\leq (d(y,C))^2\leq \|y-x^*\|^2$$
+Par ailleurs $(d(y,H))^2$ se réécrit simplement $$\langle y-p_H(y),e\rangle^2  = \langle y-x^*,e\rangle^2 = \langle y-x^*,\frac{x-x^*}{\|x-x^*\|}\rangle^2 $$
+D'où l'encadrement $$\underbrace{\langle y-x^*,\frac{x-x^*}{\|x-x^*\|}\rangle^2}_{:= g_1(y)}\leq (d(y,C))^2\leq \underbrace{\|y-x^*\|^2}_{:= g_2(y)}$$
+On a bien $g_1(x)=g_2(x)$, $g_1$ différentiable en $x$ et $g_2$ différentiable en $x$ de différentielle $h\mapsto 2\langle h,x-x^* \rangle$ (application linéaire continue par Cauchy-Schwarz).\newline
+D'après le lemme, $f$ est différentiable en $x$ de différentielle $h\mapsto 2\langle h,x-x^* \rangle$.\newline \newline
+Il reste à traiter le cas où $x\in C$. Il suffit de noter qu'alors $$(d(x+h,C))^2\leq \|(x+h)-x\|^2=\|h\|^2$$
+Donc $f$ est différentiable de différentielle nulle.
 \newpage
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
