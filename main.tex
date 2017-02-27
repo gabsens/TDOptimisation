@@ -734,12 +734,12 @@ Par encadrement, on a pour $\|h\|\to 0$, $\dfrac{f(x+h)-f(x)-dg(x)(h)}{\|h\|}\to
 \null \hfill $\square$\\
 
 \noindent Revenons au problème. Soit $x\in H\setminus C$ fixé. Posons $x^*=p_C(x)$, $e=\frac{x-x^*}{\|x-x^*\|}$ et $\mathcal H$ l'hyperplan d'appui en $x^*$ de normale $e$, de sorte que $$\mathcal H=\{y\in H, \langle y,e\rangle = \langle x^*,e\rangle\}$$
-\textbf{Lemme}: On note $p_{\mathcal H}$ la projection orthogonale sur $\mathcal H$ (qui est un sev fermé). Soit $y\in \mathcal H^+$ et $z\in \mathcal H^-$. Alors $\|y-p_{\mathcal H}(y)\|\leq \|y-y'\|$.  \newline \newline
+\textbf{Lemme}: On note $p_{\mathcal H}$ la projection orthogonale sur $\mathcal H$ (qui est un sev fermé). Soit $y\in \mathcal H^+$ et $z\in \mathcal H^-$. Alors $\|y-p_{\mathcal H}(y)\|\leq \|y-z\|$.  \newline \newline
 \underline{Preuve}: C'est géométriquement évident (faire un dessin). Formellement, comme 
-$\begin{aligned}[t]\|y-y'\|^2&=\|y-p_{\mathcal H}(y) + p_{\mathcal H}(y)-y'\|^2 \\
-&= \|y-p_{\mathcal H}(y)\|^2 + \|p_{\mathcal H}(y)-y'\|^2 -2\langle y-p_{\mathcal H}(y), y'-p_{\mathcal H}(y)\rangle
+$\begin{aligned}[t]\|y-z\|^2&=\|y-p_{\mathcal H}(y) + p_{\mathcal H}(y)-z\|^2 \\
+&= \|y-p_{\mathcal H}(y)\|^2 + \|p_{\mathcal H}(y)-z\|^2 -2\langle y-p_{\mathcal H}(y), z-p_{\mathcal H}(y)\rangle
 \end{aligned}$\newline
-il suffit de prouver que $\langle y-p_{\mathcal H}(y), y'-p_{\mathcal H}(y)\rangle \leq 0$ (ce qui est encore une évidence géométrique).\newline
+il suffit de prouver que $\langle y-p_{\mathcal H}(y), z-p_{\mathcal H}(y)\rangle \leq 0$ (ce qui est encore une évidence géométrique).\newline
 Comme $y-p_{\mathcal H}(y)\in \mathcal H^\bot$ (cf théorème de la projection orthogonale sur un sev fermé), et que $\mathcal H^{\bot}=\operatorname{Vect}(e)$ on peut écrire \newline
 $y-p_{\mathcal H}(y) = \lambda e$ d'où $\begin{aligned}[t]\langle y-p_{\mathcal H}(y), e\rangle &= \lambda \|e\|^2=\lambda\\ 
 &= \langle y, e\rangle - \langle p_{\mathcal H}(y), e\rangle \\
@@ -747,8 +747,8 @@ $y-p_{\mathcal H}(y) = \lambda e$ d'où $\begin{aligned}[t]\langle y-p_{\mathcal
 &= \langle x^*, e\rangle - \langle x^*, e\rangle \quad \text{car }p_{\mathcal H}(y)\in \mathcal H \\
 &= 0 \end{aligned} $\newline 
 donc $\lambda \geq 0$.\newline
-Finalement, $\begin{aligned}[t] \langle y-p_{\mathcal H}(y), y'-p_{\mathcal H}(y)\rangle &= \lambda \langle e, y'-p_{\mathcal H}(y) \rangle \\
-&= \lambda \left( \langle e, y'\rangle - \langle e, p_{\mathcal H}(y) \rangle \right)\\
+Finalement, $\begin{aligned}[t] \langle y-p_{\mathcal H}(y), z-p_{\mathcal H}(y)\rangle &= \lambda \langle e, z-p_{\mathcal H}(y) \rangle \\
+&= \lambda \left( \langle e, z\rangle - \langle e, p_{\mathcal H}(y) \rangle \right)\\
 &\leq \lambda \left( \langle e, x^*\rangle - \langle e, x^* \rangle \right) \; \text{car } \lambda\geq 0,\; z\in \mathcal H^-, \;p_{\mathcal H}(y)\in \mathcal H \\
 &= 0
 \end{aligned}$\newline
