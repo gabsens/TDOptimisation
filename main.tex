@@ -772,11 +772,18 @@ $\varphi$ est donc différentiable en $x$, de gradient $2Ax + f$.
 
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
-
+Soit $C$ un convexe de $\mathbb R^n$. Pour $0\geq b \geq a$, montrer que $$aC-bC=(a-b)C+b(C-C)$$
 }}\\ 
 \\ 
 \\
-\noindent
+\noindent $\subset$ Soit $ac-bc'\in aC-bC$. Alors  $$ac-bc'=(a-b)c+b(c-c')\in (a-b)C+b(C-C)$$ \newline \newline
+$\supset$ Soit $(a-b)c+b(c'-c'')\in (a-b)C+b(C-C)$. On a
+$$\begin{aligned}
+(a-b)c+b(c'-c'') &= -\left( (b-a)c + (-b)(c'-c'') \right) \\
+&= -\left( (-a)  \underbrace{\left[\left(1-\frac{b}{a}\right)c + \frac{b}{a}c'\right]}_{\in C}  + bc''\right) \\
+&= a \left[\left(1-\frac{b}{a}\right)c + \frac{b}{a}c'\right] - b c''\\
+&\in aC - bC
+\end{aligned}$$
 
 \newpage
 \subsection{} \noindent\fbox{
@@ -796,11 +803,22 @@ Ceci contredit la définition de $\nu$, absurde.
 
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
-
+Soit $X$ un fermé de $\mathbb R^n$ et $x\in X$. On dit que $v\in \mathbb R^n$ est une direction asymptotique de $X$ en x si $$\forall a\geq 0,\; x+av\in X$$ On note $K(X,x)$ l'ensemble des directions asymptotiques de $X$ en $x$.
+\begin{enumerate}
+\item Montrer que $\forall x\in X, \; K(X,x)$ est un cône.
+\item Si $X$ est convexe, montrer que $K(X,x)$ est convexe et que si $x,x'\in X$, alors $K(X,x)=K(X,x')$.
+\end{enumerate}
 }}\\ 
 \\ 
 \\
-\noindent
+\noindent 1. Soit $x\in X$, $v\in K(X,x)$ et $\lambda\geq 0$. Montrons que $\lambda v\in K(X,x)$. Pour $a\geq 0$, $a\lambda \geq 0$ donc $x+a\lambda v\in X$, donc $\lambda v\in K(X,x)$.\newline \newline
+2. On suppose $X$ convexe. Montrons que $K(X,x)$ est convexe. Pour $v,v'\in K(X,x)$, $\lambda\in [0,1]$ et $a\geq 0$ $$x+a[(1-\lambda)v + \lambda v'] = (1-\lambda)(\underbrace{x+av}_{\in X}) + \lambda(\underbrace{x+av'}_{\in X})\in X$$
+Donc $(1-\lambda)v + \lambda v'\in X$ et $K(X,x)$ est convexe.\newline \newline
+Soient $x,x'\in X$. Montrons que $K(X,x) \subset K(X,x')$. Soit $v\in K(X,x)$ et $a\geq 0$. On remarque que 
+$$ x' + av = \lim_n \left( \underbrace{\left( 1-\frac 1n\right)x' + \frac{1}{n}(\underbrace{x+nav}_{\in X})}_{\in X}\right) $$
+Comme $X$ est fermé, $x' + av \in X$ donc $x'\in K(X,x)$ et $K(X,x) \subset K(X,x')$.\newline
+On a l'inclusion inverse par symétrie.
+
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
 
