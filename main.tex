@@ -760,7 +760,15 @@ D'où l'encadrement $$\underbrace{\langle y-x^*,\frac{x-x^*}{\|x-x^*\|}\rangle^2
 On a bien $g_1(x)=g_2(x)$, $g_1$ différentiable en $x$ et $g_2$ différentiable en $x$ de différentielle $h\mapsto 2\langle h,x-x^* \rangle$ (application linéaire continue par Cauchy-Schwarz).\newline
 D'après le lemme, $f$ est différentiable en $x$ de différentielle $h\mapsto 2\langle h,x-x^* \rangle$.\newline \newline
 Il reste à traiter le cas où $x\in C$. Il suffit de noter qu'alors $$(d(x+h,C))^2\leq \|(x+h)-x\|^2=\|h\|^2$$
-Donc $f$ est différentiable de différentielle nulle.
+Donc $f$ est différentiable de différentielle nulle.\newline \newline
+2. Pour $x\in H$ on a le développement 
+$$\begin{aligned}
+\varphi(x+h) &= \varphi(x) + \langle Ax,h\rangle + \langle Ah,x\rangle + \langle f,h\rangle + \langle Ah,h\rangle\\
+&= \varphi(x) + \langle Ax,h\rangle + \langle h,Ax\rangle + \langle f,h\rangle + \langle Ah,h\rangle \quad \text{car }A \text{ auto-adjointe} \\
+&= \varphi(x) + \langle h, 2Ax + f\rangle +\langle Ah,h\rangle
+\end{aligned}$$
+$h\mapsto \langle h, 2Ax + f\rangle$ est linéaire et continue (par Cauchy-Schwarz). Par ailleurs, $$\frac{|\langle Ah,h\rangle|}{\|h\|}\leq \|Ah\|\leq \|A\|_{op}\|h\| \xrightarrow[\|h\|\to 0]{} 0$$
+$\varphi$ est donc différentiable en $x$, de gradient $2Ax + f$.
 
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
