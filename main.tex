@@ -820,6 +820,14 @@ On a l'inclusion inverse par symétrie.
 
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
+
+}}\\ 
+\\ 
+\\
+\noindent
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
 Soit $X$ un convexe de $\mathbb R^n$ et $A$ un convexe de $\mathbb R^+$ qui contient $0$. \newline
 Montrer que $\bigcup_{a\in A}aX$ est convexe.\newline
 }}\\ 
@@ -833,21 +841,27 @@ Si $a\neq 0$ et $b\neq 0$, on remarque qu'on a l'égalité
 $$ \underbrace{(\lambda a + (1-\lambda)b)}_{\in A} \underbrace{\left[ \left( 1-\frac{(1-\lambda)b }{\lambda a +(1-\lambda)b }\right)x_1 + \frac{(1-\lambda)b }{\lambda a +(1-\lambda)b }x_2 \right]}_{\in C}=(1-\lambda)a x_1 + \lambda b x_2$$
 ce qui prouve le résultat.
 
-\subsection{} \noindent\fbox{
-\parbox{\linewidth}{
 
-}}\\ 
-\\ 
-\\
-\noindent
 
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
-
+\begin{enumerate}
+\item Soit $X$ une partie de $\mathbb R^n$ à $N$ éléments ($N>n+1$). Montrer qu'il est possible de partitionner $X$ en deux parties $X_1$ et $X_2$ tels que $$\co(X_1) \cap \co(X_2) \neq \emptyset$$
+\item Soit $(X_i)_{i\in \llbracket 1,N \rrbracket }$ $N$ parties convexes fermées de $\mathbb R^n$ avec $N>n$.\newline
+Montrer par récurrence sur $N$ le théorème de Helly: si toute sous-famille de $(X_i)$ à $n+1$ éléments  a une intersection non vide, alors les $N$ convexes de la famille $(X_i)$ sont d'intersection non vide.
+\end{enumerate}  
 }}\\ 
 \\ 
 \\
-\noindent
+\noindent 1. On adapte facilement la preuve du 4.3 avec $N\geq n+2$ au lieu de $N=n+2$.
+\newline \newline
+2. On procède par récurrence sur $N\geq n+1$, $n$ étant fixé dans toute la preuve.\newline
+L'initialisation est immédiate. Supposons le résultat vrai pour $N-1$ et prouvons le pour $N$. Supposons par l'absurde que toute sous-famille de $(X_i)$ à $n+1$ éléments a une intersection non vide mais que $X_1,\ldots, X_N$ sont d'intersection vide.\newline
+D'après l'hypothèse de récurrence appliquée à chaque sous-famille à $N-1$ éléments des $(X_i)$, on dispose pour chaque $i\in \llbracket 1,N \rrbracket$ de $x_i\in \bigcap_{j\neq i} X_j\setminus X_i$.\newline
+Posons $A=\{x_1,\ldots,x_N\}$. D'après le résultat du 1., il exise une partition de $A$ en $A_1\cup A_2$ avec $\co(A_1)\cap \co(A_2)\neq \emptyset$.\newline
+Considérons $x\in \co(A_1)\cap \co(A_2)$ et montrons que $x\in \bigcap_{i=1}^N X_i$. Soit $i\in \llbracket 1,N \rrbracket$. \newline
+Si $x_i\in A_1$, $A_2$ ne contient que des $x_j$ où $j\in \llbracket 1,N \rrbracket\setminus \{i\}$, donc $A_2\subset X_i$. Or $X_i$ est convexe, donc $\co(A_2)\subset X_i$, donc $x\in X_i$. On procède similairement lorsque $x_i\in A_2$.\newline 
+Donc $x\in \bigcap_{i=1}^N X_i$ ce qui est absurde.
 
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
