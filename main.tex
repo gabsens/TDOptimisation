@@ -785,7 +785,6 @@ $$\begin{aligned}
 &\in aC - bC
 \end{aligned}$$
 
-\newpage
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
 Soit $C$ un fermé de $\mathbb R^n$ tel que $\forall x,y \in C,\; ]x,y[\cap C \neq \emptyset$.\newline
@@ -821,11 +820,18 @@ On a l'inclusion inverse par symétrie.
 
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
-
+Soit $X$ un convexe de $\mathbb R^n$ et $A$ un convexe de $\mathbb R^+$ qui contient $0$. \newline
+Montrer que $\bigcup_{a\in A}aX$ est convexe.\newline
 }}\\ 
 \\ 
 \\
-\noindent
+\noindent Soient $x,y\in\bigcup_{a\in A}aX $. On dispose de $a,b\in A$ et $x_1,x_2\in X$ tels que $x=ax_1$ et $y=bx_2$. Soit $\lambda \in [0,1]$. \newline
+Il s'agit de montrer que $(1-\lambda)a x_1 + \lambda b x_2\in \bigcup_{a\in A}aX$.\newline
+\newline
+Si $a=0$ ou $b=0$, en supposant par exemple que $a=0$, il suffit de prouver que $\lambda bx_2 \in \bigcup_{a\in A}aX$. Comme $\lambda b = (1-\lambda)0 +\lambda b$, on a $\lambda bx_2\in (\lambda b) X$.\newline \newline
+Si $a\neq 0$ et $b\neq 0$, on remarque qu'on a l'égalité
+$$ \underbrace{(\lambda a + (1-\lambda)b)}_{\in A} \underbrace{\left[ \left( 1-\frac{(1-\lambda)b }{\lambda a +(1-\lambda)b }\right)x_1 + \frac{(1-\lambda)b }{\lambda a +(1-\lambda)b }x_2 \right]}_{\in C}=(1-\lambda)a x_1 + \lambda b x_2$$
+ce qui prouve le résultat.
 
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
