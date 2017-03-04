@@ -26,6 +26,7 @@
 \DeclareMathOperator{\co}{co}
 \DeclareMathOperator{\Ri}{Ri}
 \DeclareMathOperator{\ext}{ext}
+\DeclareMathOperator{\epi}{epi}
 
 
 \begin{document}
@@ -879,5 +880,159 @@ Montrer que l'ensemble suivant est convexe: $$C=\{(a,b,c)\in \mathbb R^3|\; a>0,
 
 
 
+\newpage
+\section{Fonctions convexes}
+
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Soient $E$ un evn et $f:E\to \mathbb R$ convexe et impaire.
+\begin{enumerate}
+\item Montrer que $\forall x\in E, \; \forall \lambda\in ]0,1[, \; f(\lambda x)\leq \lambda f(x)$.
+\item En déduire que $\forall x\in E, \; \forall \lambda\in ]0,1[, \; f(\lambda x) = \lambda f(x)$.
+\item En déduire que $f$ est linéaire.
+\end{enumerate}
+}}\\ 
+\\ 
+\\
+\noindent 1. On note que par imparité $f(0)=f(-0)=-f(0)$ donc $2f(0)=0$ et $f(0)=0$.\newline 
+Pour $x\in E$ et $\lambda\in ]0,1[$ on a $$f(\lambda x) =f(\lambda x + (1-\lambda)\cdot 0)\leq \lambda f(x) + (1-\lambda)f(0)=\lambda f(x)$$
+2. Pour $x\in E$ et $\lambda\in ]0,1[$, $-f(\lambda x) = f(\lambda (-x)) \leq \lambda f(-x) = -\lambda f(x)$ donc $f(\lambda x)\geq \lambda f(x)$. En combinant avec l'inégalité de 1. on a l'égalité $f(\lambda x)= \lambda f(x)$. \newline \newline
+3. Il suffit de prouver que pour $\lambda >1$, $f(\lambda x)=\lambda f(x)$.\newline
+On remarque que pour $\lambda >1$, $\frac 1 \lambda <1$ et $$\begin{aligned}
+f(\frac 1 \lambda (\lambda x) ) &= \frac 1 \lambda f(\lambda x)\\
+\implies f(\lambda x) &= \lambda f(x)
+\end{aligned}$$
+comme souhaité.
+
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Soit $f>0$ positivement homogène sur $C$ convexe. Montrer que $f$ est convexe si et seulement si $B=\{x\in C|\; f(x)\leq 1\}$ est convexe.
+}}\\ 
+\\ 
+\\
+\noindent Pour que $f$ soit homogène, il faut pouvoir définir $f(\lambda x)$ pour tout $\lambda \geq 0$, ce qui nécessite une structure additionnelle sur $C$. On supposera donc que $C$ est un $\mathbb R$-evn. Par positivement homogène l'énoncé veut dire homogène de degré 1.\newline \newline
+$\impliedby$ Supposons $B$ convexe et montrons que $\epi f$ est convexe. On rappelle que $$\epi f= \{(x,y)\in C\times \mathbb R|\;y\geq f(x)\}$$
+Soient $(x_1,y_1)$, $(x_2,y_2)$ dans $\epi f$ et $\lambda \in [0,1]$. $f$ étant homogène de degré $1$ et strictement positive, les inégalités $y_1\geq f(x_1)>0$ et $y_2\geq f(x_2)>0$ se réécrivent $1\geq f(\frac{1}{y_1}x_1)$ et $1\geq f(\frac{1}{y_2}x_2)$ donc $\frac{x_1}{y_1}$ et $\frac{x_2}{y_2}$ sont dans $B$.\newline \newline 
+$B$ étant convexe et $\dfrac{\lambda y_2}{(1-\lambda)y_1 + \lambda y_2}$ étant dans $[0,1]$, on a $$f\left(\left(1-\dfrac{\lambda y_2}{(1-\lambda)y_1 + \lambda y_2}\right)\frac{x_1}{y_1} + \dfrac{\lambda y_2}{(1-\lambda)y_1 + \lambda y_2}\frac{x_2}{y_2}\right)\leq 1$$
+ce qui se réécrit $$f((1-\lambda)x_1 + \lambda x_2)\leq (1-\lambda)y_1 + \lambda y_2$$
+ce qui équivaut à $((1-\lambda)x_1 + \lambda x_2,(1-\lambda)y_1 + \lambda y_2)\in \epi f$.\newline
+Donc $\epi f$ est convexe, donc $f$ est convexe.\newline 
+\newline 
+$\implies$ On suppose $f$ convexe. Montrons que $B$ est convexe.\newline
+Soit $x,y\in C$ tel que $f(x)\leq 1$ et $f(y)\leq 1$ et $\lambda \in [0,1]$. Alors $$f((1-\lambda)x+\lambda y)\leq (1-\lambda)f(x) + \lambda f(y)\leq 1$$
+Donc $B$ convexe.
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+
+}}\\ 
+\\ 
+\\
+\noindent 
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Soient $x_i>0$, $\alpha_i\geq 0$ et $\sum_{i=1}^n\alpha_i =1$. Montrer que $$\sum_{i=1}^n\alpha_i x_i \geq \prod_{i=1}
+^nx_i^{\alpha_i}$$
+}}\\ 
+\\ 
+\\
+\noindent Par concavité du $\log$ et l'inégalité de Jensen on a $$\ln\left( \sum_{i=1}^n\alpha_i x_i \right)\geq \sum_{i=1}^n \alpha_i \ln(x_i)$$
+et on a l'inégalité voulue en passant à l'exponentielle.
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Soit $I$ un intervalle contenu dans $\mathbb R^*_+$ et $f:\mathbb R^+\to \mathbb R$ $2$ fois dérivable.\newline
+Montrer que si $g:x\mapsto f(\frac{1}{x})$ est convexe dans $I$, alors $h:x\mapsto xf(x)$ est aussi convexe et réciproquement.
+}}\\ 
+\\ 
+\\
+\noindent Il me semble nécessaire d'ajouter l'hypothèse $x\in I \implies \frac{1}{x}\in I$.\newline \newline
+On note que $$g''(x) = \frac{f''(\frac{1}{x}) + 2xf'(\frac{1}{x})}{x^4}$$
+donc 
+$$g''(\frac{1}{x}) = x^3 (xf''(x)+2f'(x)) = x^3 h''(x)$$
+Pour $x\in I$, $g''(\frac{1}{x})$ et $h''(x)$ ont donc même signe. $g$ est donc convexe si et seulement si $h$ l'est.
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Soit $f:[a,b]\to \mathbb R$ bornée.\newline
+On définit $\varphi: \mathbb R\to \mathbb R$ par $\varphi(t)=\inf_{x\in [a,b]}(-xt-f(x))$\newline
+Montrer que $\varphi$ est concave.
+}}\\ 
+\\ 
+\\
+\noindent Montrons que $\psi:t\mapsto \sup_{x\in [a,b]}(xt + f(x))$ est convexe.\newline
+Soient $t,t' \in \mathbb R$ et $\lambda \in [0,1]$. Pour $x\in [a,b]$, $xt+f(x)\leq \psi(t)$ et $xt'+f(x)\leq \psi(t')$ donc $$ \begin{aligned}(1-\lambda)(xt+f(x)) + \lambda(xt'+f(x)) &\leq (1-\lambda) \psi(t) + \lambda \psi(t')\\
+x((1-\lambda)t + \lambda t') + f(x)&\leq (1-\lambda) \psi(t) + \lambda \psi(t') \end{aligned}$$
+ceci étant vrai pour tout $x\in [a,b]$. En passant au $\sup$ on obtient $$\psi((1-\lambda)t + \lambda t')\leq (1-\lambda) \psi(t) + \lambda \psi(t')$$
+$\psi$ est donc convexe, donc $\varphi=-\psi$ est concave.
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Soient $t\in [a,b]$, $x\in \mathbb R^n$ et $f:\mathbb R^n\times [a,b] \to \mathbb R, (x,t)\to f(x,t)$ telle que\newline
+$f$ est convexe en $x$ et continue en $t$.\newline
+Montrer que $g:x\mapsto \int_a^bf(x,t) dt$ est convexe.
+}}\\ 
+\\ 
+\\
+\noindent Soient $x,y\in \mathbb R^n$ et $\lambda \in [0,1]$. Pour $t\in [a,b]$, par convexité de $f$ en la première variable, $f((1-\lambda)x+\lambda y,t)\leq (1-\lambda)f(x,t) + \lambda f(y,t)$.\newline
+En intégrant cette inégalité selon $t$ on trouve $$g((1-\lambda)x+\lambda y)\leq (1-\lambda)g(x) + \lambda g(y)$$ donc $g$ est convexe.
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Soit $A$ une partie fermée non vide d'un evn $E$.\newline 
+Montrer que $A$ est convexe si et seulement si $x\mapsto d(A,x)$ est convexe de $E$ dans $\mathbb R$.
+}}\\ 
+\\ 
+\\
+\noindent $\implies$ Supposons $A$ convexe et montrons que $x\mapsto d(A,x)$ est convexe. Soient $x,y\in E$ et $\lambda\in ]0,1[$.\newline
+Soit $x',y'$ deux éléments quelconques de $A$. On a l'inégalité $$(1-\lambda)\|x-x'\| + \lambda \|y-y'\|\geq \|(1-\lambda)x+\lambda y- \underbrace{(	(1-\lambda)x'+\lambda y')}_{\in A}\|\geq d(A, (1-\lambda)x+\lambda y)$$ 
+donc $$\|x-x'\| \geq \frac{1}{1-\lambda } (d(A, (1-\lambda)x+\lambda y) -\lambda \|y-y'\|)$$
+Le membre de droite est indépendant de $x'$, donc au passant à l'inf sur $x'$ on a
+$$d(A,x)\geq \frac{1}{1-\lambda } (d(A, (1-\lambda)x+\lambda y) -\lambda \|y-y'\|) $$
+soit encore $$ (1-\lambda )d(A,x)\geq  d(A, (1-\lambda)x+\lambda y) -\lambda \|y-y'\|$$
+qui devient $$ \lambda \|y-y'\| \geq d(A, (1-\lambda)x+\lambda y) - (1-\lambda )d(A,x)$$
+Un raisonnement similaire (passage à l'inf sur $y'$) donne 
+$$\lambda d(A,y) \geq d(A, (1-\lambda)x+\lambda y) - (1-\lambda )d(A,x)$$
+soit $$ d(A, (1-\lambda)x+\lambda y) \leq (1-\lambda )d(A,x) + \lambda d(A,y)$$
+Donc $x\mapsto d(A,x)$ est convexe.\newline
+\newline 
+$\impliedby$ On suppose que $x\mapsto d(A,x)$ est convexe. Soient $x,y\in A$ et $\lambda\in [0,1]$. \newline
+On a $d(A,(1-\lambda)x+\lambda y)\leq (1-\lambda)d(A,x) + \lambda d(A,y) = (1-\lambda)\cdot 0+ \lambda \cdot 0 = 0$.\newline
+Donc $d(A,(1-\lambda)x+\lambda y)=0$ et comme $A$ est fermé, $(1-\lambda)x+\lambda y\in A$, donc $A$ convexe.
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Soit $f_n:\;]0,1[\to \mathbb R$ une suite de fonctions convexes qui converge simplement vers $f:\; ]0,1[\to \mathbb R$.
+\begin{enumerate}
+\item Montrer que $f$ est convexe.
+\item Montrer que $f_n$ converge vers $f$ uniformément sur tout compact de $]0,1[$.
+\end{enumerate}
+}}\\ 
+\\ 
+\\
+\noindent 1. Soient $x,y\in ]0,1[$ et $\lambda\in [0,1]$. Pour tout $n$, $$f_n((1-\lambda)x+\lambda y)\leq (1-\lambda)f_n(x) + \lambda f_n(y)$$ et en passant à la limite sur $n$ on a la convexité de $f$.\newline \newline
+2. Etant donné $K$ un compact de $]0,1[$, montrons que la famille des $(f_n)$ est uniformément lipschitzienne, c'est-à-dire qu'il existe $A\geq 0$ tel que $$\forall n\geq 1,\; \forall x,y\in K,\quad |f_n(x)-f_n(y)|\leq A |x-y|$$
+$K$ étant compact il est inclus dans un segment $[a,b]$ avec $0<a<b<1$. Considérons $c<c'\in ]0,a[$ et $d<d'\in ]b,1[$.\newline
+Soient $x,y\in K$ et $n\geq 1$ quelconques. Par convexité de $f$, $$\frac{f_n(c')-f_n(c)}{c'-c} \leq \frac{f_n(y)-f_n(x)}{y-x}\leq \frac{f_n(d')-f_n(d)}{d'-d}$$
+$\left(\frac{f_n(c')-f_n(c)}{c'-c}\right)_n$ et $\left(\frac{f_n(d')-f_n(d)}{d'-d}\right)_n$ convergent, donc sont bornées. On dispose donc de $m$ et $M$ des réels tels que $$m\leq \frac{f_n(c')-f_n(c)}{c'-c} \leq \frac{f_n(y)-f_n(x)}{y-x}\leq \frac{f_n(d')-f_n(d)}{d'-d}\leq M$$
+Pour tout $n\geq 1$ et $x,y\in K$ on a donc $$ m \leq \frac{f_n(y)-f_n(x)}{y-x} \leq M$$
+En posant $A=\max(|m|,|M|)$ on a $$\forall n\geq 1,\; \forall x,y\in K,\quad |f_n(x)-f_n(y)|\leq A |x-y|$$
+\null \hfill $\square$ \newline
+En passant à la limite sur $n$ dans l'inégalité précédente, on montre facilement que $f$ est $A$-lipschitzienne.\newline
+Montrons que $f_n$ converge vers $f$ uniformément sur $K$.\newline
+Soit $\varepsilon >0$. \newline
+Posons $N=\lfloor \frac{3A}{\varepsilon}\rfloor +1$ et $x_k=\frac{k}{N}$ pour $k\in \llbracket 1,N-1\rrbracket$.\newline
+Par convergence simple des $f_n$ on dispose de $N'$ tel que $$n\geq N'\implies \forall k\in \llbracket 1,N-1\rrbracket, |f(x_k)-f_n(x_k)|\leq \frac{\varepsilon}{3}$$
+Posons $N''=\max(N,N')$ et considérons $n\geq N''$ et $x\in K$.\newline
+Par construction il existe $i\in \llbracket 1,N-1\rrbracket$ tel que $|x-x_i|\leq \frac{\varepsilon}{3A}$, de sorte que 
+$$\begin{aligned}
+|f(x)-f_n(x)|&\leq |f(x)-f(x_i)| + |f(x_i)-f_n(x_i)| + |f_n(x_i)-f_n(x)| \\
+&\leq A |x-x_i| + \frac{\varepsilon}{3}  + A |x-x_i|\\
+&\leq \epsilon
+\end{aligned}$$
+On a donc montré que $\forall n\geq N'',\; \forall x\in K, \; |f(x)-f_n(x)|\leq \epsilon$, d'où la convergence uniforme.
 
 \end{document}
