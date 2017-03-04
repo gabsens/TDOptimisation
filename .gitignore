@@ -6,7 +6,7 @@
 !main.tex
 !main.pdf
 !README.md
+!/images
 # etc...
 
 # ...even if they are in subdirectories
-!*/
