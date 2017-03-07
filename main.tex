@@ -1035,4 +1035,216 @@ $$\begin{aligned}
 \end{aligned}$$
 On a donc montré que $\forall n\geq N'',\; \forall x\in K, \; |f(x)-f_n(x)|\leq \epsilon$, d'où la convergence uniforme.
 
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+
+}}\\ 
+\\ 
+\\
+\noindent
+
+
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+
+}}\\ 
+\\ 
+\\
+\noindent
+
+
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+
+}}\\ 
+\\ 
+\\
+\noindent
+
+
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+
+}}\\ 
+\\ 
+\\
+\noindent
+
+
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Soient $f:\mathbb R \to \mathbb R$ convexe et $\varphi:\mathbb R\to \mathbb R^+$.
+\begin{enumerate}
+\item $\varphi$ étant à support compact, montrer que $F:x\mapsto \int_{-\infty}^{\infty} f(x-t)\varphi(t)dt$ est convexe.
+\item On suppose $f>0$ croissante et $C^1$ sur $[a,b]$.\newline
+Montrer que l'on peut prolonger $f$ à $]\text{-}\infty, b]$ de manière à ce que la fonction prolongée soit encore convexe, croissante, strictement positive, $C^1$, et constante sur un intervalle de la forme $]\text{-}\infty, \alpha]$.
+\item Soient $f,g$ convexes, strictement positives, croissantes et $\mathbb C^1$ sur $[a,b]$. Montrer que $fg$ est convexe sur $[a,b]$.
+\end{enumerate} 
+}}\\ 
+\\ 
+\\
+\noindent 1. Soient $x,y\in \mathbb R$ et $\lambda \in [0,1]$. Pour $t\in \mathbb R$ on a par convexité de $f$, $$f((1-\lambda)x + \lambda y -t)=f((1-\lambda)(x-t) + \lambda(y-t))\leq (1-\lambda)f(x-t) + \lambda f(y-t)$$
+En intégrant cette inégalité suivant $t$ on obtient le résultat voulu.\newline \newline
+2. \hfill \textit{Correction proposée par Yannick Guyonvarch}\newline
+On définit pour tout $y$
+\begin{align*}
+    &f_+'(y)=\lim_{x\to y,x\geq y}\frac{f(x)-f(y)}{x-y} \\
+    &f_-'(y)=\lim_{x\to y,x\leq y}\frac{f(x)-f(y)}{x-y}
+\end{align*}\newline 
+Si $f_+'(a)=0$, le résultat est immédiat car en posant $f(x)=f(a)$ pour tout $x\in]-\infty,a]$ on a construit un prolongement $C^1$ de $f$ qui vérifie toutes les contraintes du problème.\newline \newline
+Nous nous intéressons donc au cas où $f_+'(a)>0$. Posons $g:x\mapsto e(x-\alpha)^2+d$ avec $\alpha<a$ le point à déterminer tel que pour tout $x\leq\alpha$, on prolonge f par $h:x\mapsto g(\alpha)=d$. Nous devons donc trouver un triplet $(e,\alpha,d)$ qui satisfait au contraintes du problème, à savoir
+\begin{align*}
+    g\text{ croissante et $C^1$,}\quad g'(\alpha)=0,\quad g'(a)=f'(a),\quad 0<g(\alpha)<f(a),\quad g(a)=f(a),\quad \alpha<a
+\end{align*}
+\newline
+$g$ est bien $C^1$ et $g'(\alpha)=0$. Par ailleurs
+\begin{align*}
+    &g'(a)=f'(a)\iff2e(a-\alpha)=f'(a)\iff e=\frac{f'(a)}{2(a-\alpha)} \\
+    &g(a)=f(a)\iff e(a-\alpha)^2+d=f(a)\iff d=f(a)-\frac{f'(a)(a-\alpha)}{2}
+\end{align*}
+\newline \newline
+$e$ respecte la contrainte $e>0$ (pour avoir $g$ croissante) dès que $\alpha<a$. De la même manière $d<f(a)$ à la même condition.
+\newline \newline
+Trouvons $\alpha<a$ tel que $0<d$
+\begin{align*}
+    d>0\iff\alpha>a-\frac{2f(a)}{f'(a)}
+\end{align*}
+\newline
+Ainsi en prenant $\alpha\in]a-\frac{2f(a)}{f'(a)},a[$ on a bien construit un prolongement $C^1$ de $f$ qui vérifie toutes les conditions.\newline
+\newline 
+3. \hfill \textit{Correction proposée par Yannick Guyonvarch}\newline
+Pour tout $x\in[a,b]$, $f(x)g(x)>0$ et $h:x\mapsto f(x)g(x)$ admet une dérivée $h'(x)=f'(x)g(x)+f(x)g'(x)$.
+\newline
+Soit $x_1\leq x_2$.
+\begin{align*}
+    h'(x_1)&=f'(x_1)g(x_1)+f(x_1)g'(x_1) \\
+    &\leq f'(x_1)g(x_2)+f(x_2)g'(x_1)\text{ car $f$ et $g$ sont croissantes} \\
+    &\leq f'(x_2)g(x_2)+f(x_2)g'(x_2)\text{ car $f$ et $g$ de dérivée croissante}\\
+    &= h'(x_2)
+\end{align*}
+\newline
+$h'$ est donc croissante sur $[a,b]$ donc $f\times g$ est convexe sur $[a,b]$.
+
+
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+
+}}\\ 
+\\ 
+\\
+\noindent
+
+
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+
+}}\\ 
+\\ 
+\\
+\noindent
+
+
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+
+}}\\ 
+\\ 
+\\
+\noindent
+
+
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+
+}}\\ 
+\\ 
+\\
+\noindent
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+
+}}\\ 
+\\ 
+\\
+\noindent
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+
+}}\\ 
+\\ 
+\\
+\noindent
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+
+}}\\ 
+\\ 
+\\
+\noindent
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+
+}}\\ 
+\\ 
+\\
+\noindent
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+
+}}\\ 
+\\ 
+\\
+\noindent
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+
+}}\\ 
+\\ 
+\\
+\noindent
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Soit $f:[a,b]\to \mathbb R$, convexe, continue, strictement monotone sur $[a,b]$.\newline
+Que de la convexité/concavité de $f^{-1}$ ?
+}}\\ 
+\\ 
+\\
+\noindent 
+\null \hfill \textit{Correction proposée par Yannick Guyonvarch}\newline
+Ici on ne suppose pas a priori la dérivabilité de $f$.
+\newline
+Par convexité, on a pour tout $(x_1,x_2)\in[a,b]^2$ et tout $\lambda\in]0,1[$
+\begin{align*}
+    f(\lambda x_1+(1-\lambda)x_2)\leq \lambda f(x_1)+(1-\lambda)f(x_2)
+\end{align*}
+On pose $y_1=f(x_1)$, $y_2=f(x_2)$, $x_1=f^{-1}(y_1)$ et $x_2=f^{-1}(y_2)$ (N.B: ceci est possible car $f$ est continue strictement croissante, donc elle vérifie $x=f^{-1}(f(x))$ pour tout $x$).
+\newline
+Ainsi
+\begin{align*}
+    f(\lambda f^{-1}(y_1)+(1-\lambda)f^{-1}(y_2))\leq \lambda y_1+(1-\lambda)y_2
+\end{align*}
+$f$ continue strictement croissante sur $[a,b]$ $\implies$ $f^{-1}$ continue, strictement croissante sur $[f(a),f(b)]$. En appliquant $f^{-1}$ à l'inégalité, on en préserve le sens et on obtient
+\begin{align*}
+    \lambda f^{-1}(y_1)+(1-\lambda)f^{-1}(y_2)\leq f^{-1}(\lambda y_1+(1-\lambda)y_2)
+\end{align*}
+$\implies$ $f^{-1}$ concave.
+
+
+
 \end{document}
