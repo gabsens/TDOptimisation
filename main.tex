@@ -30,6 +30,7 @@
 \DeclareMathOperator{\diag}{diag}
 
 
+
 \begin{document}
 
 \titleformat{\chapter}[display]
@@ -1262,31 +1263,86 @@ $h'$ est donc croissante sur $[a,b]$ donc $f\times g$ est convexe sur $[a,b]$.
 
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
-
+Soit $K$ un convexe fermé de $\mathbb R^n$ et $P$ la projection sur $K$.\newline
+Montrer que $\varphi:x\mapsto \|x-P(x)\|$ est convexe.
 }}\\ 
 \\ 
 \\
-\noindent
+\noindent Soient $x,y\in K$ et $\lambda \in [0,1]$.\newline
+Comme $K$ est convexe, $(1-\lambda)P(x) + \lambda P(y)\in K$, donc par définition de $P$,
+$$\begin{aligned}\varphi((1-\lambda)x  + \lambda y) &= \|(1-\lambda)x  + \lambda y - P((1-\lambda)x  + \lambda y)\| \\
+&\leq \|(1-\lambda)x  + \lambda y - [(1-\lambda)P(x) + \lambda P(y)] \| \\
+&= \| (1-\lambda)(x-P(x)) + \lambda (y-P(y))\| \\
+&\leq (1-\lambda) \|x-P(x)\| + \lambda \|y-P(y)\| \\
+&= (1-\lambda) \varphi(x) + \lambda \varphi(y)
+\end{aligned}$$
+Donc $\varphi$ convexe.
 
 
 
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
-
+Soient $f,g:\mathbb R^*_+\to \mathbb R$ définies par $f(x,y)=x^\alpha + y^\beta$ et $g(x,y)=x^{\alpha}y^{\beta}$\newline
+Etudier la concavité et la convexité de $f$ et $g$.
 }}\\ 
 \\ 
 \\
-\noindent
+\noindent $f$ est clairement $C^2$ de Hessienne $H(f)(x,y)=\begin{pmatrix}
+\alpha(\alpha-1)x^{\alpha-2} & 0 \\
+0 & \beta(\beta-1)y^{\beta-2}
+\end{pmatrix}$\newline
+Cette matrice est diagonale.\newline
+\setlength{\tabcolsep}{0.1em}
+\begin{tabular}{ccl}
+$f$ est concave & $\iff$ & $H(f)(x,y)$ semi-définie négative pour tout $(x,y)$\\
+& $\iff $ & $\alpha(\alpha-1)\leq 0$ et $\beta(\beta-1)\leq 0$ \quad (car $x>0$ et $y>0$)\\
+& $\iff $ & $\alpha \in [0,1]$ et $\beta \in [0,1]$
+\end{tabular}\newline
+\\
+\begin{tabular}{ccl}
+$f$ est convexe & $\iff$ & $H(f)(x,y)$ semi-définie positive pour tout $(x,y)$\\
+& $\iff $ & $\alpha(\alpha-1)\geq 0$ et $\beta(\beta-1)\geq 0$ \quad (car $x>0$ et $y>0$)\\
+& $\iff $ & $\alpha \notin ]0,1[$ et $\beta \notin ]0,1[$
+\end{tabular}\\
+\\
+\\
+\noindent $g$ est clairement $C^2$ de Hessienne $H(g)(x,y)= x^{\alpha-2}y^{\beta-2} \begin{pmatrix}
+\alpha (\alpha -1)y^2 & \alpha \beta xy \\
+\alpha \beta xy & \beta(\beta -1)x^2
+\end{pmatrix}$ \newline
+Posons donc $A(x,y) = \begin{pmatrix}
+\alpha (\alpha -1)y^2 & \alpha \beta xy \\
+\alpha \beta xy & \beta(\beta -1)x^2
+\end{pmatrix}$ de sorte que $H(g)(x,y)$ est semi-définie positive/négative si et seulement si $A(x,y)$ l'est (car $x^{\alpha-2}y^{\beta-2}\geq 0$).\newline \newline 
+Le lemme du 5.13 (qui admet une réciproque facile à montrer) permet d'affirmer que \newline
+\setlength{\tabcolsep}{0.1em}
+\begin{tabular}{ccl}
+$g$ est concave & $\iff$ & $H(g)(x,y)$ semi-définie négative pour tout $(x,y)$\\
+& $\iff$ & $A(x,y)$ semi-définie négative pour tout $(x,y)$ \\
+& $\iff$ & $\det A\geq 0$ et $A(x,y)_{11} \leq 0$ pour tout $(x,y)$ \\
+& $\iff$ & $\alpha \beta (1-\alpha -\beta)\geq 0 $ et $\alpha (\alpha-1)\leq 0$ \\
+& $\iff$ & $\alpha \in [0,1]$ et $\beta\in [0,1-\alpha]$
+\end{tabular}\newline
+\newline
+\newline
+\setlength{\tabcolsep}{0.1em}
+\begin{tabular}{ccl}
+$g$ est convexe & $\iff$ & $H(g)(x,y)$ semi-définie positive pour tout $(x,y)$\\
+& $\iff$ & $A(x,y)$ semi-définie positive pour tout $(x,y)$ \\
+& $\iff$ & $\det A\geq 0$ et $A(x,y)_{11} \geq 0$ pour tout $(x,y)$ \\
+& $\iff$ & $\alpha \beta (1-\alpha -\beta)\geq 0 $ et $\alpha (\alpha-1)\geq 0$ \\
+& $\iff$ & $\begin{cases} \alpha\leq 0 \\ \beta \leq 0 \end{cases}$ ou \; $\begin{cases} \alpha\leq 0 \\ \beta \geq 1-\alpha \end{cases}$ ou \; $\begin{cases} \alpha\geq 1 \\ 1-\alpha \leq \beta \leq 0 \end{cases}$
+\end{tabular}\newline
 
 
 
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
-
+Soit $P\in \mathbb R[X]$. On suppose que $P$ est convexe sur $\mathbb R$. Montrer que $P$ admet au plus deux racines réelles.
 }}\\ 
 \\ 
 \\
-\noindent
+\noindent On suppose par l'absurde que $P$ admet $3$ racines réelles distinctes: $a<b<c$. D'après le théorème de Rolle, il existe $\xi\in ]a,b[$ et $\zeta \in ]b,c[$ tels que $P'(\xi) = P'(\zeta)=0$. Or $P$ est convexe sur $\mathbb R$, donc $P'$ est croissante, donc $P(x)=0$ pour tout $x\in [\xi,\zeta]$. $P'$ est donc un polynôme qui admet une infinité de racines, absurde.
 
 
 
