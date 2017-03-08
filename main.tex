@@ -27,6 +27,7 @@
 \DeclareMathOperator{\Ri}{Ri}
 \DeclareMathOperator{\ext}{ext}
 \DeclareMathOperator{\epi}{epi}
+\DeclareMathOperator{\diag}{diag}
 
 
 \begin{document}
@@ -1038,43 +1039,170 @@ On a donc montré que $\forall n\geq N'',\; \forall x\in K, \; |f(x)-f_n(x)|\leq
 
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
-
+Soit $f_1,\ldots, f_n$ des fonctions convexes de $[a,b]$ dans $\mathbb R$ et $g:\mathbb R^n \to \mathbb R$, convexe et croissante en chaque variable.\newline
+Montrer que $F:x\mapsto g(f_1(x),\ldots,f_n(x))$ est convexe sur $[a,b]$.
 }}\\ 
 \\ 
 \\
-\noindent
+\noindent Soient $x,y\in [a,b]$ et $\lambda\in [0,1]$. On a $$F((1-\lambda)x + \lambda y)=g(f_1((1-\lambda)x + \lambda y),\ldots, f_n((1-\lambda)x + \lambda y))) $$
+La convexité de chaque $f_i$ et la croissance de $g$ en chaque argument donne $$\begin{aligned}F((1-\lambda)x + \lambda y)&\leq g((1-\lambda)f_1(x) + \lambda f_1(y),\ldots,(1-\lambda)f_n(x) + \lambda f_n(y)) \\
+&=g((1-\lambda) (f_1,(x),\ldots, f_n(x)) + \lambda (f_1,(y),\ldots, f_n(y)) )\\
+&\leq (1-\lambda) g(f_1,(x),\ldots, f_n(x)) + \lambda g(f_1,(y),\ldots, f_n(y)) \quad \text{par convexité de } g\\
+&= (1-\lambda) F(x) + \lambda F(y)
+\end{aligned}
+$$
+Donc $F$ convexe.
 
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Soit $n\geq 1$ et $f:\mathbb R^*_+\to \mathbb R$ définie par $$f(x_1,\ldots, x_n)=\left(\prod_{i=1}^n x_i \right) ^{1/n}$$
+Montrer que $f$ est concave.
+}}\\ 
+\\ 
+\\
+\noindent $f$ admet clairement des dérivées partielles à l'ordre $1$ données par $$\frac{\partial f}{\partial x_i}(x_1,\ldots,x_n)=\left( \prod_{j\neq i} x_j\right)^{1/n}\frac{1}{n}\cdot x_i^{ 1/n -1}=\frac{1}{n}\frac{f(x_1,\ldots,x_n)}{x_i}$$
+$f$ admet alors clairement des dérivées partielles d'ordre $2$ données par 
+$$\frac{\partial^2 f}{\partial x_j \partial x_i}(x_1,\ldots, x_n) = \begin{cases}
+\frac{f(x_1,\ldots,x_n)}{n^2} \frac 1{x_i x_j} &\text {si }i\neq j \\
+-\frac{n-1}{n^2}f(x_1,\ldots,x_n)\frac{1}{x_i^2} &\text {si } i=j
+\end{cases}$$
+Chacune de ces fonctions est clairement continue, donc $f$ est $C^2$.\newline
+Soit $(x_1\ldots,x_n)\in \mathbb R^n$ fixé dans la suite. La Hessienne de $f$ en $(x_1,\ldots, x_n)$ est donnée par 
+
+\[
+   H(f)(x_1,\ldots,x_n) = \frac{f(x_1,\ldots, x_n)}{n^2} \left(
+    \begin{array}{ccccc}
+    -\frac{n-1}{x_1^2}                                    \\
+      & \ddots             &   & \frac{1}{x_i x_j}\\
+      &               & \ddots                \\
+      & \frac{1}{x_i x_j} &   & \ddots            \\
+      &               &   &   & -\frac{n-1}{x_n^2}
+    \end{array}
+    \right)
+\]  
+En posant $y=\begin{pmatrix}
+\frac 1{x_1}\\
+\vdots\\
+\frac 1{x_n}
+\end{pmatrix}$ et $J=\begin{pmatrix}
+\frac 1{x_1^2} \\
+& \ddots \\
+&& \frac 1{x_n^2}
+\end{pmatrix}=\diag(\frac 1{x_1^2},\ldots,\frac 1{x_n^2})$ \newline
+on réécrit simplement $$H(f)(x_1\ldots,x_n)=\underbrace{\frac{f(x_1,\ldots, x_n)}{n^2}}_{\text{constante positive}}(yy^T-nJ)$$
+Il suffit de prouver que $yy^T-nJ$ est semi-définie négative. Considérons $v\in \mathbb R^n$.
+On a $$\begin{aligned}
+v^T(yy^T-nJ)v &= (y^Tv)^Ty^Tv-nv^TJv\\
+&= \left(\sum_{i=1}^n \frac{v_i}{x_i}\right)^2 - n \sum_{i=1}^n \frac{v_i^2}{x_i^2}
+\end{aligned}$$
+Or, par Cauchy-Schwarz dans $\mathbb R^n$ muni du produit scalaire euclidien canonique,
+$$\begin{aligned} \sum_{i=1}^n \frac{v_i}{x_i} &= \sum_{i=1}^n 1\cdot \frac{v_i}{x_i}\\
+&\leq \sqrt{\sum_{i=1}^n 1} \cdot \sqrt{\sum_{i=1}^n \frac{v_i^2}{x_i^2}}
+\end{aligned}$$
+En passant au carré on obtient $$\left(\sum_{i=1}^n \frac{v_i}{x_i}\right)^2 - n \sum_{i=1}^n \frac{v_i^2}{x_i^2}\leq 0$$ donc $$v^T(yy^T-nJ)v\leq 0$$ d'où $H(f)(x_1,\ldots,x_n)$ semi-définie négative, donc $f$ concave.
 
 
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
-
+Soit $f:\mathbb R^2\to \mathbb R, (x,y)\mapsto x^2+y^2+xy$.
+\begin{enumerate}
+\item Montrer que $f$ est convexe.
+\item On pose $x=r\cos(\alpha)$ et $y=r\sin(\alpha)$.\newline
+Exprimer $\frac{\partial f}{\partial x}$ et $\frac{\partial f}{\partial y}$ en fonction de $\frac{\partial f}{\partial r}$ et $\frac{\partial f}{\partial \alpha}$
+\end{enumerate}
 }}\\ 
 \\ 
 \\
-\noindent
-
+\noindent 1. $f$ est $C^2$ de Hessienne $$H(f)(x,y)=\begin{pmatrix}
+2 & 1\\
+1 & 2
+\end{pmatrix}$$
+Son déterminant est $3$, les deux valeurs propres sont donc de même signe et non nulles. Sa trace est $4$, les deux valeurs propres sont donc strictement positives. Donc $H(f)(x,y)$ est symétrique définie positive, donc $f$ est convexe.\newline
+\newline 
+2. Avec la formule de calcul des dérivées partielles d'une composée, $$\frac{\partial f}{\partial r} = \cos(\alpha)\frac{\partial f}{\partial x} + \sin(\alpha)\frac{\partial f}{\partial y}$$
+et 
+$$\frac{\partial f}{\partial \alpha} = -r\sin(\alpha)\frac{\partial f}{\partial x} + r\cos(\alpha)\frac{\partial f}{\partial y}$$
 
 
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
-
+Pour $x>0$ et $y>1$ on pose $F(x,y)=x^\alpha (\ln y)^\beta$ où $\alpha$ et $\beta$ sont deux paramètres donnés.
+\begin{enumerate}
+\item Calculer les dérivées partielles d'ordre $1$ et $2$ de $F$.
+\item Montrer que si $F$ est concave alors $\alpha \in [0,1]$ et $\beta \geq 0$.
+\item Montrer que si $\alpha \in [0,1]$ et $\beta \geq 0$ alors $F$ est concave sur l'ensemble $$C=\{(x,y)\in \mathbb R^2, \; x>0 \text{ et } \ln y > \frac{\beta}{1-\alpha}-1 \}$$
+\item Plus généralement, pour $I$ et $J$ deux intervalles ouverts de $\mathbb R$, $f\in C^2(I,\mathbb R)$ et $g\in C^2(J,\mathbb R)$ on considère $$F:I\times J \to \mathbb R, (x,y)\mapsto f(x)g(y)$$
+\begin{enumerate}
+\item Montrer que si $F$ est concave avec $f>0$ et $g>0$ alors $f$ et $g$ sont concaves.
+\item Montrer que si $f>0$, $g>0$ avec $f^2$ et $g^2$ concaves, alors $F$ est concave.
+\end{enumerate}
+\end{enumerate}
 }}\\ 
 \\ 
 \\
-\noindent
-
-
-
-\subsection{} \noindent\fbox{
-\parbox{\linewidth}{
-
-}}\\ 
-\\ 
-\\
-\noindent
-
-
+\noindent 1. $F$ est clairement $C^2$, de dérivées partielles 
+$$\begin{aligned}
+\frac{\partial f}{\partial x}(x,y) &= \alpha x^{\alpha -1}(\ln y)^\beta\\
+\frac{\partial f}{\partial y}(x,y) &= \beta \frac{x^\alpha (\ln y)^{\beta-1} }{y} \\
+\frac{\partial^2 f}{\partial^2 x}(x,y) &= \alpha (\alpha -1) x^{\alpha -2}(\ln y)^\beta \\
+\frac{\partial^2 f}{\partial y \partial x}(x,y) = \frac{\partial^2 f}{\partial x \partial y}(x,y) &= \alpha \beta \frac{x^{\alpha-1} (\ln y)^{\beta-1} }{y}\\
+\frac{\partial^2 f}{\partial^2 y}(x,y) &= \frac{\beta x^\alpha (\ln y)^{\beta-2}}{y^2}(\beta -1 -\ln y)
+\end{aligned}$$
+La Hessienne de $F$ en $(x,y)$ s'écrit donc 
+$$ H(F)(x,y) = \underbrace{x^{\alpha -2}(\ln y)^{\beta-2}}_{\text{constante positive}} \begin{pmatrix}
+\alpha(\alpha -1)(\ln y)^2 & \frac{\alpha \beta x\ln y}{y} \\
+\frac{\alpha \beta x\ln y}{y} & \frac{\beta x^2}{y^2}(\beta -1 -\ln y)
+\end{pmatrix}$$
+2. On suppose $F$ concave, donc $H(F)(x,y)$ est semi-définie négative pour tout $(x,y)$. Comme $x^{\alpha -2}(\ln y)^{\beta-2}$ est une constante positive, la matrice $$\begin{pmatrix}
+\alpha(\alpha -1)(\ln y)^2 & \frac{\alpha \beta x\ln y}{y} \\
+\frac{\alpha \beta x\ln y}{y} & \frac{\beta x^2}{y^2}(\beta -1 -\ln y)
+\end{pmatrix}$$
+est semi-définie négative.\newline
+Son déterminant, qui est donc $\geq 0$, vaut $$\frac{\alpha \beta x^{2 } (\ln y)^2 ((1-\alpha)\ln y +1 -\alpha-\beta)}{y^2}$$
+Ceci implique $\forall y>1,\; \alpha \beta ((1-\alpha)\ln y +1 -\alpha-\beta) \geq 0 $\newline
+Par des considérations asymptotiques, le facteur devant le $\log$ doit être $\geq 0$ ie  $\alpha \beta (1-\alpha) \geq 0$. \newline 
+\newline
+On a aussi $$(1,0)\cdot \begin{pmatrix}
+\alpha(\alpha -1)(\ln y)^2 & \frac{\alpha \beta x\ln y}{y} \\
+\frac{\alpha \beta x\ln y}{y} & \frac{\beta x^2}{y^2}(\beta -1 -\ln y)
+\end{pmatrix} \cdot\begin{pmatrix}
+1\\ 0
+\end{pmatrix}\leq 0$$
+qui s'écrit $\alpha(\alpha-1)(\ln y)^2\leq 0$, donc $\alpha(\alpha-1)\leq 0$, donc $\alpha \in [0,1]$.\newline
+Par ailleurs, l'inégalité $\alpha \beta (1-\alpha) \geq 0$ devient $\beta \geq 0$. \newline
+\newline
+3. On suppose $\alpha \in [0,1]$ et $\beta \geq 0$. Montrons que $F$ est concave sur $C$. Comme $C$ est un convexe ouvert, il suffit de montrer que $H(F)(x,y)$ est semi-définie négative pour tout $(x,y)$ dans $C$.\newline 
+On rappelle le lemme très pratique en dimension 2:\newline
+\textbf{Lemme}:(Conditions de Monge) \newline 
+Soit $A=\begin{pmatrix}
+r & s\\
+s & t
+\end{pmatrix}$ une matrice symétrique.\newline
+Si $rt-s^2\geq 0$ et $r\geq 0$ alors $A$ est semi-définie positive.\newline
+Si $rt-s^2\geq 0$ et $r\leq 0$ alors $A$ est semi-définie négative.\newline \newline
+\underline{Preuve}: $A$ étant symétrique , elle est semblable à $D=\begin{pmatrix}
+\lambda_1 & 0\\
+0 & \lambda_2
+\end{pmatrix}$. La condition $rt-s^2\geq 0$ est équivalente à $\det A\geq 0$, ie $\lambda_1 \lambda_2\geq 0$ donc $\lambda_1$ et $\lambda_2$ de même signe. On a par ailleurs $rt\geq s^2\geq 0$ donc $r$ et $t$ ont même signe. Or $\Tr(A)=r+t=\lambda_1 + \lambda_2$. Le signe de $\lambda_1$ est donc celui de $r$ ce qui achève la preuve. \newline
+\newline
+Dans notre cas, la condition $\ln y > \frac{\beta}{1-\alpha}-1$ implique $(1-\alpha)\ln y + 1-\alpha - \beta >0$, donc $\alpha \beta ((1-\alpha)\ln y + 1-\alpha - \beta) \geq 0$ d'où $\det (H(F)(x,y)) \geq 0$ pour tout $(x,y)\in C$.\newline
+Enfin, $H(F)(x,y)_{11} = x^{\alpha -2}(\ln y)^{\beta-2}\alpha\underbrace{(\alpha -1)}_{\leq 0}(\ln y)^2\leq 0$ et d'après le lemme, $H(F)(x,y)$ est semi-définie négative. \newline 
+\newline 
+4. a) On suppose $F$ concave. On a $$H(F)(x,y) = \begin{pmatrix}
+f''(x)g(y) & f'(x)g'(y) \\
+f'(x)g'(y) & f(x)g''(y)
+\end{pmatrix}$$
+Comme $H(F)(x,y)$ est semi-définie négative, $$(1,0)\cdot H(F)(x,y) \begin{pmatrix}
+1 \\0
+\end{pmatrix} \leq 0$$
+ie $f''(x)g(y)\leq 0$. Comme $g>0$, $f''(x)\leq 0$ et ceci pour tout $x\in I$. Donc $f$ concave.\newline
+De même on prouve que $g$ est concave.\newline 
+\newline
+b) $f^2$ et $g^2$ étant concaves et $C^2$ sur des intervalles ouverts, on a $(f^2)''=2(f'^2+ff'')\leq 0$ ie $0\leq f'^2\leq ff'' $ et $0\leq g'^2\leq gg'' $
+En multipliant ces deux dernières inégalités entre elles on a $$\forall(x,y)\in I\times J,\; (f''(x)g(y))(f(x)g''(y))\geq (f'(x)g'(y))^2$$
+ie $\det(H(F)(x,y))\geq 0$.\newline
+Par ailleurs, $f'^2(x)\leq f(x)f''(x)$ implique $f(x)f''(x)\leq -f'^2(x)\leq 0 $ et comme $f>0$, on a $f''(x)\leq 0$. Donc $$H(F)(x,y)_{11}=f''(x)g(y)\leq 0 \quad \text{car } g>0$$
+D'après le lemme, $H(F)(x,y)$ est semi-définie négative, et ceci pour tout $(x,y)\in I\times J$ (qui est un ouvert convexe), donc $F$ est concave sur $I\times J$.
 
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
