@@ -1348,51 +1348,159 @@ Soit $P\in \mathbb R[X]$. On suppose que $P$ est convexe sur $\mathbb R$. Montre
 
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
-
+Soit $f:\mathbb R^+\times \mathbb R^+\to \mathbb R, (x,y)\to \sqrt{xy}$
+\begin{enumerate}
+\item Montrer que $f$ est quasi-concave sur $\mathbb R^+\times \mathbb R^+$
+\item Montrer que $f$ est strictement quasi-concave.
+\item Montrer que $f$ est concave.
+\end{enumerate} 
 }}\\ 
 \\ 
 \\
-\noindent
+\noindent 1. Montrons que les upper-contour sets de $f$ sont convexes ie que pour tout $a\in \mathbb R$, $S(a):=\{(x,y)\in \mathbb R_+\times \mathbb R_+,\; f(x,y)\geq a\}$ est convexe. \newline
+Soit $a\in \mathbb R$. Si $a<0$, $S(a)=\emptyset$. Si $a=0$, $S(a)=(\mathbb R_+)^2$.\newline
+Si $a>0$, $S(a)=\{(x,y)\in \mathbb R^*_+ \times \mathbb R^*_+, \; y\geq \frac{a}{x^2} \}$
+Il s'agit de l'épigraphe de la fonction convexe $x\mapsto \frac{a}{x^2}$, donc $S(a)$ est convexe. \newline
+\newline
+2. Il n'y a aucun moyen d'éviter de passer par la définition de "strictement quasi-concave" et je n'ai pas réussi. \newline
+\newline
+3. $f$ est $C^2$ sur tout ouvert de $\mathbb R^2$ inclus dans $\mathbb R^+\times \mathbb R^+$, de Hessienne 
+$$H(f)(x,y) = \left(
+\begin{array}{cc}
+ -\frac{y^2}{4 (x y)^{3/2}} & \frac{1}{2 \sqrt{x y}}-\frac{x y}{4 (x y)^{3/2}} \\
+ \frac{1}{2 \sqrt{x y}}-\frac{x y}{4 (x y)^{3/2}} & -\frac{x^2}{4 (x y)^{3/2}} \\
+\end{array}
+\right)$$
+Son déterminant est $0$ et $H(f)(x,y)_{11} \leq 0$. Le lemme du 5.13 permet de conclure que $f$ est concave sur tout ouvert de $\mathbb R^2$ inclus dans $\mathbb R^+\times \mathbb R^+$, donc concave sur l'intérieur de $\mathbb R^+\times \mathbb R^+$.\newline
+On obtient la concavité aux points de la frontière en les approchant par des points de l'intérieur et en utilisant la continuité de $f$ sur $\mathbb R^+\times \mathbb R^+$.
+
 
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
-
+Etudier la concavité et la quasi-concavité (stricte ou non) des fonctions suivantes sur $\mathbb R^n$
+\begin{enumerate}
+\item $f(x)=\prod_{i=1}^n x_i^{\alpha_i}$ où $\alpha_i>0$
+\item $f(x)=\min(\frac{x_i}{\alpha_i })$ où $\alpha_i>0$
+\end{enumerate}
 }}\\ 
 \\ 
 \\
-\noindent
+\noindent 1. La concavité s'étudie avec la Hessienne. L'étude de la quasi-concavité fait (nécessairement ?) appel à la Hessienne bordée (qui n'a pas été vue en cours). L'étude de la stricte-quasi-concavité semble très difficile, vu le cas particulier du 5.18. C'est pourtant quelque chose qui a été utilisé à de nombreuses reprises dans le cours de microéconomie... \newline
+\newline
+2. $f$ étant un minimum de fonctions concaves, elle est concave. La quasi-concavité est connue (cf courbes d'indifférence de Leontieff en microéconomie) mais semble difficile à prouver (la fonction considérée n'est pas différentiable). On sait encore grâce au cours de micro que $f$ n'est pas strictement quasi-concave.
 
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
-
+Soient $C$ un convexe de $\mathbb R^n$ et $f:C\to \mathbb R$.
+\begin{enumerate}
+\item Montrer que $f$ est concave si et seulement si $$K:=\{(x,z)\in C\times \mathbb R, \; z<f(x)\}$$ est convexe dans $\mathbb R^{n+1}$.
+\item On suppose $f$ concave et $x_0$ un point intérieur à $C$. Montrer qu'il existe $L\in \mathcal L_c(\mathbb R^n,\mathbb R)$ tel que pour tout $x\in C$, $$f(x)-f(x_0)\leq L(x-x_0)$$
+\end{enumerate}
 }}\\ 
 \\ 
 \\
-\noindent
+\noindent 1. $\implies$ On suppose $f$ concave. Soient $(x_1,z_2)$, $(x_2,z_2)\in K$ et $\lambda \in [0,1]$. Par concavité de $f$,
+$$\begin{aligned}
+f((1-\lambda)x_1+\lambda x_2) &\geq (1-\lambda)f(x_1) + \lambda f(x_2)\\
+&> (1-\lambda)z_1 + \lambda z_2
+\end{aligned}$$
+Donc $((1-\lambda)x_1+\lambda x_2, (1-\lambda)z_1 + \lambda z_2)\in K$ ie $(1-\lambda)(x_1,z_1)+\lambda (x_2,z_2)\in K$. \newline
+Donc $K$ convexe. \newline 
+\newline
+$\impliedby$ On suppose $K$ convexe. Soient $x,y\in C$ et $\lambda \in [0,1]$. Considérons $z_1$ et $z_2$ des réels tels que $f(x)>z_1$ et $f(y)>z_2$, de sorte que $(x_1,z_1)$ et $(x_2,z_2)\in K$. Par convexité de $K$ on a $$f((1-\lambda)x+\lambda y)>(1-\lambda)z_1 + \lambda z_2 $$
+En faisant $z_1\xrightarrow[<]{}f(x_1)$ et $z_2\xrightarrow[<]{}f(x_2)$, on obtient $$f((1-\lambda)x+\lambda y)\geq (1-\lambda)f(x_1) + \lambda f(x_2) $$
+Donc $f$ concave.\newline
+\newline
+2. On rappelle deux théorème importants qu'on va utiliser dans la suite:\newline
+\textbf{Théorème 1}: Soit $K$ un convexe de $\mathbb R^n$. Alors $\mathring{\overline K} = \mathring K$.\newline 
+\textbf{Théorème 2}: Soit $K$ un convexe fermé de $\mathbb R^n$ et $x_0$ un point de la frontière de $K$. Alors il existe un hyperplan d'appui à $K$ en $x_0$. Plus précisément, il existe $e\in \mathbb R^n$ tel que $K\subset \{x\in \mathbb R^n, \; \langle e,x-x_0\rangle\geq 0\}$ \newline 
+\newline 
+Par continuité de $f$ en $x_0$ (qui est bien intérieur à $C$), on montre facilement que $(x_0,f(x_0))\notin \mathring K$. Par ailleurs, on a $(x_0,f(x_0))\in K$. Donc $$(x_0,f(x_0))\in K\setminus \mathring K\subset \overline K \setminus \mathring K$$
+Par le théorème 1 on a $$(x_0,f(x_0))\in \overline K \setminus\mathring{\overline K}$$
+Or $\overline K \setminus\mathring{\overline K}$ est précisément la frontière de $\overline K$, qui est un convexe fermé.\newline
+Par le théorème 2, on dispose donc de $(u^*,\alpha)\in \mathbb R^n\times\mathbb  R$ tel que 
+$$\overline K \subset \{(x,z)\in \mathbb R^n\times \mathbb R, \; \langle (u^*,\alpha), (x,z)-(x_0,f(x_0)) \rangle \geq 0 \} $$
+ce qu'on réécrit 
+$$ \overline K \subset \{(x,z)\in \mathbb R^n\times \mathbb R, \; \langle u^*, x-x_0 \rangle \geq \alpha(f(x_0)-z) \} $$
+Soit $x\in C$ fixé. Considérons $z\in \mathbb R$ tel que $z<f(x)$, de sorte que $(x,z)\in K\subset \overline K$.\newline
+On a donc $\langle u^*, x-x_0 \rangle \geq \alpha(f(x_0)-z) \quad \quad(*)$\newline
+Choisissons $z$ tel que $z<\min(f(x),f(x_0))$, de sorte que $f(x_0)-z>0$ et $(x,z)\in K$.\newline \newline
+Si $\alpha \geq 0$, $(*)$ implique $\langle u^*, x-x_0 \rangle \geq 0$, ceci étant vrai pour tout $x\in K$.\newline
+Comme $x_0\in \mathring K$, l'inégalité reste vraie sur un voisinage de $x_0$, de sorte que pour $t>0$ suffisamment petit on a 
+$$ \langle u^*, (x_0-tu^*)-x_0 \rangle \geq 0$$
+ie $-\|u^*\|^2\leq0$, donc $\|u^*\|=0$ et $u^*=0$. \newline
+$(*)$ donne alors $0\geq \alpha(f(x_0)-z)$, donc $z\geq f(x_0)$, en contradiction avec la définition de $z$.\newline 
+\newline
+Donc $\alpha <0$. On considère $z\in \mathbb R$ tel que $z<f(x)$ et on réécrit alors $(*)$ sous la forme $$\langle \frac{u^*}{\alpha} ,x-x_0\rangle \leq f(x_0) -z$$
+En faisant $z\xrightarrow[<]{superscript}f(x)$, on a $$\langle \frac{u^*}{\alpha} ,x-x_0\rangle \leq f(x_0) -f(x)$$ donc 
+$$\langle -\frac{u^*}{\alpha} ,x-x_0\rangle \geq f(x) -f(x_0)$$
+En posant $L:x\mapsto \langle -\frac{u^*}{\alpha} ,x\rangle$, on a le résultat.
+
+
+
 
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
-
+Soit $f:\mathbb R\to \mathbb R$ convexe. On suppose qu'il existe $a\in \mathbb R$ tel que pour tout $x\in \mathbb R$, $f(x)\leq a$. Montrer que $f$ est constante.
 }}\\ 
 \\ 
 \\
-\noindent
+\noindent Supposons par l'absurde que $f$ n'est pas constante. On dispose alors de $a$ et $b$ tel que $f(a)< f(b)$. Sans perte de généralité on suppose que $a<b$. Par croissance des pentes on a pour tout $x>b$, $$\frac{f(x)-f(a)}{x-a} \geq \frac{f(b)-f(a)}{b-a}$$
+donc 
+$$f(x)\geq (x-a)\frac{f(b)-f(a)}{b-a} + f(a)$$
+Le membre de droite tends vers $\infty$ lorsque $x\to \infty$, absurde.
 
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
-
+Soit $f$ définie sur $\mathbb (\mathbb R_+)^n$ par $$f(x)=\left(\sum_{i=1}^n x_i^p\right)^{1/p}$$
+A quelle condition $f$ est-elle convexe, concave ?
 }}\\ 
 \\ 
 \\
-\noindent
+\noindent Dans la suite on notera $S=\sum_{i=1}^n x_i^p$.\newline
+$f$ est clairement $C^2$ en tout point de $\mathbb (\mathbb R_+^*)^n$, de dérivées partielles 
+$$\begin{aligned}
+\frac{\partial^2 f}{\partial^2x_i}(x_1,\ldots,x_n) &= S^{1/p-2}(1-p)x_i^{2p-2} +S^{1/p-1}(p-1)x_i^{p-2} \\
+\frac{\partial^2 f}{\partial x_j \partial x_i}(x_1,\ldots,x_n) &= S^{1/p-2}(1-p)x_i^{p-1} x_j^{p-1}
+\end{aligned}$$
+En posant $y=\begin{pmatrix}
+x_1^{p-1} \\
+\vdots \\
+x_n^{p-1} 
+\end{pmatrix}$ et $D=\begin{pmatrix}
+x_1^{p-2}  \\
+& \ddots \\
+&& x_n^{p-2} 
+\end{pmatrix}=\diag(x_1^{p-2},\ldots,x_n^{p-2})$,\newline
+\newline
+la Hessienne de $f$ s'écrit $S^{1/p-2}(1-p)yy^T +S^{1/p-1}(p-1)D$. On a, pour $v\in \mathbb R^n$,
+$$\begin{aligned}
+\hspace{-2cm}
+v^T(S^{1/p-2}(1-p)yy^T +S^{1/p-1}(p-1)D)v &= S^{1/p-2}(p-1) \left[ S v^TDv - (y^Tv)^T(y^Tv)\right] \\
+&= S^{1/p-2}(p-1) \left[ \sum_{i=1}^n x_i^p \sum_{i=1}^n x_i^{p-2}v_i^2 - \left(\sum_{i=1}^n x_i^{p-1}v_i\right)^2 \right]
+\end{aligned}$$
+Or, par Cauchy-Schwarz dans $\mathbb R^n$, $$\begin{aligned}\left(\sum_{i=1}^n x_i^{p-1}v_i\right)^2 &= \left(\sum_{i=1}^n (x_i^{p/2-1}v_i)x_i^{p/2}\right)^2 \\
+&\leq \left(\sum_{i=1}^n x_i^{p-2}v_i^2\right) \left( \sum_{i=1}^n x_i^p\right)
+ \end{aligned}$$
+ Donc $$v^T(S^{1/p-2}(1-p)yy^T +S^{1/p-1}(p-1)D)v$$ a même signe que $$S^{1/p-2}(p-1)$$
+ Or $S^{1/p-2}$ est $\geq 0$, donc $v^T(S^{1/p-2}(1-p)yy^T +S^{1/p-1}(p-1)D)v$ a le signe de $p-1$, quel que soit $v$.
+\newline
+\newline
+En conclusion, $f$ est convexe sur $\mathbb (\mathbb R_+^*)^n$ si et seulement si $p-1\geq 0$ et concave sur $\mathbb (\mathbb R_+^*)^n$ si et seulement si $p-1\leq 0$.\newline
+La convexité/concavité au bord s'obtient dans les deux cas en approchant par des éléments de $\mathbb (\mathbb R_+^*)^n$ puis en utilisant la continuité de $f$.
 
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
-
+Soient $A,B\in M_n(\mathbb R)$. On définit $f:\mathbb R^n\to R, x\mapsto \|Ax\|^2 + 2 \|Bx\|^{3/2}$. Montrer que $f$ est convexe.
 }}\\ 
 \\ 
 \\
-\noindent
+\noindent Il suffit de remarquer que $x\mapsto \|Ax\|$ est convexe (conséquence directe de l'inégalité triangulaire). On utilise ensuite le lemme\newline
+\textbf{Lemme}: Si $f:\mathbb R^n\to f(\mathbb R^n)\subset \mathbb R$ est convexe et $g:f(\mathbb R^n)\to \mathbb R$ est convexe et croissante, alors $g\circ f$ est convexe.\newline 
+\underline{Preuve}: Soient $x,y\in \mathbb R^n$ et $\lambda \in [0,1]$. L'inégalité de convexité $f((1-\lambda)x+\lambda y)\leq (1-\lambda)f(x) + \lambda f(y)$ composée par $g$ donne $$g(f((1-\lambda)x+\lambda y)) \leq g((1-\lambda)f(x) + \lambda f(y))\leq (1-\lambda)g(f(x)) + \lambda g(f(y))$$
+Donc $g\circ f$ convexe. \newline \newline
+Ici on compose avec $g:\mathbb R_+\to \mathbb R, x\mapsto x^2 $ qui est convexe, donc $x\mapsto \|Ax\|^2$ est convexe.\newline
+Pour les mêmes raisons, $x\mapsto 2\|Ax\|^{3/2}$ est convexe, donc $f$ est convexe, comme somme de deux fonctions convexes.
 
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
