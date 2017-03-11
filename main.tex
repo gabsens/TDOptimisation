@@ -1056,7 +1056,7 @@ Donc $F$ convexe.
 
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
-Soit $n\geq 1$ et $f:\mathbb R^*_+\to \mathbb R$ définie par $$f(x_1,\ldots, x_n)=\left(\prod_{i=1}^n x_i \right) ^{1/n}$$
+Soit $n\geq 1$ et $f:(\mathbb R^*_+)^n\to \mathbb R$ définie par $$f(x_1,\ldots, x_n)=\left(\prod_{i=1}^n x_i \right) ^{1/n}$$
 Montrer que $f$ est concave.
 }}\\ 
 \\ 
@@ -1100,7 +1100,7 @@ Or, par Cauchy-Schwarz dans $\mathbb R^n$ muni du produit scalaire euclidien can
 $$\begin{aligned} \sum_{i=1}^n \frac{v_i}{x_i} &= \sum_{i=1}^n 1\cdot \frac{v_i}{x_i}\\
 &\leq \sqrt{\sum_{i=1}^n 1} \cdot \sqrt{\sum_{i=1}^n \frac{v_i^2}{x_i^2}}
 \end{aligned}$$
-En passant au carré on obtient $$\left(\sum_{i=1}^n \frac{v_i}{x_i}\right)^2 - n \sum_{i=1}^n \frac{v_i^2}{x_i^2}\leq 0$$ donc $$v^T(yy^T-nJ)v\leq 0$$ d'où $H(f)(x_1,\ldots,x_n)$ semi-définie négative, donc $f$ concave.
+En passant au carré on obtient $$\left(\sum_{i=1}^n \frac{v_i}{x_i}\right)^2 - n \sum_{i=1}^n \frac{v_i^2}{x_i^2}\leq 0$$ donc $$v^T(yy^T-nJ)v\leq 0$$ d'où $H(f)(x_1,\ldots,x_n)$ semi-définie négative, et ceci pour tout $(x_1,\ldots,x_n)\in (\mathbb R^*_+)^n $ donc $f$ concave.
 
 
 \subsection{} \noindent\fbox{
@@ -1118,7 +1118,7 @@ Exprimer $\frac{\partial f}{\partial x}$ et $\frac{\partial f}{\partial y}$ en f
 2 & 1\\
 1 & 2
 \end{pmatrix}$$
-Son déterminant est $3$, les deux valeurs propres sont donc de même signe et non nulles. Sa trace est $4$, les deux valeurs propres sont donc strictement positives. Donc $H(f)(x,y)$ est symétrique définie positive, donc $f$ est convexe.\newline
+Son déterminant est $3$, les deux valeurs propres sont donc de même signe et non nulles. Sa trace est $4$, les deux valeurs propres sont donc strictement positives. Donc $H(f)(x,y)$ est symétrique définie positive, et ceci pour tout $(x,y)\in \mathbb R^2$ donc $f$ est convexe.\newline
 \newline 
 2. Avec la formule de calcul des dérivées partielles d'une composée, $$\frac{\partial f}{\partial r} = \cos(\alpha)\frac{\partial f}{\partial x} + \sin(\alpha)\frac{\partial f}{\partial y}$$
 et 
@@ -1418,7 +1418,7 @@ $$\begin{aligned} v^TH(f)(x)v &= f(x)[(y^Tv)^T(y^Tv)-v^TDv] \\
 Or, par Cauchy-Schwarz dans $\mathbb R^n$, 
 $$\left(\sum_{i=1}^n\frac{\alpha_i v_i}{x_i} \right)^2 = \left(\sum_{i=1}^n \sqrt{\alpha_i}\frac{\sqrt{\alpha_i} v_i}{x_i} \right)^2 \leq \left(\sum_{i=1}^n \alpha_i \right) \left(\sum_{i=1}^n\frac{\alpha_i v_i^2}{x_i^2} \right)$$
 Donc $$ v^TH(f)(x)v \leq f(x)\left[ \left(\sum_{i=1}^n \alpha_i\right) -1 \right]\sum_{i=1}^n\frac{\alpha_i v_i^2}{x_i^2}$$
-Par conséquent, si $\displaystyle \sum_{i=1}^n \alpha_i \leq 1$, $v^TH(f)(x)v \leq 0$ pour tout $v\in \mathbb R^n$, donc $f$ est concave. \newline 
+Par conséquent, si $\displaystyle \sum_{i=1}^n \alpha_i \leq 1$, $v^TH(f)(x)v \leq 0$ pour tout $v\in \mathbb R^n$ et $x\in(\mathbb R_+^*)^n$, donc $f$ est concave. \newline 
 \newline
 $\bullet$ Il reste à prouver que $f$ n'est ni concave ni convexe lorsque $\displaystyle \sum_{i=1}^n \alpha_i > 1$. C'est facile à montrer lorsque $n$ est pair: il suffit alors d'exhiber $x$ tel que $\det(H(f)(x))<0$. \newline
 Pour $x=(\alpha_1,\ldots, \alpha_n)$ un calcul de déterminant assez classique donne $$\det H(f)(x)=(f(x))^n\frac{(-1)^{n-1}}{\prod_{i=1}^{n}\alpha_i} \left[\left(\sum_{i=1}^n \alpha_i \right) -1 \right]<0$$
