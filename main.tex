@@ -1420,10 +1420,16 @@ $$\left(\sum_{i=1}^n\frac{\alpha_i v_i}{x_i} \right)^2 = \left(\sum_{i=1}^n \sqr
 Donc $$ v^TH(f)(x)v \leq f(x)\left[ \left(\sum_{i=1}^n \alpha_i\right) -1 \right]\sum_{i=1}^n\frac{\alpha_i v_i^2}{x_i^2}$$
 Par conséquent, si $\displaystyle \sum_{i=1}^n \alpha_i \leq 1$, $v^TH(f)(x)v \leq 0$ pour tout $v\in \mathbb R^n$ et $x\in(\mathbb R_+^*)^n$, donc $f$ est concave. \newline 
 \newline
-$\bullet$ Il reste à prouver que $f$ n'est ni concave ni convexe lorsque $\displaystyle \sum_{i=1}^n \alpha_i > 1$. C'est facile à montrer lorsque $n$ est pair: il suffit alors d'exhiber $x$ tel que $\det(H(f)(x))<0$. \newline
-Pour $x=(\alpha_1,\ldots, \alpha_n)$ un calcul de déterminant assez classique donne $$\det H(f)(x)=(f(x))^n\frac{(-1)^{n-1}}{\prod_{i=1}^{n}\alpha_i} \left[\left(\sum_{i=1}^n \alpha_i \right) -1 \right]<0$$
-Il reste donc à traiter le cas $n$ impair.
-\newline \newline
+$\bullet$ Il reste à prouver que $f$ n'est ni concave ni convexe lorsque $\displaystyle \sum_{i=1}^n \alpha_i > 1$. On suppose par l'absurde que $f$ est convexe ou concave. Notons $\mathbf{1}=(1,\ldots,1)\in \mathbb R^n$. Alors pour tout $x\in \mathbb R^n$, on a $$f(x) \;?\; f(\mathbf 1) + df(\mathbf 1)(x- \mathbf 1)$$ où le signe $?$ dénote $\geq$ ou $\leq$ selon que $f$ est convexe ou concave, respectivement.
+En notant que $\nabla(f)(x)=f(x)(\frac{\alpha_1}{x_1},\ldots,\frac{\alpha_n}{x_n})$, on réécrit
+$$ f(x) \;?\; f(\mathbf 1) + \langle \nabla(f)(1),x- \mathbf 1\rangle$$
+ie 
+$$ f(x) \;?\; 1 + \sum_{i=1}^n \alpha_i(x_i-1)$$
+ En évaluant en $x=0$, $$0 \;?\; 1 -\sum_{i=1}^n \alpha_i  $$
+ Avec l'hypothèse qu'on a faite sur $\displaystyle \sum_{i=1}^n \alpha_i$, on en déduit que $?$ doit être remplacé par $\geq$, de sorte qu'on a pour tout $x\in \mathbb R^n$, $$f(x)\geq  1 + \sum_{i=1}^n \alpha_i(x_i-1)$$
+ En évaluant pour $x=(a,0,\ldots,0)$, $$0\geq 1+\alpha_1(a-1)$$
+ Avec $a\to \infty$ on obtient une contradiction. Donc $f$ n'est ni concave, ni convexe.
+ \newline \newline
 2. $f$ étant un minimum de fonctions concaves, elle est concave, donc quasi-concave. \newline
 $f$ n'est pas strictement quasi-concave. Il suffit de considèrer $x=(0,\ldots,0)$, $y=(0,\ldots,0,1)$ et $\lambda=\frac{1}{2}$.
 
