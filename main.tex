@@ -11,9 +11,11 @@
 \usepackage{hyperref}
 \usepackage{fancyhdr}
 \usepackage{stmaryrd}
-\usepackage{ listings }
+\usepackage{listings}
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{datetime}
+\usepackage{textcomp}
 \graphicspath{ {images/} }
 
 
@@ -28,6 +30,7 @@
 \DeclareMathOperator{\ext}{ext}
 \DeclareMathOperator{\epi}{epi}
 \DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\im}{Im}
 
 
 
@@ -49,7 +52,7 @@
 \renewcommand{\thesubsection}{Exercice \arabic{section}.\arabic{subsection}}
 \title{TD d'optimisation\\ ENSAE\\ 1A}
 \author{Gabriel Romon}
-\date{Version du \today}
+\date{Version du \today \! à \currenttime}
 \maketitle
 \section{Différentielle}
 
@@ -1581,6 +1584,280 @@ $f$ continue strictement croissante sur $[a,b]$ $\implies$ $f^{-1}$ continue, st
     \lambda f^{-1}(y_1)+(1-\lambda)f^{-1}(y_2)\leq f^{-1}(\lambda y_1+(1-\lambda)y_2)
 \end{align*}
 $\implies$ $f^{-1}$ concave.
+
+\newpage
+\section{Compléments}
+
+\newpage
+\section{Optimisation dans $\mathbb R^n$}
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Etudier les extrema locaux de $f:x\mapsto x^2+\lambda x + \mu$ sur $[a,b]$
+}}\\ 
+\\ 
+\\
+\noindent On distingue plusieurs cas: \newline
+$\bullet$ Si $\frac{-\lambda}{2} \geq b$: $f$ est strictement décroissante sur $[a,b]$ donc admet un maximum global strict en $a$ et un minimum global strict en $b$. Il n'y pas d'autres extrema locaux.\newline 
+$\bullet$ Si $\frac{-\lambda}{2} \leq a$: $f$ est strictement croissante sur $[a,b]$ donc admet un maximum global strict en $b$ et un minimum global strict en $a$. Il n'y pas d'autres extrema locaux. \newline
+$\bullet$ Si $a<\frac{-\lambda}{2}<b$, $f$ admet un minimum global strict en $\frac{-\lambda}{2}$, $f$ est strictement décroissante sur $[a,\frac{-\lambda}{2}]$ et strictement croissante sur $[\frac{-\lambda}{2},b]$ donc $f$ admet un maximum local strict en $a$ et $b$. Il n'y a pas d'autres extremas locaux.
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Quels sont les extrema locaux de $\displaystyle f:(x,y)\mapsto \frac{x}{1+x^2+y^2}$ ?
+}}\\ 
+\\ 
+\\
+\noindent On cherche d'abord les points critiques de $f$. Le gradient de $f$ en $(x,y)$ est donné par $$\left(-\frac{x^2-y^2-1}{\left(x^2+y^2+1\right)^2},-\frac{2 x y}{\left(x^2+y^2+1\right)^2}\right)$$ Il est nul si et seulement si $(x,y)\in \{(-1,0),(1,0)\}$.\newline 
+\newline
+On rappelle la démarche: si $f$ admet un extremum local, c'est un point critique. Les (\textbf{éventuels}) extrema locaux de $f$ se trouvent donc parmi les points critiques On utilise ensuite les conditions du deuxième ordre pour caractériser les points critiques qu'on a trouvés. \newline 
+\newline
+La Hessienne de $f$ en $(x,y)$ est donnée par $H(f)(x,y)= \left(
+\begin{array}{cc}
+ \frac{2 x \left(x^2-3 y^2-3\right)}{\left(x^2+y^2+1\right)^3} & \frac{2 y \left(3 x^2-y^2-1\right)}{\left(x^2+y^2+1\right)^3} \\
+ \frac{2 y \left(3 x^2-y^2-1\right)}{\left(x^2+y^2+1\right)^3} & -\frac{2 x \left(x^2-3 y^2+1\right)}{\left(x^2+y^2+1\right)^3} \\
+\end{array}
+\right)$.\newline
+En $(1,0)$, $H(f)(1,0)=\left(
+\begin{array}{cc}
+ -\frac{1}{2} & 0 \\
+ 0 & -\frac{1}{2} \\
+\end{array}
+\right)$ qui est symétrique définie négative. Donc $(1,0)$ est un maximum local strict de $f$.\newline
+En $(-1,0)$, $H(f)(1,0)=\left(
+\begin{array}{cc}
+ \frac{1}{2} & 0 \\
+ 0 & \frac{1}{2} \\
+\end{array}
+\right)$ qui est symétrique définie positive. Donc $(-1,0)$ est un minimum local strict de $f$.\newline
+\newline
+\underline{Conclusion}: $f$ admet un unique maximum local en $(1,0)$ et unique minimum local en $(-1,0)$.
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Quels sont les extrema $\displaystyle f:(x,y)\mapsto x^3+y^3-3xy$ ?
+}}\\ 
+\\ 
+\\
+\noindent 
+$\bullet$ Le gradient de $f$ en $(x,y)$ est donné par $\left(3 \left(x^2-y\right),-3 \left(x-y^2\right)\right)$ et les points critiques par $\{(0,0),(1,1)\}$.\newline
+La Hessienne de $f$ en $(x,y)$ est donnée par $\left(
+\begin{array}{cc}
+ 6 x & -3 \\
+ -3 & 6 y \\
+\end{array}
+\right)$.\newline
+En $(0,0)$, elle vaut $\left(
+\begin{array}{cc}
+ 0 & -3 \\
+ -3 & 0 \\
+\end{array}
+\right)$ dont le déterminant est $9<0$. Elle n'est donc ni semi-définie positive, ni semi-définie négative, donc $(0,0)$ n'est pas un extremum local (c'est un point-selle en vérité).\newline
+En $(1,1)$, elle vaut $\left(
+\begin{array}{cc}
+ 6 & -3 \\
+ -3 & 6 \\
+\end{array}
+\right)$ dont le déterminant est $27>0$ et la trace $12>0$. Elle est donc définie positive. $(1,1)$ est donc un minimum local strict de $f$. \newline
+$\bullet$ Par ailleurs, $f(n,0)\xrightarrow[n\to \infty]{}\infty$ donc $f$ n'admet pas de maximum global. \newline
+De même $f(-n,0)\xrightarrow[n\to \infty]{}-\infty$ donc $f$ n'admet pas de minimum global.
+\newline
+\newline
+\underline{Conclusion}: $f$ admet un unique minimum local en $(1,1)$ et aucun maximum local. Elle n'admet aucun extremum global.
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Quels sont les extrema $\displaystyle f:(x,y)\mapsto x(y^2+\ln^2(x))$ ?
+}}\\ 
+\\ 
+\\
+\noindent 
+$\bullet$ Le gradient de $f$ en $(x,y)$ est donné par $\left(\log ^2(x)+2 \log (x)+y^2,2 x y\right)$ et les points critiques par $\{(1,0),(e^{-2},0) \}$. \newline
+La Hessienne de $f$ en $(x,y)$ est donnée par $\left(
+\begin{array}{cc}
+ \frac{2 (\log (x)+1)}{x} & 2 y \\
+ 2 y & 2 x \\
+\end{array}
+\right)$. \newline
+En $(1,0)$ elle vaut $\left(
+\begin{array}{cc}
+ 2 & 0 \\
+ 0 & 2 \\
+\end{array}
+\right)$ qui est définie positive. Donc $(1,0)$ est un minimum local strict de $f$.\newline
+En $(e^{-2},0)$ elle vaut $\left(
+\begin{array}{cc}
+ -2 e^2 & 0 \\
+ 0 & \frac{2}{e^2} \\
+\end{array}
+\right)$ qui n'est ni semi-définie positive, ni semi-défine négative. Donc $(e^{-2},0)$ n'est pas un extremum local. \newline
+$\bullet$ Par ailleurs, $f(n,0)\xrightarrow[n\to \infty]{}\infty$ donc $f$ n'admet pas de maximum global. \newline
+Comme $x$ est astreint à être $>0$, on a $f(x,y)\geq 0$ pour tout $(x,y)$ dans le domaine, donc $(1,0)$ est un minimum global.
+\newline
+\newline
+\underline{Conclusion}: $f$ admet un unique minimum local en $(1,0)$. Elle n'admet pas de maximum local. Elle admet un minimum global atteint en $(1,0)$. Elle n'admet pas de maximum global.
+
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Etudier les extrema des fonctions suivantes:
+\begin{enumerate}
+\item $\displaystyle f:(x,y)\mapsto x\sin(y) + \cos(x)$ 
+\item l'énoncé manuscrit n'est pas clair
+\item $\displaystyle h:(x,y)\mapsto x(\ln^2(x) + y^2)$
+\item $\displaystyle \varphi:(x,y,z)\mapsto \frac{x^2}{2} + xyz + y +z$
+\end{enumerate}
+}}\\ 
+\\ 
+\\
+\noindent 1. $\bullet$ Le gradient de $f$ en $(x,y)$ est donné par $\left( \sin(y - \sin(x), x\cos(y)\right)$ et l'ensemble des points critiques est donné par $$ \{(0,y), \; \sin(y)=0\} \cup \{(x,y),\;\sin(x)=1 \text{ et } \cos(y)=0 \} $$
+La Hessienne de $f$ en $(x,y)$ est donnée par $\left(
+\begin{array}{cc}
+ -\cos (x) & \cos (y) \\
+ \cos (y) & -x \sin (y) \\
+\end{array}
+\right)$.\newline 
+\newline
+$\star$ Si $x=0$ et $\sin(y)=0$, elle vaut $\left(\begin{array}{cc}
+ -1 & \pm 1 \\
+\pm 1 & 0 \\
+\end{array}\right)$ dont le déterminant est $-1$. Elle n'est ni semi-définie positive, ni semi-défine négative, donc les éléments de $\{(0,y), \; \sin(y)=0\}$ ne sont pas des extrema locaux de $f$. \newline
+$\star$ Si $\sin(x)=1$ et $\cos(y)=0$, la Hessienne vaut $\left(\begin{array}{cc}
+ 0 & 0 \\
+0 & \pm x \\
+\end{array}\right)$. Elle est \textbf{semi}-définie positive ou négative selon le signe de $\pm x$, donc on ne peut a priori rien déduire concernant le fait que $(x,y)$ soit un extremum local.
+En $(x,y)$, $f$ vaut $\pm x$ On distingue plusieurs cas: \newline
+\textopenbullet \, si $\sin(y)=1$: dans ce cas $f(x,y)=x$ et \newline
+ $\begin{aligned}[t] f(x+\frac{1}{n},y) &= x + \frac{1}{n} + \cos\left( x+\frac 1n \right) \\
+&= x+\frac 1n + \cos(x) -\frac{\sin(x)}{n} -\frac{\cos(x)}{2n^2}+\frac{\sin(x)}{6n^3}+o\left( \frac{1}{n^3}\right) \\
+&= x + \frac{1}{6n^3} + o\left( \frac{1}{n^3}\right) 
+ \end{aligned}$ \newline
+Donc $f(x+\frac{1}{n},y) - f(x,y)\sim \frac{1}{6n^3}$, donc $f(x+\frac{1}{n},y) - f(x,y)> 0$ à partir d'un certain rang.\newline
+Un calcul similaire donne $$f(x+\frac{1}{n},y)=x - \frac{1}{6n^3} + o\left( \frac{1}{n^3}\right) $$
+Donc $f(x+\frac{1}{n},y) - f(x,y)< 0$ à partir d'un certain rang. \newline
+Tout voisinage de $(x,y)$ contient donc des points $(x',y')$ et $(x'',y'')$ où $f(x,y)<f(x',y')$ et $f(x'',y'')<f(x,y)$, donc $(x,y)$ n'est pas un extremum local. \newline 
+\textopenbullet \, si $\sin(y)=-1$: dans ce cas $f(x,y)=-x$ et \newline
+$\begin{aligned}[t] f(x+\frac{1}{n},y) &= -x -\frac{1}{n} + \cos\left( x+\frac 1n \right) \\
+&= -x-\frac 1n + \cos(x) -\frac{\sin(x)}{n} + o\left(\frac{1}{n}\right) \\
+&= -x - \frac{2}{n} + o\left( \frac{1}{n}\right) 
+ \end{aligned}$ \newline
+ Donc $f(x+\frac{1}{n},y) - f(x,y)\sim -\frac{2}{n}$, donc $f(x+\frac{1}{n},y) - f(x,y)< 0$ à partir d'un certain rang.
+De même $f(x-\frac{1}{n},y) - f(x,y)\sim \frac{2}{n}$, donc $f(x-\frac{1}{n},y) - f(x,y)< 0$ à partir d'un certain rang. Par le même argument que précédemmment, $(x,y)$ n'est pas un extremum local. \newline
+\newline 
+$\bullet$ Par ailleurs, $f(n,\frac{\pi}2)\xrightarrow[n\to \infty]{}\infty$ et $f(-n,\frac{\pi}2)\xrightarrow[n\to \infty]{}-\infty$ donc $f$ n'admet pas ni maximum global ni minimum global.\newline \newline 
+\underline{Conclusion}: $f$ n'admet ni minimum local, ni maximum local, ni minimum global, ni maximum global.
+\newline 
+\newline
+3. A déjà été traité dans 7.4 \newline
+\newline 
+4. $\bullet$ Le gradient de $\varphi$ en $(x,y)$ est donné par $(x+y z,x z+1,x y+1)$ et les points critiques par $\{(-1,1,1)\}$.
+La Hessienne de $\varphi$ en $(x,y)$ est donnée par $\left(
+\begin{array}{ccc}
+ 1 & z & y \\
+ z & 0 & x \\
+ y & x & 0 \\
+\end{array}
+\right)$.\newline
+En $(-1,1,1)$ elle vaut $\left(
+\begin{array}{ccc}
+ 1 & 1 & 1 \\
+ 1 & 0 & -1 \\
+ 1 & -1 & 0 \\
+\end{array}
+\right)$. Ses valeurs propres sont (après calcul du polynôme caractéristique) $1,\sqrt 3$ et $-\sqrt 3$. Elle n'est donc ni semi-définie positive, ni semi-définie négative, donc $(-1,1,1)$ n'est pas un extremum local.\newline \newline
+$\bullet$ Par ailleurs $\varphi( n,0,0)\xrightarrow[n\to \infty]{}\infty$ et $\varphi( 0,0,-n)\xrightarrow[n\to \infty]{}-\infty$ donc $f$ n'admet ni maximum global, ni minimum global.\newline
+\newline
+\underline{Conclusion}: $f$ n'admet ni minimum local, ni maximum local, ni minimum global, ni maximum global.
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Trouver la plus petite distance entre $(0,1)$ et la parabole d'équation $x^2=2y$.
+}}\\ 
+\\ 
+\\
+\noindent Le problème à résoudre est le suivant $$ \min_{(x,y)\in \mathbb R^2} \|(x,y)-(0,1)\| \quad \text{s.c. } y=\frac{x^2}{2}$$
+qu'on peut réécrire, en passant au carré, $$ \min_{x\in \mathbb R} \|(x,\frac{x^2}{2})-(0,1)\|^2 $$
+ie $$ \min_{x\in \mathbb R} x^2+(\frac{x^2}{2}-1)^2 $$
+ie $$ \min_{x\in \mathbb R} x^4+1 $$
+Le min est atteint en $x=0$, où la distance à la parabole vaut $1$.
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Soit $\lambda_1 \geq \ldots \geq \lambda_n$ les valeurs propres d'une matrice symétrique $A$.\newline
+Déterminer $\max_{\|x\|=1} x^TAx$ et $\min_{\|x\|=1} x^TAx$.
+}}\\ 
+\\ 
+\\
+\noindent $A$ étant symétrique, elle est diagonalisable dans une base orthonormée: on dispose de $(e_1,\ldots,e_n)$ une famille orthonormée de vecteurs propres de $A$ associés respectivement aux valeurs propres $\lambda_1 \geq \ldots \geq \lambda_n$.\newline
+En écrivant $x=\sum_{i=1}^n x_i e_i$, on a $\begin{aligned}[t]
+x^TAx &= \langle x,Ax \rangle = \langle \sum_{i=1}^n x_i e_i, A\left( \sum_{j=1}^n x_j e_j\right) \rangle \\
+&= \sum_{i=1}^n \sum_{j=1}^n \lambda _j x_i x_j \langle e_i,e_j \rangle \\
+&= \sum_{i=1}^n \lambda_i x_i^2
+\end{aligned}$\newline
+Donc $\lambda_n \|x\|^2 \leq x^TAx \leq \lambda_1 \|x\|^2$. Lorsque $\|x\|=1$, on obtient $\lambda_n \leq x^TAx \leq \lambda_1$.\newline
+Ces bornes sont atteintes lorsque $x=e_1$ et $x=e_n$, donc $\max_{\|x\|=1} x^TAx = \lambda_1$ et $\min_{\|x\|=1} x^TAx = \lambda_n$.
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+
+}}\\ 
+\\ 
+\\
+\noindent
+
+
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+
+}}\\ 
+\\ 
+\\
+\noindent
+
+
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Soient $y\in M_{n,1}(\mathbb R)$, $\beta\in \in M_{p,1}(\mathbb R)$ et $X\in \in M_{n,p}(\mathbb R)$. On suppose $X^TX$ inversible.\newline
+Résoudre $\min_{\beta} (y-X\beta)^T(y-X\beta) $.
+}}\\ 
+\\ 
+\\
+\noindent Comme $(y-X\beta)^T(y-X\beta)= \|y-X\beta\|^2$, le problème revient à chercher la distance de $y$ à $\im X$.\newline
+On sait que cette distance est réalisée pour la projection orthogonale de $y$ sur $\im X$. Soit $x,z \in M_{p,1}(\mathbb R)$. On a 
+$$\begin{aligned}
+\langle Xz, y - Xx \rangle &= \langle Xz,y \rangle - \langle Xz,Xx \rangle \\
+&= z^TX^Ty - z^TX^TXx\\ 
+&= z^T(X^Ty - X^TXx)
+\end{aligned}$$
+La quantité précédente est nulle quel que soit $z$ dès lors que $X^Ty - X^TXx=0$. Il suffit donc de poser $x=(X^TX)^{-1}X^Ty$.\newline
+Avec le calcul précédent et la caractérisation de la projection orthogonale, le $\beta$ cherché est $(X^TX)^{-1}X^Ty$ et la distance minimale vaut $$\|y-X(X^TX)^{-1}X^Ty\|^2$$
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Pour $y\in \mathbb R$, étudier $\displaystyle f:x\mapsto \frac{e^{y-x}}{(1+e^{y-x})^2} $.
+}}\\ 
+\\ 
+\\
+\noindent La dérivée de $f$ en $x$ est donnée par $\displaystyle \frac{e^{x+y} \left(e^y-e^x\right)}{\left(e^x+e^y\right)^3}$.\newline
+Elle est $>0$ tant $x< y$, $<0$ lorsque $x> y$ et nulle en $x=y$. $f$ admet donc un maximum global en $y$. Comme sa limite en $\pm \infty$ est $0$, elle n'admet pas de minimum local ou global.\newline
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
