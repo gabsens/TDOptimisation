@@ -1423,7 +1423,10 @@ $$\left(\sum_{i=1}^n\frac{\alpha_i v_i}{x_i} \right)^2 = \left(\sum_{i=1}^n \sqr
 Donc $$ v^TH(f)(x)v \leq f(x)\left[ \left(\sum_{i=1}^n \alpha_i\right) -1 \right]\sum_{i=1}^n\frac{\alpha_i v_i^2}{x_i^2}$$
 Par conséquent, si $\displaystyle \sum_{i=1}^n \alpha_i \leq 1$, $v^TH(f)(x)v \leq 0$ pour tout $v\in \mathbb R^n$ et $x\in(\mathbb R_+^*)^n$, donc $f$ est concave. \newline 
 \newline
-$\bullet$ Il reste à prouver que $f$ n'est ni concave ni convexe lorsque $\displaystyle \sum_{i=1}^n \alpha_i > 1$. On suppose par l'absurde que $f$ est convexe ou concave. Notons $\mathbf{1}=(1,\ldots,1)\in \mathbb R^n$. Alors pour tout $x\in \mathbb R^n$, on a $$f(x) \;?\; f(\mathbf 1) + df(\mathbf 1)(x- \mathbf 1)$$ où le signe $?$ dénote $\geq$ ou $\leq$ selon que $f$ est convexe ou concave, respectivement.
+$\bullet$ Pour $n=1$, $f$ est clairement convexe si $\alpha_1\geq 1$ et concave si $\alpha_1\leq 1 $.
+\newline 
+\newline
+$\bullet$ Il reste à prouver que $f$ n'est ni concave ni convexe lorsque $n\geq 2$ et  $\displaystyle \sum_{i=1}^n \alpha_i > 1$. On suppose par l'absurde que $f$ est convexe ou concave. Notons $\mathbf{1}=(1,\ldots,1)\in \mathbb R^n$. Alors pour tout $x\in \mathbb R^n$, on a $$f(x) \;?\; f(\mathbf 1) + df(\mathbf 1)(x- \mathbf 1)$$ où le signe $?$ dénote $\geq$ ou $\leq$ selon que $f$ est convexe ou concave, respectivement.
 En notant que $\nabla(f)(x)=f(x)(\frac{\alpha_1}{x_1},\ldots,\frac{\alpha_n}{x_n})$, on réécrit
 $$ f(x) \;?\; f(\mathbf 1) + \langle \nabla(f)(1),x- \mathbf 1\rangle$$
 ie 
