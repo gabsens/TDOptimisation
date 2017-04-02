@@ -1802,27 +1802,70 @@ Ces bornes sont atteintes lorsque $x=e_1$ et $x=e_n$, donc $\max_{\|x\|=1} x^TAx
 
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
-
+Soit $L:\mathbb R^n \times R\to \mathbb R_+, (x_1,\ldots,x_n,\theta)\to L(x_1,\ldots,x_n,\theta)$.\newline
+On suppose $L$ de classe $C^2$ par rapport à $\theta$. On cherche $\hat{\theta}$ tel que $L(x_1,\ldots,x_n,\hat{\theta})=\max_{\theta}L(x_1,\ldots,x_n,\theta)$.
+\begin{enumerate}
+\item Montrer que $\hat \theta$ est solution du système $$\frac{\partial \log L}{\partial \theta}=0 \quad;\quad   \frac{\partial^2 \log L}{\partial \theta^2}<0$$
+\item Déterminer $\hat \theta$ dans les cas suivants:
+\begin{enumerate}
+\item $L(x,\theta)=\binom{n}x \theta^x (1-\theta)^{n-x}$ où $x\in \llbracket 0,n\rrbracket$.
+\item $L(x_1,\ldots,x_n,\theta)=e^{-n\theta}\dfrac{\theta^{\sum_{i=1}^n x_i}}{\prod_{i=1}^n x_i!}$ où $x_i\in \mathbb N$.
+\item $L(x_1,\ldots,x_n,\theta) = \frac{1}{\theta^n} \frac{1}{(2\pi )^{n/2}}e^{-\frac{\sum_{i=1}^n (x_i-m)^2}{2\theta^2}}$ où $m\in \mathbb R$.
+\end{enumerate}
+\end{enumerate}
 }}\\ 
 \\ 
 \\
-\noindent
+\noindent 1. Sans hypothèse de concavité en $\theta$ sur $L$, tout ce qu'on peut affirmer est que si $\frac{\partial \log L}{\partial \theta}(\hat \theta)=0$ et $\frac{\partial^2 \log L}{\partial \theta^2}(\hat \theta)<0$, alors $\hat \theta$ est un maximum local de $\log L$, donc un maximum local de $L$.\newline
+2. a) Pour $x\in \llbracket 0,n\rrbracket$ fixé, on cherche $\max_{\theta \in [0,1]}L(x,\theta)$. Il suffit de chercher $\max_{\theta \in ]0,1[}\log L(x,\theta)$ (par continuité de $L(x,\cdot)$, le maximum obtenu majorera aussi les bords).\newline
+On a $\log L(x,\theta)=\ln\binom{n}{x} + x\ln(\theta) + (n-x)\ln(1-\theta)$, de sorte que $$\frac{\partial\ln L}{\partial \theta}=\frac{x}{\theta}- \frac{n-x}{1-\theta}$$
+qui est $>0$ si et seulement si $\theta < \frac{x}{n}$ et nul en $\frac{x}{n}$. $\log L$ admet donc un maximum global en $\hat \theta=\frac{x}{n}$. \newline
+Donc $L(x,\cdot)$ a un maximum global en $\hat \theta=\frac{x}{n}$.\newline 
+\newline
+b) Pour $x_1,\ldots, x_n\in \mathbb N$ fixés, on cherche $\displaystyle \max_{\theta > 0} L(x_1,\ldots,x_n,\theta)$. On a $$\frac{\partial L}{\partial \theta} = \frac{\theta^{(\sum_{i=1}^nx_i) -1 }\left(\sum_{i=1}^nx_i - n\theta  \right)}{\prod_{i=1}^n x_i!}$$
+Donc $\frac{\partial L}{\partial \theta} >0$ si et seulement si $\theta <\frac{\sum_{i=1}^n x_i}{n}$ avec égalité en $\frac{\sum_{i=1}^n x_i}{n}$. \newline
+La fonction admet donc un maximum global en $\displaystyle \hat{\theta} = \frac{\sum_{i=1}^n x_i}{n}$.\newline 
+\newline 
+c) Pour $x_1,\ldots, x_n\in \mathbb R$ fixés, on cherche $\displaystyle \max_{\theta > 0} L(x_1,\ldots,x_n,\theta)$. Il suffit de chercher $\max_{\theta >0}\log L(x,\theta)$. On a $$\frac{\partial\ln L}{\partial \theta}= -\frac{n}{\theta} + \frac{1}{\theta^3}\sum_{i=1}^n(x_i-m)^2$$
+et $\frac{\partial\ln L}{\partial \theta}>0 \iff \theta < \sqrt{\frac{\sum_{i=1}^n (x_i-m)^2}{n}} $. \newline
+La fonction admet donc un maximum global en $\displaystyle \hat{\theta} = \sqrt{\frac{\sum_{i=1}^n (x_i-m)^2}{n}}$.\newline
+
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Soit $L:\mathbb R^n \times \mathbb R^p \to \mathbb R_+^*, (x,\theta)\mapsto L(x,\theta)$ $C^2$ par rapport à $\theta$.\newline
+On cherche $\hat \theta\in \mathbb R^p$ tel que $L(x,\hat \theta) \geq L(x,\theta) \; \forall \theta \in \mathbb R^p$.
+\begin{enumerate}
+\item Montrer que $\hat \theta$ est solution du système $$\frac{\partial \log L}{\partial \theta_i}=0 \quad \text{et} \quad \frac{\partial^2 \log L}{\partial \theta_i \partial \theta_j} \text{ est définie négative} $$
+\item Posons $\theta = (m,\sigma^2)$ et $L(x,m,\sigma^2)=\frac{1}{(2\pi)^{n/2}\sigma^2}e^{-\frac{\sum_{i=1}^n (x_i-m)^2}{2\sigma^2}}$\newline
+Déterminer $\hat \theta$.
+\end{enumerate}
+}}\\ 
+\\ 
+\\
+\noindent 1. Sans hypothèse de concavité en $\theta$ sur $L$, tout ce qu'on peut affirmer est que si $\theta$ est solution du système de l'énoncé, alors $\hat \theta$ est un maximum local de $\log L$, donc un maximum local de $L$.\newline
+\newline
+2. Etant donné $x\in \mathbb R^n$, on cherche $\displaystyle \max_{\delta >0, m \in \mathbb R} L(x,m,\delta)=\frac{1}{(2\pi)^{n/2}\delta}e^{-\frac{\sum_{i=1}^n (x_i-m)^2}{2\delta}}$.\newline
+Posons $\psi:(m,\delta)\mapsto -\ln(\delta) - \frac{\sum_{i=1}^n(x_i-m)^2}{2\delta}$. Le problème précédent est équivalent à chercher $\max_{\delta >0, m \in \mathbb R} \left(-\ln(\delta) - \frac{\sum_{i=1}^n(x_i-m)^2}{2\delta}\right)$.\newline
+Le gradient de $\psi$ en $(m,\delta)$ est donné par $$\left(\frac{\sum_{i=1}^n (x_i-m)}{\delta}, -\frac{1}{\delta} + \frac{\sum_{i=1}^n (x_i-m)^2}{2\delta^2}  \right)$$ et l'ensemble des points critiques par $\{\left((\frac{1}{n}\sum_{i=1}^n x_i, \frac{1}{2}\sum_{i=1}^n \left(x_i - \left[\frac{1}{n}\sum_{i=1}^n x_i \right]\right)^2\right)\}$. \newline
+La Hessienne de $\psi$ en $(m,\delta)$ est donnée par $$\frac{1}{\delta}\begin{pmatrix}
+-n & -\frac{\sum_{i=1}^n (x_i-m)}{\delta} \\
+-\frac{\sum_{i=1}^n (x_i-m)}{\delta} & \frac{1}{\delta} \left(1-\frac{\sum_{i=1}^n (x_i-m)^2}{\delta} \right)
+\end{pmatrix}$$
+Au point critique $(\hat m, \hat \delta)$, cette matrice devient $\frac{1}{\hat \delta} \begin{pmatrix}
+-n & 0 \\
+0 & -\frac{1}{\hat \delta}
+\end{pmatrix}$ qui est définie négative, donc $(\hat m, \hat \delta)$ est un maximum local. \newline
+Pour déduire que c'est un maximum global, il faudrait que $\psi$ soit concave, ie que sa Hessienne soit définie négative en tout point. Or ce n'est pas vrai: le déterminant de la Hessienne est donné par $$\frac{1}{\delta^2}\left(\frac{-n}{\delta} + \frac{n \sum_{i=1}^n (x_i-m)^2 - \left(\sum_{i=1}^n(x_i-m) \right)^2}{\delta^2}\right)$$ qui est $\geq 0$ si et seulement si $$\frac{n \sum_{i=1}^n (x_i-m)^2 - \left(\sum_{i=1}^n(x_i-m) \right)^2}{\delta}\geq n$$
+Or à $m$ fixé, lorsque $\delta \to \infty$, le membre de gauche tend vers $0$.\newline
+\newline
+La concavité est donc une impasse.
 
 
 
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
-
-}}\\ 
-\\ 
-\\
-\noindent
-
-
-
-\subsection{} \noindent\fbox{
-\parbox{\linewidth}{
-Soient $y\in M_{n,1}(\mathbb R)$, $\beta\in \in M_{p,1}(\mathbb R)$ et $X\in \in M_{n,p}(\mathbb R)$. On suppose $X^TX$ inversible.\newline
+Soient $y\in M_{n,1}(\mathbb R)$, $\beta\in M_{p,1}(\mathbb R)$ et $X\in M_{n,p}(\mathbb R)$. On suppose $X^TX$ inversible.\newline
 Résoudre $\min_{\beta} (y-X\beta)^T(y-X\beta) $.
 }}\\ 
 \\ 
