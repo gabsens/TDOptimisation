@@ -16,6 +16,7 @@
 \usepackage{float}
 \usepackage{datetime}
 \usepackage{textcomp}
+\usepackage{color}
 \graphicspath{ {images/} }
 
 
@@ -1962,7 +1963,7 @@ Alors $x=\|p_a(y)\|_2^{\frac{2-p}{p-1}} p_a(y)$ et $\lambda =  \frac{\langle y,a
 \end{enumerate}
 \end{enumerate}
 \end{enumerate}
-\underline{Conclusion}: \newline Si $\langle y,a \rangle\leq 0$: le maximum cherché est atteint $\|y\|_2^{\frac{2-p}{p-1}}y$ et vaut $\frac{1}{q}\|y\|_2^q$.\newline
+\underline{Conclusion}: \newline Si $\langle y,a \rangle\leq 0$: le maximum cherché est atteint en $\|y\|_2^{\frac{2-p}{p-1}}y$ et vaut $\frac{1}{q}\|y\|_2^q$.\newline
 Si $\langle y,a \rangle\geq 0$: le maximum cherché est atteint en $\|p_a(y)\|_2^{\frac{2-p}{p-1}} p_a(y)$ et vaut $\frac{1}{q}\|p_a(y)\|_2^q$\newline
 On remarque que ces quantités coincident lorsque $\langle y,a \rangle = 0$.
 
@@ -1984,13 +1985,148 @@ $$f(x_0)=f((1-\lambda)y + \lambda z)\leq (1-\lambda)f(y) + \lambda f(z) < \max(f
 Tous les points où $f$ atteint son maximum sont donc extrêmes.\newline
 
 
+\newpage
+\section{Optimisation sous contraintes}
 
-
-
-
-
-
-
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Résoudre
+\begin{enumerate}
+\item $\max x+y \quad \text{s.c.} \quad y\leq 0,\; y\geq x^3 $
+\item $\max x + 2yx + 2y -\frac{x^2}2 - \frac{y^2}{2}\quad \text{s.c.} \quad x\geq 0,\; y\geq 0,\; x+y\leq 1 $ 
+\item $\min x^3+y^2 \quad \text{s.c.} \quad x^2+y^2\leq \left(\frac{5}{4}\right)^2,\; 2x+y+\frac{5}{4}\geq 0$
+\item $\min x \quad \text{s.c.} \quad x\leq 0,\; y\geq 0,\; y\leq (1+x)^3 $
+\item $\max xy-x^2-y^2 \quad \text{s.c.} \quad 2x+y\geq 5, \; y\geq 3$
+\end{enumerate}
+}}\\ 
+\\ 
+\\
+\noindent 1. Soit $(x,y)$ tel que $y\leq 0$ et $y\geq x^3$. Alors $x^3\leq 0$ donc $x\leq 0$ et $x+y\leq 0$. Cette borne est atteinte en $(0,0)$ par exemple. Le maximum cherché est donc $0$.\newline
+\newline
+2. On note $f:(x,y)\mapsto x + 2yx + 2y -\frac{x^2}2 - \frac{y^2}{2}$ et $K=\{(x,y),\;x\geq 0,\; y\geq 0,\; x+y\leq 1\}$. $f$ est continue, $K$ est borné (inclus dans $[0,1]^2$) et fermé (intersection de fermés), donc compact. Ceci fournit l'existence du maximum cherché.\newline
+Les contraintes sont affines, on a donc qualification en tout point. Par conséquent, tout maximum local de $f$ sur $K$ est solution du système KKT.\newline
+Le système s'écrit $\begin{cases}
+\lambda_1,\lambda_2,\lambda_3\geq 0 \\
+x\geq 0\\
+y\geq 0 \\
+x+y\leq 1\\
+\lambda_1 x =0\\
+\lambda_2 y=0\\
+\lambda_3 (1-x-y) = 0\\
+1+2y-x+\lambda_1-\lambda_3 = 0\\
+2x+2-y+\lambda_2-\lambda_3 = 0
+\end{cases}$\newline
+\begin{enumerate}
+\item Si $\lambda_1=0$:\newline
+$\lambda_3 = 1+2y-x$ et $\lambda_2 = \lambda_3 - 2x-2+y = -3x+3y-1$
+\begin{enumerate}
+\item Si $\lambda_2=0$: \newline
+Alors $x=y-\frac 13$
+\begin{enumerate}
+\item Si $\lambda_3=0$:\newline
+$x=2y+1$ donc $y-\frac 13 = 2y+1$ ie $y=-\frac 43$ \quad NON
+\item Si $1-x-y=0$:\newline
+$x=1-y$ donc $y-\frac 13=1-y$ ie $\color{red}{y=\frac 23}$ et $\color{red}{x=\frac 13}$, ce qui donne $\color{red}{\lambda_3=2}$. Réciproquement, on vérifie que ce $5-$uplet est bien solution.
+\end{enumerate}
+\item Si $y=0$: \newline
+$\lambda_3=1-x$ et $\lambda_2=-3x-1$
+\begin{enumerate}
+\item Si $\lambda_3=0$:\newline
+$x=1$ et $\lambda_2=-4$ NON
+\item Si $1-x=0$: \newline
+$x=1$ et $\lambda_2=-4$ NON
+\end{enumerate}
+\end{enumerate}
+\item Si $x=0$:
+\begin{enumerate}
+\item Si $\lambda_2 = 0$: \newline
+$\lambda_3=\lambda_1+2y+1$ et $\lambda_3=2-y$
+\begin{enumerate}
+\item Si $\lambda_3 = 0$:\newline
+$y=2$ donc $\lambda_1=-5$ NON
+\item Si $1-y=0$:\newline
+$y=1$ donc $\lambda_3=1$ et $\lambda_1=-2$ NON
+\end{enumerate}
+\item Si $y=0$: \newline
+$\lambda_3=0$ donc $\lambda_1=-1$ NON
+\end{enumerate}
+\end{enumerate}
+\underline{Conclusion}: Le système admet une unique solution: $x=\frac 13$, $y=\frac 23$, $\lambda_1=\lambda_2=0$, $\lambda_3=2$. $f$ admet donc un unique maximum local sur $K$, qui est donc aussi le maximum global de $f$ sur $K$. On a $f(\frac 13, \frac 23)=\frac{11}6$.
+\newline
+\newline 
+3. Posons $f:(x,y)\mapsto x^3+y^2$, $g_1:(x,y)\mapsto x^2+y^2-\left(\frac{5}{4}\right)^2$, $g_2:(x,y)\mapsto -2x-y-\frac 54$ et $K=\{(x,y),\; g_1(x,y)\leq 0\;, g_2(x,y)\leq 0\}$. \newline
+\newline 
+$f$ est continue, $K$ est fermé (intersection de fermés) et borné (inclus dans le disque centré en $0$ de rayon $5/4$) donc compact. $f$ admet donc un minimum global sur $K$.\newline
+\newline 
+$g_1$ est convexe (trivial après calcul de la Hessienne) et $g_2$ est affine donc convexe. Par ailleurs, au point $(-\frac 58,\frac 58)$, $g_1$ vaut $\frac{25}{64} +\frac{25}{64} -\frac{25}{16}<0$ et $g_2$ vaut $-\frac 58<0$. Les conditions de Slater sont donc satisfaites, donc la contrainte est qualifiée est en tout point de $K$. Tout minimum local de $f$ sur $K$ est donc solution du système KKT.\newline
+Le système s'écrit $\begin{cases}
+\lambda_1, \lambda_2 \geq 0 \\
+x^2+y^2\leq \left(\frac{5}{4}\right)^2 \\
+2x+y+\frac{5}{4}\geq 0 \\
+\lambda_1(x^2+y^2- \left(\frac{5}{4}\right)^2) = 0 \\
+\lambda_2(2x+y+\frac{5}{4}) = 0 \\
+3x^2 + 2\lambda_1 x- 2\lambda_2 = 0 \\
+2y + 2\lambda_1 y - \lambda_2 = 0
+\end{cases}$ \newline
+\begin{enumerate}
+\item Si $\lambda_1=0$: \newline
+Alors $3x^2=2\lambda_2$ et $\lambda_2=2y$ donc $3x^2=4y$.
+\begin{enumerate}
+\item Si $\lambda_2=0$:\newline
+Alors $\color{red}{x=y=0}$. Réciproquement, on vérifie que ce quadruplet est bien solution du système.
+\item Si $2x+y+\frac{5}{4}=0$: \newline
+$y=-2x-\frac{5}{4}$ donc $3x^2=-8x-5$ donc $x\in \{-1,-\frac 53\}$.\newline
+Pour $\color{red}{x=-1}$, on a $\color{red}{y=\frac 34}$, $\color{red}{\lambda_2 = \frac 32}$. Réciproquement, on vérifie que ce quadruplet est bien solution du système.\newline
+Pour $x=-\frac 53$, on a $y=\frac{25}{12}$ et on vérifie que $g_1(-\frac 53, \frac{25}{12})>0$ NON
+\end{enumerate}
+\item Si $x^2+y^2= \left(\frac{5}{4}\right)^2$: \newline
+\begin{enumerate}
+\item Si $\lambda_2=0$:\newline 
+$2y(1+\lambda_1)=0$ donc $y=0$ donc $x\in \{\frac 54, -\frac 54\}$.\newline
+De $3x^2+2\lambda_1x=0$ on a $x\leq 0$ donc $x=-\frac 54$.\newline
+Alors $g_2(-\frac 54, 0) = \frac 54>0$ NON
+\item Si $2x+y+\frac 54=0$: \newline
+$y=-2x-\frac 54$ donc $x^2+(2x+\frac 54)^2=\left(\frac 54 \right)^2$ ie $x\in \{-1,0\}$.\newline
+Si $x=-1$, alors $y=\frac 34$, $\lambda_1=0$ et $\lambda_2=\frac 32$ (solution qui a déjà été trouvée). \newline
+Si $x=0$, alors $y=-\frac 54$, $\lambda_2=0$ et $\lambda_1=-1$ NON
+\end{enumerate}
+\end{enumerate}
+\underline{Conclusion}: Le système admet deux solutions: $x=y=\lambda_1=\lambda_2=0$ et $x=-1$, $y=\frac 34$, $\lambda_1=0$ et $\lambda_2=\frac 32$. On sait que parmi ces deux solutions se trouve celle qui réalise le minimum global de $f$ sur $K$. Or on a $f(0,0)=0>f(-1,\frac 34)=-\frac{7}{16}$. Le minimum cherché vaut donc $\frac{-7}{16}$ et est atteint en $(-1,\frac 34)$.\newline
+\newline 
+4. Soit $(x,y)$ tel que $x\leq 0$, $y\geq 0$ et $y\leq (1+x)^3$. Alors $(1+x)^3\geq 0$, donc $1+x\geq 0$ donc $x\geq -1$. Cette borne est atteinte en $(-1,0)$ qui vérifie par ailleurs toutes les contraintes. Le minimum cherché est donc $-1$. \newline
+\newline
+5. Posons $f:(x,y)\mapsto xy-x^2-y^2$ et $K=\{(x,y)\; 2x+y\geq 5, \; y\geq 3\}$. \newline
+$f$ est continue et $K$ est fermé. Par ailleurs, $f$ est négativement coercive, au sens où $f(x,y)\xrightarrow[\|(x,y)\|\to \infty ]{} -\infty$. En effet, $$f(x,y)=-(x^2+y^2) + xy \leq -(x^2+y^2) + \frac{x^2+y^2}{2} = -\frac{x^2+y^2}{2}\xrightarrow[\|x\|\to \infty ]{} -\infty$$
+$f$ admet donc un maximum global sur $K$.\newline
+\newline
+Les contraintes sont affines, donc il y a qualification en tout point de $K$. Tout maximum local de $f$ sur $K$ est donc solution du système KKT.\newline
+Le système s'écrit $\begin{cases}
+\lambda_1, \lambda_2 \geq 0 \\
+2x+y\geq 5 \\
+y\geq 3 \\
+\lambda_1(2x+y-5)=0 \\
+\lambda_2(y-3)=0 \\
+y-2x+2\lambda_1 =0 \\
+x-2y+\lambda_2=0
+\end{cases}$\newline
+\begin{enumerate}
+\item Si $\lambda_1=0$:\newline
+On a $y=2x$.
+\begin{enumerate}
+\item Si $\lambda_2=0$:\newline
+$x=2y$ donc $y=4y$ ie $y=0$ NON
+\item Si $y=3$:\newline
+Alors $\color{red}{x=\frac 32}$ et $\textcolor{red}{\lambda_2}=2y-x\;\textcolor{red}{=\frac 92}$. Réciproquement on vérifie que le quadruplet est solution du système.
+\end{enumerate}
+\item Si $2x+y=5$:
+\begin{enumerate}
+\item Si $\lambda_2=0$:\newline
+$x=2y$ donc $y=5-4y$ ie $y=1$ NON
+\item Si $y=3$:\newline
+$x=1$ donc $\lambda_1=-\frac 12$ NON
+\end{enumerate}
+\end{enumerate}
+\underline{Conclusion}: Le système admet une unique solution $x=\frac 32$, $y=3$, $\lambda_1=0$, $\lambda_2=\frac 92$. $f$ admet donc un unique maximum local, qui aussi le maximum global de $f$ sur $K$, réalisé en $x=\frac 32$, $y=3$. Par ailleurs, $f(\frac 32, 3)=-\frac{27}4$.
 
 
 
