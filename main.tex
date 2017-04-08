@@ -31,6 +31,7 @@
 \DeclareMathOperator{\epi}{epi}
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\im}{Im}
+\DeclareMathOperator{\Vect}{Vect}
 
 
 
@@ -1843,7 +1844,7 @@ Déterminer $\hat \theta$.
 }}\\ 
 \\ 
 \\
-\noindent 1. Sans hypothèse de concavité en $\theta$ sur $L$, tout ce qu'on peut affirmer est que si $\theta$ est solution du système de l'énoncé, alors $\hat \theta$ est un maximum local de $\log L$, donc un maximum local de $L$.\newline
+\noindent 1. Sans hypothèse de concavité en $\theta$ sur $L$, tout ce qu'on peut affirmer est que si $\hat \theta$ est solution du système de l'énoncé, alors $\hat \theta$ est un maximum local de $\log L$, donc un maximum local de $L$.\newline
 \newline
 2. Etant donné $x\in \mathbb R^n$, on cherche $\displaystyle \max_{\delta >0, m \in \mathbb R} L(x,m,\delta)=\frac{1}{(2\pi)^{n/2}\delta}e^{-\frac{\sum_{i=1}^n (x_i-m)^2}{2\delta}}$.\newline
 Posons $\psi:(m,\delta)\mapsto -\ln(\delta) - \frac{\sum_{i=1}^n(x_i-m)^2}{2\delta}$. Le problème précédent est équivalent à chercher $\max_{\delta >0, m \in \mathbb R} \left(-\ln(\delta) - \frac{\sum_{i=1}^n(x_i-m)^2}{2\delta}\right)$.\newline
@@ -1891,11 +1892,11 @@ Elle est $>0$ tant $x< y$, $<0$ lorsque $x> y$ et nulle en $x=y$. $f$ admet donc
 
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
-
+Soient $x_1,\ldots, x_n$ des réels. Résoudre $\max_{\theta} e^{-\sum_{i=1}^n x_i} \mathbbm 1_{\theta \leq \inf_i x_i}$
 }}\\ 
 \\ 
 \\
-\noindent
+\noindent La fonction objectif vaut $e^{-\sum_{i=1}^n x_i}$ tant que $\theta \leq \min_i x_i$ et $0$ si $\theta > \min_i x_i$. Son maximum est donc $e^{-\sum_{i=1}^n x_i}$. 
 
 
 \subsection{} \noindent\fbox{
@@ -1904,7 +1905,7 @@ Elle est $>0$ tant $x< y$, $<0$ lorsque $x> y$ et nulle en $x=y$. $f$ admet donc
 }}\\ 
 \\ 
 \\
-\noindent
+\noindent Très calculatoire. On trouvera des calculs similaires dans les exercices 1.15 et 1.16.
 
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
@@ -1912,7 +1913,58 @@ Elle est $>0$ tant $x< y$, $<0$ lorsque $x> y$ et nulle en $x=y$. $f$ admet donc
 }}\\ 
 \\ 
 \\
-\noindent
+\noindent Il s'agit du maximum de vraisemblance de la loi normale multivariée. Le calcul est classique mais difficile à mener sans les outils adéquats. On trouvera les détails dans Magnus, \textit{Matrix Differential Calculus with Applications in Statistics and Econometrics} au Chapitre 15.
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Soient $p,q>0$ tels que $\frac{1}{p} + \frac 1q =1$.
+\begin{enumerate}
+\item Montrer que pour tout $y\in \mathbb R^n$, $$\frac 1q \|y\|_2^q = \max_{x\in \mathbb R^n} \left(\langle x,y\rangle - \frac 1p \|x\|_2^p \right)$$
+\item Soit $a\in \mathbb R^n$. Discuter selon que $\langle a,y \rangle$ est $\geq 0$ ou $\leq 0$ de la solution du problème $$\max_{\langle a,x \rangle\leq 0} \left( \langle x,y \rangle - \frac{1}{p}\|x\|_2^p \right)$$
+\end{enumerate}
+}}\\ 
+\\ 
+\\
+\noindent 1. Soit $y\in \mathbb R^n$ fixé. Posons $f:x\mapsto \langle x,y\rangle - \frac 1p \|x\|_2^p$.  $f$ est concave comme combinaison à coefficients positifs de deux fonctions concaves: $x\mapsto \langle x,y\rangle$ est linéaire donc concave et $x\mapsto \|x\|_2^p$ est convexe: $$\begin{aligned}[t]
+\|(1-\lambda)x + \lambda y\|_2^p &\leq \left( (1-\lambda)\|x\|_2 + \lambda \|y\|_2\right)^p \quad \text{par inégalité triangulaire et croissance de } x^p\\
+&\leq (1-\lambda)\|x\|_2^p + \lambda \|y\|_2^p \quad \text{par convexité de }x^p \text{  sur }\mathbb R_+ \text{ pour }x\geq 0
+\end{aligned}$$
+de sorte que $x\mapsto -\|x\|_2^p$ est concave.\newline
+\newline
+En composant $\delta:\mathbb R^n \to \mathbb R, x \mapsto \|x\|_2^2$ et $\gamma:\mathbb R_+^*\to \mathbb R, x\mapsto x^{p/2} $, la fonction $x\mapsto \|x\|_2^p$ est différentiable sur $\mathbb R^n \setminus \{0\}$ et son gradient est donné par $px \|x\|_2^{p-2}$. \newline
+Le gradient de $x\mapsto \langle x, y\rangle $ est donné par $y$, de sorte que le gradient de $f$ en $x \in \mathbb R^n \setminus \{0\}$ est donné par $$\nabla f (x) = y-x \|x\|_2^{p-2}$$
+On note que $$\nabla f (x) = 0 \implies y=x \|x\|_2^{p-2} \implies \|y\|_2 = \|x\|_2^{p-1} \implies \|x\|_2= \|y\|_2^{\frac{1}{p-1}} $$
+$\bullet$ Si $y=0$, le problème est trivial.\newline 
+$\bullet $ Si $y\neq 0$, $\left( \|y\|_2^{\frac{2-p}{p-1}}y\right) $ est un point $\neq 0$ qui annule le gradient. Par concavité de $f$, c'est un maximum local, donc un maximum global. Par ailleurs, $$f(\|y\|_2^{\frac{2-p}{p-1}}y) = \frac{1}{q}\|y\|_2^q$$ comme voulu.\newline
+\newline
+2. Dans cette question on occulte le fait que $f$ n'est a priori pas différentiable en $0$ (on peut par exemple supposer que $p\geq 2$, auquel cas $x\mapsto x^{p/2}$ est dérivable en $0$).\newline
+Soit $a\in \mathbb R^n$. Le problème posé s'écrit $\max_{x\in \mathbb R^n} f(x) \quad \text{s.c. } \langle a,x\rangle \leq 0$.\newline
+\newline 
+$f$ est concave et la contrainte est affine: on a qualification en tout $x$ et toute solution du système KKT est un maximum de $f$ sur l'ensemble des contraintes. Le système en $(x,\lambda)$ s'écrit $\begin{cases}
+\lambda \geq 0 \\
+\langle a,x \rangle \leq 0 \\
+\lambda \langle a,x \rangle =0 \\
+y-x \|x\|_2^{p-2} - \lambda a =0
+\end{cases}$\newline
+\begin{enumerate}
+\item Si $\lambda =0$:\newline
+On retombe sur le problème non contraint, donc $x=\|y\|_2^{\frac{2-p}{p-1}}y$.\newline
+Alors $\langle a,x \rangle \leq 0 \iff \langle a,y \rangle \leq 0$. Par conséquent, si $\langle a,y \rangle \leq 0$,\newline  $(x,\lambda)=(\|y\|_2^{\frac{2-p}{p-1}}y,0)$ est solution du système. \newline
+\item Si $\langle a,x\rangle =0$: \newline
+De $y-x \|x\|_2^{p-2} - \lambda a =0$ on tire $\langle y,a \rangle = \lambda \|a\|_2^2$
+\begin{enumerate}
+\item Si $a=0$: On retombe sur le problème non contraint et $\langle a,x \rangle \leq 0$ est satisfaite. $(\|y\|_2^{\frac{2-p}{p-1}}y,\lambda)$ où $\lambda$ est $\geq 0$ quelconque est alors solution du système. \newline
+\item Si $a\neq 0$: On a $\lambda =  \frac{\langle y,a \rangle}{\|a\|_2^2} $
+\begin{enumerate}
+\item Si $\langle y,a \rangle<0$: $\lambda <0$ et le système n'admet pas de solution.
+\item Si $\langle y,a \rangle\geq 0$: on a $x\|x\|_2^{p-2} = y -\frac{\langle y,a \rangle}{\|a\|_2^2} a $. Le membre de droite est la projection orthogonale de $y$ sur $\Vect(a)^\bot$, on le note $p_a(y)$.\newline
+Alors $x=\|p_a(y)\|_2^{\frac{2-p}{p-1}} p_a(y)$ et $\lambda =  \frac{\langle y,a \rangle}{\|a\|_2^2} $.
+\end{enumerate}
+\end{enumerate}
+\end{enumerate}
+\underline{Conclusion}: \newline Si $\langle y,a \rangle\leq 0$: le maximum cherché est atteint $\|y\|_2^{\frac{2-p}{p-1}}y$ et vaut $\frac{1}{q}\|y\|_2^q$.\newline
+Si $\langle y,a \rangle\geq 0$: le maximum cherché est atteint en $\|p_a(y)\|_2^{\frac{2-p}{p-1}} p_a(y)$ et vaut $\frac{1}{q}\|p_a(y)\|_2^q$\newline
+On remarque que ces quantités coincident lorsque $\langle y,a \rangle = 0$.
 
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
