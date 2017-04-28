@@ -1847,9 +1847,12 @@ Déterminer $\hat \theta$.
 \\
 \noindent 1. Sans hypothèse de concavité en $\theta$ sur $L$, tout ce qu'on peut affirmer est que si $\hat \theta$ est solution du système de l'énoncé, alors $\hat \theta$ est un maximum local de $\log L$, donc un maximum local de $L$.\newline
 \newline
-2. Etant donné $x\in \mathbb R^n$, on cherche $\displaystyle \max_{\delta >0, m \in \mathbb R} L(x,m,\delta)=\frac{1}{(2\pi)^{n/2}\delta}e^{-\frac{\sum_{i=1}^n (x_i-m)^2}{2\delta}}$.\newline
-Posons $\psi:(m,\delta)\mapsto -\ln(\delta) - \frac{\sum_{i=1}^n(x_i-m)^2}{2\delta}$. Le problème précédent est équivalent à chercher $\max_{\delta >0, m \in \mathbb R} \left(-\ln(\delta) - \frac{\sum_{i=1}^n(x_i-m)^2}{2\delta}\right)$.\newline
-Le gradient de $\psi$ en $(m,\delta)$ est donné par $$\left(\frac{\sum_{i=1}^n (x_i-m)}{\delta}, -\frac{1}{\delta} + \frac{\sum_{i=1}^n (x_i-m)^2}{2\delta^2}  \right)$$ et l'ensemble des points critiques par $\{\left((\frac{1}{n}\sum_{i=1}^n x_i, \frac{1}{2}\sum_{i=1}^n \left(x_i - \left[\frac{1}{n}\sum_{i=1}^n x_i \right]\right)^2\right)\}$. \newline
+Posons $\varphi(m,\delta):=\frac{1}{(2\pi)^{n/2}\delta}e^{-\frac{\sum_{i=1}^n (x_i-m)^2}{2\delta}}$.\newline On cherche $\displaystyle \max_{\delta >0, m \in \mathbb R} \varphi(m,\delta)$. \newline
+Posons $\psi:(m,\delta)\mapsto -\ln(\delta) - \frac{\sum_{i=1}^n(x_i-m)^2}{2\delta}$. Le problème précédent est équivalent à chercher $\max_{\delta >0, m \in \mathbb R} \psi(m,\delta)$.\newline
+$\bullet$ Si $x_1=\ldots=x_n$, $\varphi(x_1,\delta)=\frac{1}{\delta}$ qui tend vers $\infty$ quand $\delta \to 0$, de sorte que le problème n'admet pas de solution.
+\newline
+$\bullet$ On suppose donc que les $x_i$ ne sont pas tous égaux.\newline
+Le gradient de $\psi$ en $(m,\delta)$ est donné par $$\left(\frac{\sum_{i=1}^n (x_i-m)}{\delta}, -\frac{1}{\delta} + \frac{\sum_{i=1}^n (x_i-m)^2}{2\delta^2}  \right)$$ et l'ensemble des points critiques par $\{(\frac{1}{n}\sum_{i=1}^n x_i, \frac{1}{2}\sum_{i=1}^n \left(x_i - \left[\frac{1}{n}\sum_{i=1}^n x_i \right]\right)^2)\}$. \newline
 La Hessienne de $\psi$ en $(m,\delta)$ est donnée par $$\frac{1}{\delta}\begin{pmatrix}
 -n & -\frac{\sum_{i=1}^n (x_i-m)}{\delta} \\
 -\frac{\sum_{i=1}^n (x_i-m)}{\delta} & \frac{1}{\delta} \left(1-\frac{\sum_{i=1}^n (x_i-m)^2}{\delta} \right)
@@ -1861,8 +1864,9 @@ Au point critique $(\hat m, \hat \delta)$, cette matrice devient $\frac{1}{\hat 
 Pour déduire que c'est un maximum global, il faudrait que $\psi$ soit concave, ie que sa Hessienne soit définie négative en tout point. Or ce n'est pas vrai: le déterminant de la Hessienne est donné par $$\frac{1}{\delta^2}\left(\frac{-n}{\delta} + \frac{n \sum_{i=1}^n (x_i-m)^2 - \left(\sum_{i=1}^n(x_i-m) \right)^2}{\delta^2}\right)$$ qui est $\geq 0$ si et seulement si $$\frac{n \sum_{i=1}^n (x_i-m)^2 - \left(\sum_{i=1}^n(x_i-m) \right)^2}{\delta}\geq n$$
 Or à $m$ fixé, lorsque $\delta \to \infty$, le membre de gauche tend vers $0$.\newline
 \newline
-La concavité est donc une impasse.
-
+La concavité est donc une impasse.\newline
+Cependant, on remarque que $\psi(m,\delta)\leq -\ln(\delta) \xrightarrow[\delta \to \infty]{}-\infty$. \newline
+De plus, $m\mapsto \sum_{i=1}^n (x_i-m)^2$ est une parabole convexe en $m$ qui ne s'annule pas (car les $x_i$ ne sont pas tous égaux). Elle admet donc un minimum strictement $>0$, disons $\alpha$. Pour $a>0$, la fonction définie sur $\mathbb R_+^*$ par $x\mapsto \frac{e^{-a/x}}{x}$ admet un maximum en $x=a$, où elle vaut $\frac{1}{ea}$ de sorte que pour $\delta>0$ et $m\in \mathbb R$, $$\frac{1}{\delta} e^{-\frac{\sum_{i=1}^n (x_i-m)^2}{2\delta}}\leq \frac{1}{\frac e2 \sum_{i=1}^n (x_i-m)^2 } \leq \frac{2}{e\alpha }$$
 
 
 \subsection{} \noindent\fbox{
@@ -2096,7 +2100,7 @@ Si $x=0$, alors $y=-\frac 54$, $\lambda_2=0$ et $\lambda_1=-1$ NON
 4. Soit $(x,y)$ tel que $x\leq 0$, $y\geq 0$ et $y\leq (1+x)^3$. Alors $(1+x)^3\geq 0$, donc $1+x\geq 0$ donc $x\geq -1$. Cette borne est atteinte en $(-1,0)$ qui vérifie par ailleurs toutes les contraintes. Le minimum cherché est donc $-1$. \newline
 \newline
 5. Posons $f:(x,y)\mapsto xy-x^2-y^2$ et $K=\{(x,y)\; 2x+y\geq 5, \; y\geq 3\}$. \newline
-$f$ est continue et $K$ est fermé. Par ailleurs, $f$ est négativement coercive, au sens où $f(x,y)\xrightarrow[\|(x,y)\|\to \infty ]{} -\infty$. En effet, $$f(x,y)=-(x^2+y^2) + xy \leq -(x^2+y^2) + \frac{x^2+y^2}{2} = -\frac{x^2+y^2}{2}\xrightarrow[\|x\|\to \infty ]{} -\infty$$
+$f$ est continue et $K$ est fermé. Par ailleurs, $f$ est négativement coercive, au sens où $f(x,y)\xrightarrow[\|(x,y)\|\to \infty ]{} -\infty$. En effet, $$f(x,y)=-(x^2+y^2) + xy \leq -(x^2+y^2) + \frac{x^2+y^2}{2} = -\frac{x^2+y^2}{2}\xrightarrow[\|(x,y)\|\to \infty ]{} -\infty$$
 $f$ admet donc un maximum global sur $K$.\newline
 \newline
 Les contraintes sont affines, donc il y a qualification en tout point de $K$. Tout maximum local de $f$ sur $K$ est donc solution du système KKT.\newline
@@ -2130,7 +2134,60 @@ $x=1$ donc $\lambda_1=-\frac 12$ NON
 
 
 
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Soient $\alpha\in ]0,1[$, $\beta\in ]0,1[$, $p>0$, $q>0$ et $w>0$.\newline
+Résoudre $\max x^\alpha y^\beta \quad \text{s.c.} \quad px+qy=w$
+}}\\ 
+\\ 
+\\
+\noindent Afin que $x^\alpha$ et $y^\beta$ soient bien définis, on ajoute les contraintes $x\geq 0$ et $y\geq 0$. La fonction objectif n'étant potentiellement pas différentiable en $(0,0)$, on évite d'utiliser Lagrange ou KKT.\newline
+\newline
+Soit $K=\{(x,y)\in \mathbb R^2,\; x\geq 0, y\geq 0, px+qy=w\}$. Alors $K$ fermé et inclus dans $[0,\frac wp]\times [0,\frac wq]$ donc borné. La fonction objectif étant continue, le problème admet une solution.\newline
+\newline
+Considérons le problème $\max \frac{x^\alpha (w-px)^\beta}{q^\beta}\quad \text{s.c.} \quad x\in [0,\frac wp]$. Par le même argument, il admet une solution. Montrons que toute solution de ce problème est solution du problème de départ (ie que le maximum du second problème est le maximum du problème de départ). \newline
+Soit $x_0\in [0,\frac wp]$ qui maximise $\frac{x^\alpha (w-px)^\beta}{q^\beta}$ sur $[0,\frac wp]$. Montrons que $(x_0,\frac{w-px_0}{q})$ réalise le maximum dans le premier problème: soit $(x,y)\in K$, alors $y=\frac{w-px}{q}$, donc $x^\alpha y^\beta=\frac{x^\alpha (w-px)^\beta}{q^\beta}$ avec $x\in [0,\frac wp]$. Donc $x^\alpha y^\beta\leq \frac{x_0^\alpha (w-px_0)^\beta}{q^\beta}$. Cette borne est par ailleurs atteinte en $(x_0,\frac{w-px_0}{q})$ qui est bien dans $K$.\newline
+\newline
+Il reste à résoudre $\max \frac{x^\alpha (w-px)^\beta}{q^\beta}\quad \text{s.c.} \quad x\in [0,\frac wp]$. C'est un problème à une variable qu'on résoud par en passant au $\log$ (pour $x\in ]0,\frac wp[$) puis en calculant la dérivée.\newline
+Le maximum est atteint en $\frac{w}{p} \frac{\alpha}{\alpha+\beta}$ et il vaut $$\left(\frac{w}{\alpha + \beta} \right)^{\alpha + \beta} \left(\frac{\alpha}{p} \right)^{\alpha} \left(\frac{\beta}{q} \right)^{\beta}$$
 
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+On considère $\max xy \quad \text{s.c.} \quad 2x^2+y\leq 4, \; x+y^2\leq 5,\; x\geq 0,\; y\geq 0 $\newline
+Représenter le domaine des contraintes et montrer qu'il existe une solution de KKT et que cette solution est encore parmi celles qu'on obtient en supprimant les conditions $x\geq 0$ et $y\geq 0$.
+}}\\ 
+\\ 
+\\
+\noindent Soit $K=\{(x,y)\in \mathbb R^2, \; 2x^2+y\leq 4, \; x+y^2\leq 5,\; x\geq 0,\; y\geq 0\}$. Pour $(x,y)\in K$, $0\leq x\leq x+y^2\leq 5$ et $0\leq y \leq y+2x^2 \leq 4$ donc $K$ est borné et fermé, donc compact et le problème admet une solution. \newline
+\newline 
+Posons $g_1:(x,y)\mapsto x+2y-4$, $g_2:(x,y)\mapsto x+y^2-5$, $g_3:(x,y)\mapsto -x$ et $g_4(x,y)\mapsto -y$. $g_1,g_2,g_3,g_4$ sont convexes et en $(\frac 12,\frac 12)\in K$, $g_i(\frac 12,\frac 12)<0$ pour tout $i$. La condition de Slater est satisfiée et la contrainte est donc qualifiée en tout point.\newline
+Le maximum cherché est donc solution du système KKT \newline 
+$\begin{cases}
+\lambda_1,\lambda_2,\lambda_3,\lambda_4 \geq 0 \\
+2x^2+y\leq 4 \\
+x+y^2\leq 5 \\
+x\geq 0 \\
+y\geq 0 \\
+\lambda_1 (2x^2+y -4)=0 \\
+\lambda_2 (x+y^2- 5)=0 \\
+\lambda_3 x =0 \\
+\lambda_4 y =0 \\
+y-4\lambda_1 x - \lambda_2 + \lambda_3 = 0 \\
+x - \lambda_1 - 2 \lambda_2 y + \lambda_4 = 0
+\end{cases}$\newline
+\newline
+Or, si $x=0$ ou $y=0$, la fonction objectif $xy$ est nulle et $(x,y)$ ne réalise le maximum de $xy$ sur $K$ (en $(\frac 12, \frac 12)$ la fonction vaut $\frac 14 >0$). Pour le $6$-uplet $(x_0,y_0,\lambda_1,\lambda_2,\lambda_3,\lambda_4)$ solution du système réalisant le maximum cherché, on doit donc avoir $x_0\neq 0$ et $y_0\neq 0$, ce qui implique $\lambda_3=0$ et $\lambda_4=0$. \newline $(x_0,y_0,\lambda_1,\lambda_2)$ est donc solution du système 
+$\begin{cases}
+\lambda_1,\lambda_2\geq 0 \\
+2x^2+y\leq 4 \\
+x+y^2\leq 5 \\
+\lambda_1 (2x^2+y -4)=0 \\
+\lambda_2 (x+y^2- 5)=0 \\
+y-4\lambda_1 x - \lambda_2  = 0 \\
+x - \lambda_1 - 2 \lambda_2 y = 0
+\end{cases}$\newline \newline
+qui est le système KKT associé au problème $$\max xy \quad \text{s.c.} \quad 2x^2+y\leq 4, \; x+y^2\leq 5$$
 
 
 \end{document}
