@@ -2160,7 +2160,7 @@ Représenter le domaine des contraintes et montrer qu'il existe une solution de 
 \\ 
 \\
 \noindent Soit $K=\{(x,y)\in \mathbb R^2, \; 2x^2+y\leq 4, \; x+y^2\leq 5,\; x\geq 0,\; y\geq 0\}$. Pour $(x,y)\in K$, $0\leq x\leq x+y^2\leq 5$ et $0\leq y \leq y+2x^2 \leq 4$ donc $K$ est borné et fermé, donc compact et le problème admet une solution. \newline
-\newline 
+\newline ∏
 Posons $g_1:(x,y)\mapsto x+2y-4$, $g_2:(x,y)\mapsto x+y^2-5$, $g_3:(x,y)\mapsto -x$ et $g_4(x,y)\mapsto -y$. $g_1,g_2,g_3,g_4$ sont convexes et en $(\frac 12,\frac 12)\in K$, $g_i(\frac 12,\frac 12)<0$ pour tout $i$. La condition de Slater est satisfiée et la contrainte est donc qualifiée en tout point.\newline
 Le maximum cherché est donc solution du système KKT \newline 
 $\begin{cases}
@@ -2189,5 +2189,50 @@ x - \lambda_1 - 2 \lambda_2 y = 0
 \end{cases}$\newline \newline
 qui est le système KKT associé au problème $$\max xy \quad \text{s.c.} \quad 2x^2+y\leq 4, \; x+y^2\leq 5$$
 
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Résoudre $\max xy \quad \text{s.c.} \quad x+2y\leq 4,\; x\geq 0,\; y\geq 0,\; x\leq x_0 $ en discutant selon $x_0$.
+}}\\ 
+\\ 
+\\
+\noindent Posons $K=\{(x,y)\in \mathbb R^2,\; x+2y\leq 4,\; x\geq 0,\; y\geq 0,\; x\leq x_0\}$.\newline
+On note que pour $(x,y)\in K$, comme $y\geq 0$, $0\leq x\leq x+2y \leq 4$ et comme $x\geq 0$, $0\leq 2y \leq x+2y \leq 4$ donc $0\leq y \leq 2$. $K$ est donc borné et fermé, donc compact. \newline
+Par ailleurs, les contraintes sont affines donc on a qualification en tout point.\newline
+\newline 
+Si $x_0<0$, $K=\emptyset$.\newline
+Si $x_0>4$, $K=\emptyset$ puisque $(x,y)\in K \implies x\leq 4$. \newline
+Si $x_0=0$, alors $(x,y)\in K \implies x=0 \implies xy=0$ et le maximum cherché vaut $0$.\newline
+Si $x_0\in ]0,4]$, on considère $x\in ]0,\min(4,x_0)[$ et $y=\frac{4-x}{2}$. Alors $(x,y)\in K$ et $xy>0$. Le même argument que dans l'exercice 8.3 implique que le maximum cherché est parmi les solutions du système \newline
+$\begin{cases}
+\lambda_1, \lambda_2\geq 0 \\
+x+2y\leq 4 \\
+x\leq x_0 \\
+\lambda_1(x+2y-4)=0 \\
+\lambda_2 (x-x_0)=0 \\
+y-\lambda_1-\lambda_2=0 \\
+x-2\lambda_1=0
+\end{cases}$ \newline
+\begin{enumerate}
+\item Si $\lambda_1=0$ : \newline
+Alors $x=0$
+\begin{enumerate}
+\item Si $\lambda_2=0$: \newline
+$y=\lambda_1+\lambda_2=0$ \quad OK
+\item Si $x=x_0$:
+Alors $x_0=0$ \quad NON
+\end{enumerate}
+\item Si $x+2y=4$:
+\begin{enumerate}
+\item Si $\lambda_2=0$: \newline
+$y=\lambda_1$ et $x=2\lambda_1$ donc $y=\frac 12 (4-2y)$ donc $y=1$ et $x=2$ et $\lambda_1=1$. \newline
+On vérifie réciproquement que le quadruplet $(2,1,1,0)$ est bien solution du système, \textbf{à condition que} $\mathbf{x_0\geq 2}$.
+\item Si $x=x_0$: \newline
+Alors $y=\frac{4-x_0}{2}$, $\lambda_1=\frac{x_0}{2}$ et $\lambda_2=y-\lambda_1=2-x_0$.\newline
+On vérifie réciproquement que le quadruplet $(x_0,\frac{4-x_0}{2},\frac{x_0}{2},2-x_0)$ est bien solution du système, \textbf{à condition que} $\mathbf{x_0\leq 2}$
+\end{enumerate}
+\end{enumerate}
+En conclusion, si $x_0\in ]0,2]$ le problème admet une solution en $(2,1)$ et le maximum cherché vaut $2$. \newline
+Si $x_0\in [2, 4]$, le problème admet une solution en $(x_0,\frac{4-x_0}{2})$ et le maximum cherché vaut $\frac{x_0(4-x_0)}{2}$.
+ 
 
 \end{document}
