@@ -2160,7 +2160,7 @@ Représenter le domaine des contraintes et montrer qu'il existe une solution de 
 \\ 
 \\
 \noindent Soit $K=\{(x,y)\in \mathbb R^2, \; 2x^2+y\leq 4, \; x+y^2\leq 5,\; x\geq 0,\; y\geq 0\}$. Pour $(x,y)\in K$, $0\leq x\leq x+y^2\leq 5$ et $0\leq y \leq y+2x^2 \leq 4$ donc $K$ est borné et fermé, donc compact et le problème admet une solution. \newline
-\newline ∏
+\newline 
 Posons $g_1:(x,y)\mapsto x+2y-4$, $g_2:(x,y)\mapsto x+y^2-5$, $g_3:(x,y)\mapsto -x$ et $g_4(x,y)\mapsto -y$. $g_1,g_2,g_3,g_4$ sont convexes et en $(\frac 12,\frac 12)\in K$, $g_i(\frac 12,\frac 12)<0$ pour tout $i$. La condition de Slater est satisfiée et la contrainte est donc qualifiée en tout point.\newline
 Le maximum cherché est donc solution du système KKT \newline 
 $\begin{cases}
@@ -2234,5 +2234,57 @@ On vérifie réciproquement que le quadruplet $(x_0,\frac{4-x_0}{2},\frac{x_0}{2
 En conclusion, si $x_0\in ]0,2]$ le problème admet une solution en $(2,1)$ et le maximum cherché vaut $2$. \newline
 Si $x_0\in [2, 4]$, le problème admet une solution en $(x_0,\frac{4-x_0}{2})$ et le maximum cherché vaut $\frac{x_0(4-x_0)}{2}$.
  
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+
+}}\\ 
+\\ 
+\\
+\noindent
+
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+Soient $a\in \mathbb R^n$ et $p>0$. Déterminer $$\min e^{\|x\|^2}+\langle a,x\rangle \quad \text{s.c.} \quad \|x\| \leq p$$
+}}\\ 
+\\ 
+\\
+\noindent Posons $f:\mathbb R^n \to \mathbb R, x \mapsto e^{\|x\|^2}+\langle a,x\rangle$. La fonction $x\mapsto \|x\|^2$ étant différentiable sur $\mathbb R^n$, $f$ est différentiable sur $\mathbb R^n$. Le gradient de $f$ en $x\in \mathbb R^n$ vaut par ailleurs $2e^{\|x\|^2}x+a$ (cf chapitre 1 pour la méthode de calcul).\newline
+Remarquons que le problème se réécrit $$\min e^{\|x\|^2}+\langle a,x\rangle \quad \text{s.c.} \quad \|x\|^2 \leq p^2$$ et posons $g:\mathbb R^n \to \mathbb R, x\mapsto \|x\|^2 - p^2$, de sorte que $g$ est différentiable sur $\mathbb R^n$, de gradient en $x$ donné par $2x$. \newline
+\newline
+Avec $K=\{x\in \mathbb R^n, g(x)\leq 0\}$, $K$ est fermé et borné par $p$, donc compact, donc $f$ admet un minimum sur $K$. \newline
+Par ailleurs, $g$ est convexe ($\|\cdot\|$ est convexe par inégalité triangulaire et $x\mapsto x^2$ est croissante et convexe) et comme $p>0$, il existe $x\in \mathbb R^n$ tel que $g(x)<0$. La condition de Slater est satisfaite et la contrainte est qualifiée en tout point.\newline
+\newline
+Le minimum cherché doit donc apparaitre comme solution du système KKT (\textit{Remarque}: comme $f$ est convexe (somme de deux fonctions convexes), toute solution du système KKT est un minimum global de $f$ sur $K$.) \newline
+$\begin{cases}
+\lambda\geq 0 \\
+\|x\|^2\leq p^2 \\
+\lambda(\|x\|^2-p^2)=0 \\
+2e^{\|x\|^2}x+a+2\lambda x =0
+\end{cases}$\newline
+\begin{enumerate}
+\item Si $\lambda=0$: \newline
+$2e^{\|x\|^2}x = -a $ donc $2\|x\|e^{\|x\|^2}=\|a\|$. Posons donc $\varphi:x\mapsto 2xe^{x^2}$ et notons que $\varphi$ est bijective de $\mathbb R_+$ dans $\mathbb R_+$, de sorte que $\|x\|=\varphi^{-1}(\|a\|)$, d'où $$x=-\frac{e^{-\varphi^{-1}(\|a\|)^2}}{2}a$$
+Le couple $(-\dfrac{e^{-\varphi^{-1}(\|a\|)^2}}{2}a,0)$ est solution du système à condition que la norme de la première composante (qui vaut $\varphi^{-1}(\|a\|)$ d'après le calcul précédent) est inférieure à $p$, ie $\varphi^{-1}(\|a\|) \leq p$ soit encore $\|a\| \leq 2pe^{p^2}$.
+\item Si $\|x\|=p$: \newline
+Alors $(\underbrace{2e^{p^2}+\lambda}_{>0})x=-a$, donc $(2e^{p^2}+\lambda)p = \|a\|$ ie $\lambda = \frac{\|a\|}p-2e^{p^2}$. \newline
+Donc $\frac{\|a\|}{p}x=-a$ ie $x=-\frac{p}{\|a\|}a$. Le couple $(-\dfrac{p}{\|a\|}a,\dfrac{\|a\|}p-2e^{p^2})$ est solution du système à condition que la seconde composante soit $\geq 0$ ie $\|a\| \geq 2pe^{p^2}$
+\end{enumerate}
+\underline{Conclusion}: Si $\|a\| \leq 2pe^{p^2}$, le problème admet une solution en $-\dfrac{e^{-\varphi^{-1}(\|a\|)^2}}{2}a$ et le minimum cherché vaut $e^{\varphi^{-1}(\|a\|)^2}-\frac{\|a\|^2}{2}e^{-\varphi^{-1}(\|a\|)^2}$. \newline
+Si $\|a\| \geq 2pe^{p^2}$, le problème admet une solution en $-\dfrac{p}{\|a\|}a$ et le minimum cherché vaut $e^{p^2}-p\|a\|$.
+
+
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
+
+}}\\ 
+\\ 
+\\
+\noindent Correspond exactement au 7.7
+
+
+
+
+
 
 \end{document}
