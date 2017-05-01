@@ -2285,6 +2285,37 @@ Si $\|a\| \geq 2pe^{p^2}$, le problème admet une solution en $-\dfrac{p}{\|a\|}
 
 
 
+\subsection{} \noindent\fbox{
+\parbox{\linewidth}{
 
+}}\\ 
+\\ 
+\\
+\noindent 
+
+
+
+\subsection{} \noindent\fbox{
+\parbox{14cm}{
+Déterminer $\displaystyle \max_{g\in E} \int_{-1}^1 x^3g(x) dx$ où $$E=\Big \{g\in L^2([-1,1]),\; \int_{-1}^1 g^2(x) dx =1,\; \int_{-1}^1 g(x) dx = \int_{-1}^1 xg(x) dx = \int_{-1}^1 x^2g(x) dx =0  \Big \}$$
+}}\\ 
+\\ 
+\\
+\noindent $L^2([-1,1])$ est muni du produit scalaire classique $\langle f,g\rangle = \int_{-1}^{1} f(x)g(x) dx$.\newline
+ Soit $g\in E$. On tire parti de l'hypothèse $$\int_{-1}^1 g(x) dx = \int_{-1}^1 xg(x) dx = \int_{-1}^1 x^2g(x) dx =0$$ en introduisant $a,b,c\in \mathbb R$ quelconques et en écrivant $$\int_{-1}^1 x^3g(x) dx = \int_{-1}^1 (x^3-ax^2-bx-c)g(x) dx $$ 
+Il est naturel d'appliquer Cauchy-Schwarz, ce qui donne: $$\begin{aligned}\int_{-1}^1 x^3g(x) dx &\leq \left(\int_{-1}^1 (x^3-ax^2-bx-c)^2 dx\right)^{1/2}\underbrace{\left(\int_{-1}^1 g^2(x) dx\right)^{1/2}}_{=1} \\ &= \left(\int_{-1}^1 (x^3-ax^2-bx-c)^2 dx\right)^{1/2}\end{aligned}$$
+On cherche donc à minimiser le membre de droite sur $(a,b,c)\in \mathbb R^3$ et on montrera que le minimum est effectivement atteint pour une certaine fonction $g\in E$.\newline
+\newline 
+Or $\inf \limits_{(a,b,c)\in \mathbb R^3} \int_{-1}^1 (x^3-ax^2-bx-c)^2 dx$ est le carré de la distance de $X^3$ à $\Vect(1,X,X^2)$, qui est réalisée pour la projection orthogonale de $X^3$ sur $\Vect(1,X,X^2)$. On cherche donc une base orthonormée de $\Vect(1,X,X^2)$. La famille en question étant échelonnée, elle est libre, et il suffit d'appliquer le procédé de Gram-Schmidt: on trouve que $\left(\frac 12, \sqrt{\frac 32}X, \sqrt{\frac{30}{7}}\left(X^2-\frac 16 \right)\right)$ est une base orthonormée de $\Vect(1,X,X^2)$.\newline
+Par Pythagore, $$\begin{aligned} d(X^3,\Vect(1,X,X^2))^2 &=\Big\|X^3\Big\|^2-\Big\langle X^3, \frac 12 \Big\rangle ^2 - \Big\langle X^3, \sqrt{\frac 32}X \Big\rangle ^2 - \Big\langle X^3, \sqrt{\frac{30}{7}}\left(X^2-\frac 16 \right) \Big\rangle ^2 \\
+&= \frac 27 - 0 - \left( \frac{\sqrt 6}{5}\right)^2 -0\\
+&= \frac{8}{175} \end{aligned}$$ 
+Donc $$\begin{aligned}\int_{-1}^1 x^3g(x) dx &\leq  \left(\int_{-1}^1 (x^3-ax^2-bx-c)^2 dx\right)^{1/2} \\
+&\leq \sqrt{\frac{8}{175}}
+\end{aligned}$$
+On vérifie qu'il y a égalité dans cette inégalité pour $\displaystyle g = \frac{5\sqrt 7}{2\sqrt 2}\left(X^3-\frac 35 X \right)$ \newline
+\textit{Remarque}: $X^3-\frac 35 X$ est le projeté de $X^3$ sur l'orthogonal de $\Vect(1,X,X^2)$.\newline 
+\newline
+En conclusion, $\displaystyle \max_{g\in E} \int_{-1}^1 x^3g(x) dx=\sqrt{\frac{8}{175}}$
 
 \end{document}
