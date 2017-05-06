@@ -1,4 +1,4 @@
-## Proposition de correction des exercices du TD d'optimisation.
+## Proposition de correction des exercices du TD d'optimisation de 1A.
 
 Les exercices seront ajoutés au fur et à mesure, en fonction des chapitres abordés.
 
