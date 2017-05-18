@@ -2284,14 +2284,60 @@ Si $\|a\| \geq 2pe^{p^2}$, le problème admet une solution en $-\dfrac{p}{\|a\|}
 
 
 
-
+\newpage 
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
-
-}}\\ 
-\\ 
+Résoudre
+\begin{enumerate}
+\item $\text{Extr}\ x^2+y^2 \quad \text{s.c.} \quad 3x^2 + 4xy + 6y^2 = 140 $
+\item $\max x^2 + xy + y^2 + yz + z^2 \quad \text{s.c.} \quad x^2+y^2+z^2 = 1 $ 
+\item $\max xy^2z^3 \quad \text{s.c.} \quad x+y+z = 6,\; x>0,\;y>0,\;z>0$
+\end{enumerate}
+}}
 \\
-\noindent 
+\\
+
+\noindent 1. \hfill \textit{Correction proposée par Théo Compérot}\newline
+On remarque assez rapidement que les conditions KKT semblent difficiles à résoudre et qu'une méthode géométrique semble plus adaptée. La contrainte $K = \{ (x,y) \in \mathbb R^2 : 3x^2 + 4xy + 6y^2 \}$ peut s'écrire comme l'ensemble des $X = \begin{pmatrix} x \\ y \end{pmatrix}$ vérifiant :
+\[ {}^t\! X A X = 1 \quad (\ast) \]
+avec $A = \frac{1}{140} \begin{pmatrix} 3 & 2 \\ 2 & 6 \end{pmatrix}$ qui est symétrique définie positive : la contrainte $K$ est donc une ellipse (qui est compacte, ce qui garantit l'existence d'une solution par continuité de la fonction objectif) dont les vecteurs propres donnent la direction des axes principaux de l'ellipse. Graphiquement (voir le graphique ci-dessous), il suffit de trouver la valeur des demi-petit axe et demi-grand axe de l'ellipse (qui correspondent respectivement à la demi-``hauteur'' et la demi-``largeur'' de l'ellipse) pour conclure. En effet le problème consiste à trouver les rayon du plus petit et du plus grand cercle tangents à l'ellipse. Le carré du demi-petit axe correspondra à la solution du problème de minimisation et le carré du demi-grand axe correspondra à solution du problème de maximisation. Pour trouver ces valeurs il suffit de diagonaliser $A$. En calculant son polynôme caractéristique, on trouve facilement une base orthonormée de vecteurs propres de $A$ : $\left(\begin{pmatrix} \frac{2}{\sqrt{5}} \\ -\frac{1}{\sqrt{5}} \end{pmatrix},\begin{pmatrix} \frac{1}{\sqrt{5}} \\ \frac{2}{\sqrt{5}} \end{pmatrix}\right)$ associée aux vecteurs propres $\lambda_1 = \frac{2}{140} = \frac{1}{70}$ et $\lambda_2=\frac{7}{140} = \frac{1}{20}$. On peut donc écrire $A = PD{}^t\!P$ avec $A = \text{diag}(\frac{1}{70},\frac{1}{20})$ et $P = \begin{pmatrix} \frac{2}{\sqrt{5}} & \frac{1}{\sqrt{5}} \\ -\frac{1}{\sqrt{5}} & \frac{2}{\sqrt{5}} \end{pmatrix} \in \mathcal O_2(\mathbb R)$. En posant $\begin{pmatrix} u \\ v \end{pmatrix} = {}^t\!P \begin{pmatrix} x \\ y \end{pmatrix}$, l'équation $(\ast)$ se réécrit :
+
+\[ \lambda_1 u^2 + \lambda_2 v^2 = 1 \]
+
+Soit :
+
+\[ \frac{u^2}{a^2} + \frac{v^2}{b^2} = 1 \] 
+
+où $a = \sqrt{70}$ et $b = \sqrt{20}$ sont (par définition) respectivement les demi-grand axe et demi-petit axe de l'ellipse. La solution du problème de minimum est donc $20$ atteinte en $\sqrt{20} \begin{pmatrix} \frac{1}{\sqrt{5}} \\ \frac{2}{\sqrt{5}} \end{pmatrix} = \begin{pmatrix} 2 \\ 4 \end{pmatrix}$ et $-\sqrt{20}\begin{pmatrix} \frac{1}{\sqrt{5}} \\ \frac{2}{\sqrt{5}}  \end{pmatrix} = -\begin{pmatrix} 2 \\ 4 \end{pmatrix} $ et celle du problème de maximum $70$ atteinte en $\sqrt{70}\begin{pmatrix} \frac{2}{\sqrt{5}} \\ -\frac{1}{\sqrt{5}} \end{pmatrix} = \begin{pmatrix} 2\sqrt{14} \\ -\sqrt{14} \end{pmatrix}$ et $-\sqrt{70} \begin{pmatrix} \frac{2}{\sqrt{5}} \\ -\frac{1}{\sqrt{5}} \end{pmatrix} = \begin{pmatrix} -2\sqrt{14} \\ \sqrt{14} \end{pmatrix}$.
+
+\begin{figure}[h]
+\includegraphics[scale=0.5]{2}
+\centering 
+\end{figure}
+\newpage 
+\noindent 2. \hfill \textit{Correction proposée par Théo Compérot}\newline
+Ici le problème est inversé : on cherche à trouver l'ellipsoïde le plus ``gros'' qui soit tangent à la sphère unité (voir le graphique ci-dessus).\newline
+\begin{figure}[t]
+\includegraphics[scale=0.5]{3}
+\centering 
+\end{figure}
+\noindent On note tout d'abord que la sphère unité est compacte, ce qui garantit l'existence d'une solution au problème (la fonction objectif est continue). La solution correspond au demi-petit axe de l'ellipsoïde qui sera atteinte en les deux vecteurs propres normés donnant la direction du demi-petit axe. Ici la forme quadratique $q$ associée à la contrainte peut s'écrire $q(X) = {}^t\! XAX$ avec $A =\begin{pmatrix} 1 & \frac{1}{2} & 0 \\ \frac{1}{2} & 1 & \frac{1}{2} \\ 0 & \frac{1}{2} & 1 \end{pmatrix}$. $A$ est bien symétrique définie positive de valeurs propres $(\lambda_1,\lambda_2,\lambda_3) = \left(1+ \frac{1}{\sqrt{2}}, 1 , 1-\frac{1}{\sqrt{2}} \right)$. En posant comme précédemment $P$ la matrice orthogonale constituée de vecteurs propres de $A$ on peut réécrire la forme quadratique sous la forme :
+$$ q(u,v,w) = \lambda_1 u^2 + \lambda_2 v^2 + \lambda_3 w ^2 $$
+On cherche la valeur de $k^2>0$ tel que l'ellipsoïde d'équation :
+$$\lambda_1 u^2 + \lambda_2 v^2 + \lambda_3 w ^2 = k^2 $$
+ait un demi-petit axe égal à 1. On obtient donc $k^2= \lambda_1 = 1 + \frac{1}{\sqrt{2}}$ solution du problème de maximisation, atteinte en les deux vecteurs propres normés associés à $\lambda_1$ : $\begin{pmatrix} \frac{1}{2} \\ \frac{1}{\sqrt{2}} \\ \frac{1}{2} \end{pmatrix}$ et $-\begin{pmatrix} \frac{1}{2} \\ \frac{1}{\sqrt{2}} \\ \frac{1}{2} \end{pmatrix}$. \\
+
+\noindent 3. \hfill \textit{Correction proposée par Théo Compérot}\newline
+L'ensemble $K' = \{(x,y) : x+y+z = 6,\; x\geqslant 0,\; y\geqslant 0,\; z\geqslant 0\}$ est compact car il est fermé (comme intersection de l'image réciproque d'un singleton par une application polynomiale et d'un octant de $\mathbb R^3$) et borné car $(x,y,z) \in [0,6]^3$. Le problème de maximisation sous la contrainte $K'$ admet donc une solution. Notons que cette solution est strictement positive car pour $x=y=z=2$, on a $2\times 2^2 \times 2^3 >0$. Le problème de maximisation initial admet donc une solution. A fortiori, le problème de maximisation sous la contrainte $K'' = \{(x,y) \in \mathbb R^2 : x+y+z = 6 \}$ admet aussi une solution. La contrainte $K''$ est qualifiée en tout point (contrainte affine) et les conditions KKT pour le problème de maximisation sous $K''$ donnent :
+
+$\begin{cases}
+x+y+z = 6 \\
+y^2z^3 + \lambda = 0 \\
+2xyz^3 + \lambda = 0 \\
+3xy^2z^2 + \lambda = 0 \\
+\end{cases}$
+
+On obtient donc $y^2z^3 = 2xyz^3 = 3xy^2z^2 \quad (\ast)$. Puisque $xyz \neq 0$ (solution strictement positive), le système $(\ast)$ conduit à $y=2x$ et $z = 3x$. La condition d'appartenance à la contrainte $K''$ conduit finalement à une unique solution $1\times 2^2 \times 3^3 = 108$ atteinte en $\begin{pmatrix} 1 \\ 2\\ 3 \end{pmatrix}$.
 
 
 
@@ -2316,6 +2362,6 @@ Donc $$\begin{aligned}\int_{-1}^1 x^3g(x) dx &\leq  \left(\int_{-1}^1 (x^3-ax^2-
 On vérifie qu'il y a égalité dans cette inégalité pour $\displaystyle g = \frac{5\sqrt 7}{2\sqrt 2}\left(X^3-\frac 35 X \right)$ \newline
 \textit{Remarque}: $X^3-\frac 35 X$ est le projeté de $X^3$ sur l'orthogonal de $\Vect(1,X,X^2)$.\newline 
 \newline
-En conclusion, $\displaystyle \max_{g\in E} \int_{-1}^1 x^3g(x) dx=\sqrt{\frac{8}{175}}$ test
+En conclusion, $\displaystyle \max_{g\in E} \int_{-1}^1 x^3g(x) dx=\sqrt{\frac{8}{175}}$
 
 \end{document}
