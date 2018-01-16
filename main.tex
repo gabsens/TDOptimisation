@@ -253,7 +253,7 @@ Soit $I:E\to \mathbb R, f\mapsto \int_0^1 (g\circ f)(t) dt$
 }}\\ 
 \\ 
 \\
-\noindent 1. Pour $f\in E$ fixé et $h\in E$, $t\in [0,1]$, la formule de Taylor-Lagrange donne $$g(f(t)+h(t))=g(f(t))+h(t)g'(t)+\frac{h(t)^2}{2}g''(\xi_{h,t})$$ où $\xi_t\in \mathbb R$ de sorte que $t\mapsto \frac{h(t)^2}{2}g''(\xi_{h,t})$ est continue sur $[0,1]$ et $$I(f+h) = I(f) + \int_0^1 h(t)g'(f(t)) dt + \int_0^1 \frac{h(t)^2}{2}g''(\xi_{h,t}) dt$$ 
+\noindent 1. Pour $f\in E$ fixé et $h\in E$, $t\in [0,1]$, la formule de Taylor-Lagrange donne $$g(f(t)+h(t))=g(f(t))+h(t)g'(f(t))+\frac{h(t)^2}{2}g''(\xi_{h,t})$$ pour $\xi_{h,t}\in \mathbb R$ de sorte que $t\mapsto \frac{h(t)^2}{2}g''(\xi_{h,t})$ est continue sur $[0,1]$ et $$I(f+h) = I(f) + \int_0^1 h(t)g'(f(t)) dt + \int_0^1 \frac{h(t)^2}{2}g''(\xi_{h,t}) dt$$ 
 Le candidat pour la différentielle de $I$ en $f$ est $h\mapsto \int_0^1 h(t)g'(f(t)) dt$. \newline
 Il suffit de prouver que $h\mapsto \int_0^1 h(t)g'(f(t)) dt$ est continue en $0$ et $$\frac{\left|\int_0^1 \frac{h(t)^2}{2}g''(\xi_{h,t}) dt\right|}{\|h\|}\xrightarrow[||h||\to 0]{}0$$
 On a $\left|\int_0^1 h(t)g'(f(t)) dt\right|\leq \|h\|\underbrace{\int_0^1|g'(f(t))|dt}_{\text{indépendant de }h}$ ce qui prouve la continuité en $0$.\newline
@@ -1847,12 +1847,9 @@ Déterminer $\hat \theta$.
 \\
 \noindent 1. Sans hypothèse de concavité en $\theta$ sur $L$, tout ce qu'on peut affirmer est que si $\hat \theta$ est solution du système de l'énoncé, alors $\hat \theta$ est un maximum local de $\log L$, donc un maximum local de $L$.\newline
 \newline
-Posons $\varphi(m,\delta):=\frac{1}{(2\pi)^{n/2}\delta}e^{-\frac{\sum_{i=1}^n (x_i-m)^2}{2\delta}}$.\newline On cherche $\displaystyle \max_{\delta >0, m \in \mathbb R} \varphi(m,\delta)$. \newline
+2.Posons $\varphi(m,\delta):=\frac{1}{(2\pi)^{n/2}\delta}e^{-\frac{\sum_{i=1}^n (x_i-m)^2}{2\delta}}$.\newline On cherche $\displaystyle \max_{\delta >0, m \in \mathbb R} \varphi(m,\delta)$. \newline
 Posons $\psi:(m,\delta)\mapsto -\ln(\delta) - \frac{\sum_{i=1}^n(x_i-m)^2}{2\delta}$. Le problème précédent est équivalent à chercher $\max_{\delta >0, m \in \mathbb R} \psi(m,\delta)$.\newline
-$\bullet$ Si $x_1=\ldots=x_n$, $\varphi(x_1,\delta)=\frac{1}{\delta}$ qui tend vers $\infty$ quand $\delta \to 0$, de sorte que le problème n'admet pas de solution.
-\newline
-$\bullet$ On suppose donc que les $x_i$ ne sont pas tous égaux.\newline
-Le gradient de $\psi$ en $(m,\delta)$ est donné par $$\left(\frac{\sum_{i=1}^n (x_i-m)}{\delta}, -\frac{1}{\delta} + \frac{\sum_{i=1}^n (x_i-m)^2}{2\delta^2}  \right)$$ et l'ensemble des points critiques par $\{(\frac{1}{n}\sum_{i=1}^n x_i, \frac{1}{2}\sum_{i=1}^n \left(x_i - \left[\frac{1}{n}\sum_{i=1}^n x_i \right]\right)^2)\}$. \newline
+Le gradient de $\psi$ en $(m,\delta)$ est donné par $$\left(\frac{\sum_{i=1}^n (x_i-m)}{\delta}, -\frac{1}{\delta} + \frac{\sum_{i=1}^n (x_i-m)^2}{2\delta^2}  \right)$$ et l'ensemble des points critiques par $\{(\frac{1}{n}\sum_{i=1}^n x_i, \frac{1}{2}\sum_{i=1}^n \left(x_i - \left[\frac{1}{n}\sum_{k=1}^n x_k \right]\right)^2)\}$. \newline
 La Hessienne de $\psi$ en $(m,\delta)$ est donnée par $$\frac{1}{\delta}\begin{pmatrix}
 -n & -\frac{\sum_{i=1}^n (x_i-m)}{\delta} \\
 -\frac{\sum_{i=1}^n (x_i-m)}{\delta} & \frac{1}{\delta} \left(1-\frac{\sum_{i=1}^n (x_i-m)^2}{\delta} \right)
@@ -1863,11 +1860,10 @@ Au point critique $(\hat m, \hat \delta)$, cette matrice devient $\frac{1}{\hat 
 \end{pmatrix}$ qui est définie négative, donc $(\hat m, \hat \delta)$ est un maximum local. \newline
 Pour déduire que c'est un maximum global, il faudrait que $\psi$ soit concave, ie que sa Hessienne soit définie négative en tout point. Or ce n'est pas vrai: le déterminant de la Hessienne est donné par $$\frac{1}{\delta^2}\left(\frac{-n}{\delta} + \frac{n \sum_{i=1}^n (x_i-m)^2 - \left(\sum_{i=1}^n(x_i-m) \right)^2}{\delta^2}\right)$$ qui est $\geq 0$ si et seulement si $$\frac{n \sum_{i=1}^n (x_i-m)^2 - \left(\sum_{i=1}^n(x_i-m) \right)^2}{\delta}\geq n$$
 Or à $m$ fixé, lorsque $\delta \to \infty$, le membre de gauche tend vers $0$.\newline
-\newline
-La concavité est donc une impasse.\newline
-Cependant, on remarque que $\psi(m,\delta)\leq -\ln(\delta) \xrightarrow[\delta \to \infty]{}-\infty$. \newline
-De plus, $m\mapsto \sum_{i=1}^n (x_i-m)^2$ est une parabole convexe en $m$ qui ne s'annule pas (car les $x_i$ ne sont pas tous égaux). Elle admet donc un minimum strictement $>0$, disons $\alpha$. Pour $a>0$, la fonction définie sur $\mathbb R_+^*$ par $x\mapsto \frac{e^{-a/x}}{x}$ admet un maximum en $x=a$, où elle vaut $\frac{1}{ea}$ de sorte que pour $\delta>0$ et $m\in \mathbb R$, $$\frac{1}{\delta} e^{-\frac{\sum_{i=1}^n (x_i-m)^2}{2\delta}}\leq \frac{1}{\frac e2 \sum_{i=1}^n (x_i-m)^2 } \leq \frac{2}{e\alpha }$$
-
+\textbf{La concavité est donc une impasse.}\newline \newline 
+Soit $\delta >0$ fixé. Cherchons le maximum de $\psi_\delta: m\mapsto \psi(m,\delta)$. Il s'agit d'une parabole de degré $2$ qui atteint son maximum en $M = \frac{1}{n}\sum_{k=1}^n x_k$. Notons que $M$ est indépendant de $\delta$, donc $$\forall \delta >0, \forall m\in \mathbb R, \psi(m,\delta)\leq \psi(M,\delta)$$
+et il reste à maximiser $\delta \mapsto \psi(M,\delta)$. Il s'agit d'une fonction d'une variable et on montre facilement que l'annulation de la dérivée fournit un maximum global en $\delta = \frac 12 \sum_{i=1}^n (x_i - M)$.\newline
+En conclusion, $\hat \theta  = (\frac{1}{n}\sum_{i=1}^n x_i, \frac{1}{2}\sum_{i=1}^n \left(x_i - \left[\frac{1}{n}\sum_{k=1}^n x_k \right]\right)^2)$
 
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
