@@ -284,7 +284,7 @@ Montrer que $B^2$ est complet.
 }}\\ 
 \\ 
 \\
-\noindent On trouvera une présentation de l'intégrale des fonctions à valeurs dans un espace de Banach à l'adresse \newline  \url{http://www.math.ucsd.edu/~bdriver/231-02-03/Lecture_Notes/chap4.pdf} \newline \newline 
+\noindent 
 Etant donné $X$ un ensemble et $(Y,\|\cdot\|_Y)$ un evn, on note $B(X,Y)$ l'ensemble des fonctions bornées de $X$ dans $Y$. On rappelle que si $Y$ est complet, alors $B(X,Y)$ est complet pour la norme $\|\cdot\|_{\infty,Y}$ définie par $\|f\|_{\infty,Y}=\sup_{x\in X}\|f(x)\|_Y$.\newline \newline
 On notera $\|\cdot\|_{op}$ la norme d'opérateur sur $\mathcal L_c(E,F)$ qui dérive de $\|\cdot\|_F$. On rappelle que $(\mathcal L_c(E,F),\|\cdot\|_{op})$ est un Banach.\newline \newline
 On notera $\|\cdot\|_{op'}$ la norme d'opérateur sur $\mathcal L_c(E,\mathcal L_c(E,F))$ qui dérive de $\|\cdot\|_{op}$, de sorte que $(\mathcal L_c(E,\mathcal L_c(E,F)),\|\cdot\|_{op'})$ est un Banach.\newline \newline
@@ -299,9 +299,25 @@ $\bullet$ D'après la remarque précédente, $(f_n)$ est de Cauchy pour $\|\cdot
 $\bullet$ D'après la remarque précédente, $(df_n)$ est de Cauchy pour $\|\cdot\|_{\infty, op}$ dans $B(D,\mathcal L_c(E,F))$ qui est complet, donc $(df_n)$ converge pour $\|\cdot\|_{\infty, op}$ vers un $\varphi\in B(D,\mathcal L_c(E,F))$.\newline
 $\bullet$ En tant que limites uniformes de fonctions continues, $f$ et $\varphi$ sont continues.\newline
 $\bullet$ Montrons que $f$ est différentiable de différentielle $\varphi$.\newline
-Soit $a\in D$. Pour $h\in D$, et $n$ quelconque, $$f_n(a+h)-f_n(a)=\int_0^1 df_n(a+th)dt$$
-La convergence des $df_n$ vers $\varphi$ étant uniforme, on a en passant à la limite $$f(a+h)-f(a) = \int_0^1 \varphi(a+th) dt$$
-donc $$\begin{aligned} \frac{\|f(a+h)-f(a)-\varphi(a)(h)\|_F}{\|h\|_E}&=\frac{\|\int_0^1 \varphi(a+th)-  \varphi(a)(h) dt\|_F}{\|h\|_E} \\
+Soit $\epsilon >0$. Comme $(df_n)$ est de Cauchy, il existe $N$ tel que $n,m\geq N \implies \|df_n - df_m\|_{\infty, op}\leq \epsilon$, donc pour tout $x\in D$, $\|df_n(x) - df_m(x)\|_{op}\leq \epsilon$ soit encore $\|d(f_n-f_m)(x)\|_{op}\leq \epsilon$.\newline
+\underline{Lemme}: Soient $E$ et $F$ des Banach, $D$ un ouvert de $E$ et $a,b\in D$. Si $f:E\to F$ est différentiable sur $D$ et $[a,b]\subset D$, $$\|f(b)-f(a)\|_F\leq \|b-a\|_E \sup_{x\in [a,b]}\|df(x)\|_{op}$$
+\textit{Preuve}: proposition 3.3.1 dans \textit{Calcul Différentiel} de E.Cartan.\newline \newline 
+Fixons $a\in D$. Comme $D$ est ouvert, on dispose de $r>0$ tel que $B(a,r)\subset D$. Soit $n,m\geq N$. En appliquant le lemme à $f_n-f_m$ (dont la différentielle est bornée par $\epsilon$ d'après ce qui précède), on a pour $x\in B(a,r)$, $$\|f_n(x)-f_m(x)-(f_n(a)-f_m(a))\|_F\leq \|x-a\|_E \cdot\epsilon$$
+Posons $\displaystyle \phi_n: B(a,r)\setminus \{a\}\to F, x\mapsto \frac{f_n(x)-f_n(a)-df_n(a)(x-a)}{\|x-a\|}$.\newline  L'inégalité précédente devient $$\left \Vert \phi_n(x) + \frac{df_n(a)(x-a)-df_m(a)(x-a)}{\|x-a\|} - \phi_m(x)\right \Vert_F\leq \epsilon $$ et par inégalité triangulaire renversée, $$\left \Vert \phi_n(x) - \phi_m(x)\right \Vert_F\leq \epsilon + \left \Vert \frac{df_n(a)(x-a)-df_m(a)(x-a)}{\|x-a\|}\right \Vert_F $$
+Or $\displaystyle \left \Vert \frac{df_n(a)(x-a)-df_m(a)(x-a)}{\|x-a\|}\right \Vert_F \leq  \|df_n(a)-df_m(a)\|_{op}\leq \epsilon $,\newline
+ d'où pour $x\in B(a,r)\setminus \{a\}$ et $n,m\geq N$ on a $\displaystyle \left \Vert \phi_n(x) - \phi_m(x)\right \Vert_F\leq 2\epsilon$.
+D'après le critère uniforme de Cauchy, on déduit que $\phi_n$ converge uniformément sur $B(a,r)\setminus \{a\}$.\newline
+Déterminons la limite simple de $\phi_n$ (qui coincide nécessairement avec sa limite uniforme). On sait déjà que $f_n$ converge simplement vers $f$, donc il reste à déterminer la limite simple de $x\mapsto df_n(a)(x-a)$. Il s'agit bien sûr de $x\mapsto \varphi(a)(x-a)$. En effet $$\begin{aligned}\|\varphi(a)(x-a)-df_n(a)(x-a)\| &\leq \|\varphi(a)-df_n(a)\|_{op}\|x-a\|_E\\ &\leq \|\varphi -df_n\|_{\infty, op}\|x-a\|_E\\ &\to 0 \end{aligned}$$
+Donc $\phi_n$ converge uniformément sur $B(a,r)\setminus \{a\}$ vers $\psi: x\mapsto \frac{f(x)-f(a)-\varphi(a)(x-a)}{\|x-a\|}$.\newline
+Or $a$ est un point adhérent à $B(a,r)\setminus \{a\}$ et pour tout $n$, $\displaystyle \lim_{x\to a}\phi_x(a) = 0$ (définition de la différentielle).
+Le théorème de la double limite s'applique: $$\lim_{x\to a} \psi(x) = 0$$
+qui signifie que $f$ est différentiable en $a$ de différentielle $\varphi(a)$. Ceci est vrai pour tout $a$, donc $\varphi$ est la différentielle de $f$.
+\newline
+\newline
+\textit{Preuve plus courte avec l'intégrale pour les fonctions à valeurs dans un Banach}:
+Soit $a\in D$. Pour $h\in D$, et $n$ quelconque, $$f_n(a+h)-f_n(a)=\int_0^1 df_n(a+th)(h)dt$$
+La convergence des $df_n$ vers $\varphi$ étant uniforme, on a en passant à la limite $$f(a+h)-f(a) = \int_0^1 \varphi(a+th)(h) dt$$
+donc $$\begin{aligned} \frac{\|f(a+h)-f(a)-\varphi(a)(h)\|_F}{\|h\|_E}&=\frac{\|\int_0^1 \varphi(a+th)(h)-  \varphi(a)(h) dt\|_F}{\|h\|_E} \\
 &\leq \frac{\int_0^1 \|\varphi(a+th)-\varphi(a)\|_{op}\|h\|_E dt}{\|h\|_E}\\
 &\leq \int_0^1 \|\varphi(a+th)-\varphi(a)\|_{op} dt \end{aligned}$$
 Soit $\varepsilon>0$. Comme $\varphi$ est continue on dispose de $\delta >0$ tel que $\|x\|_F \leq \delta \implies \|\varphi(a+x)-\varphi(a)\|_{op} \leq \varepsilon$. Pour $\|h\| \leq \varepsilon$ et $t\in [0,1]$ on obtient $$\|\varphi(a+th)-\varphi(a)\|_{op}\leq \varepsilon$$ donc $\displaystyle \frac{\|f(a+h)-f(a)-\varphi(a)(h)\|_F}{\|h\|_E}\leq \varepsilon$ dès que $\|h\| \leq \delta$.\newline
