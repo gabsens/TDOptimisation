@@ -8,7 +8,6 @@
 \usepackage{amssymb}
 \usepackage{enumitem}
 \usepackage{bbm}
-\usepackage{hyperref}
 \usepackage{fancyhdr}
 \usepackage{stmaryrd}
 \usepackage{listings}
@@ -17,12 +16,14 @@
 \usepackage{datetime}
 \usepackage{textcomp}
 \usepackage{color}
+\usepackage{hyperref}
 \graphicspath{ {images/} }
 
 
 \pagestyle{fancy}
 %\usepackage[document]{ragged2e}
-
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{Exercice \arabic{section}.\arabic{subsection}}
 
 \DeclareMathOperator{\Tr}{Tr}
 \DeclareMathOperator{\Id}{Id}
@@ -50,12 +51,27 @@
 
 
 
-\renewcommand{\thesection}{\arabic{section}.}
-\renewcommand{\thesubsection}{Exercice \arabic{section}.\arabic{subsection}}
+
 \title{TD d'optimisation\\ ENSAE\\ 1A}
 \author{Gabriel Romon}
 \date{Version du \today \! à \currenttime}
 \maketitle
+
+\newpage
+\noindent Ce document rédigé pendant l'année scolaire 2016-2017 contient les corrections personnelles d'un grand nombre d'exercices du cours d'Optimisation, enseigné alors par Guillaume Lecué. \newline
+\newline
+\newline
+Il manque la correction d'un certain nombre d'exercices, en particulier dans le chapitre consacré à l'optimisation sous contraintes.\newline
+\newline
+\newline
+La dernière version du document est disponible à l'adresse  \begin{center}\url{https://github.com/gabsens/TDOptimisation/raw/master/main.pdf}\end{center} 
+Vous êtes évidemment invités à contribuer au repo Github \url{https://github.com/gabsens/TDOptimisation}.\newline
+\newline
+Ce document ne se substitue pas à la présence ou à la participation active aux séances de TD.
+
+
+
+\newpage
 \section{Différentielle}
 
 \subsection{} \noindent\fbox{
@@ -309,7 +325,7 @@ Or $\displaystyle \left \Vert \frac{df_n(a)(x-a)-df_m(a)(x-a)}{\|x-a\|}\right \V
 D'après le critère uniforme de Cauchy, on déduit que $\phi_n$ converge uniformément sur $B(a,r)\setminus \{a\}$.\newline
 Déterminons la limite simple de $\phi_n$ (qui coincide nécessairement avec sa limite uniforme). On sait déjà que $f_n$ converge simplement vers $f$, donc il reste à déterminer la limite simple de $x\mapsto df_n(a)(x-a)$. Il s'agit bien sûr de $x\mapsto \varphi(a)(x-a)$. En effet $$\begin{aligned}\|\varphi(a)(x-a)-df_n(a)(x-a)\| &\leq \|\varphi(a)-df_n(a)\|_{op}\|x-a\|_E\\ &\leq \|\varphi -df_n\|_{\infty, op}\|x-a\|_E\\ &\to 0 \end{aligned}$$
 Donc $\phi_n$ converge uniformément sur $B(a,r)\setminus \{a\}$ vers $\psi: x\mapsto \frac{f(x)-f(a)-\varphi(a)(x-a)}{\|x-a\|}$.\newline
-Or $a$ est un point adhérent à $B(a,r)\setminus \{a\}$ et pour tout $n$, $\displaystyle \lim_{x\to a}\phi_x(a) = 0$ (définition de la différentielle).
+Or $a$ est un point adhérent à $B(a,r)\setminus \{a\}$ et pour tout $n$, $\displaystyle \lim_{x\to a}\phi_n(x) = 0$ (définition de la différentielle).
 Le théorème de la double limite s'applique: $$\lim_{x\to a} \psi(x) = 0$$
 qui signifie que $f$ est différentiable en $a$ de différentielle $\varphi(a)$. Ceci est vrai pour tout $a$, donc $\varphi$ est la différentielle de $f$.
 \newline
