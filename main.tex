@@ -136,7 +136,7 @@ h_1+h_2 \\ yh_1 + xh_2
 \end{pmatrix}^T + \begin{pmatrix}
 0 \\ h_1 h_2
 \end{pmatrix}^T$\newline
-Le candidat pour la différentielle de $f$ en $(x,y)$ est donc $(h_1,h_2)\mapsto \left[\begin{pmatrix}
+Le candidat pour la différentielle  de $f$ en $(x,y)$ est donc $(h_1,h_2)\mapsto \left[\begin{pmatrix}
 1 & 1\\
 y & x 
 \end{pmatrix} \begin{pmatrix}
@@ -1500,7 +1500,7 @@ Donc $f$ concave.\newline
 \textbf{Théorème 1}: Soit $K$ un convexe de $\mathbb R^n$. Alors $\mathring{\overline K} = \mathring K$.\newline 
 \textbf{Théorème 2}: Soit $K$ un convexe fermé de $\mathbb R^n$ et $x_0$ un point de la frontière de $K$. Alors il existe un hyperplan d'appui à $K$ en $x_0$. Plus précisément, il existe $e\in \mathbb R^n$ tel que $K\subset \{x\in \mathbb R^n, \; \langle e,x-x_0\rangle\geq 0\}$ \newline 
 \newline 
-Par continuité de $f$ en $x_0$ (qui est bien intérieur à $C$), on montre facilement que $(x_0,f(x_0))\notin \mathring K$. Par ailleurs, on a $(x_0,f(x_0))\in K$. Donc $$(x_0,f(x_0))\in K\setminus \mathring K\subset \overline K \setminus \mathring K$$
+Il est clair que $(x_0, f(x_0)) \notin K$. En considérant $(x_0, f(x_0)-\varepsilon)$ pour $\varepsilon>0$ on a $(x_0,f(x_0))\in \overline K$. Donc $$(x_0,f(x_0))\in \overline K \setminus \mathring K$$
 Par le théorème 1 on a $$(x_0,f(x_0))\in \overline K \setminus\mathring{\overline K}$$
 Or $\overline K \setminus\mathring{\overline K}$ est précisément la frontière de $\overline K$, qui est un convexe fermé.\newline
 Par le théorème 2, on dispose donc de $(u^*,\alpha)\in \mathbb R^n\times\mathbb  R$ tel que 
