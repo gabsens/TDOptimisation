@@ -1587,6 +1587,8 @@ Donc $g\circ f$ convexe. \newline \newline
 Ici on compose avec $g:\mathbb R_+\to \mathbb R, x\mapsto x^2 $ qui est convexe, donc $x\mapsto \|Ax\|^2$ est convexe.\newline
 Pour les mêmes raisons, $x\mapsto 2\|Ax\|^{3/2}$ est convexe, donc $f$ est convexe, comme somme de deux fonctions convexes.
 
+
+\newpage 
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
 Soit $A\in M_n(\mathbb R)$ et $f:\mathbb R^n\to \mathbb R, x\mapsto \langle x,Ax \rangle$. Montrer que si $f$ est quasi-convexe, alors $f$ est convexe.
@@ -1594,6 +1596,11 @@ Soit $A\in M_n(\mathbb R)$ et $f:\mathbb R^n\to \mathbb R, x\mapsto \langle x,Ax
 \\ 
 \\
 \noindent
+Pour $h\in \mathbb R^n$, $\begin{aligned}[t]
+	f(x+h) &= f(x)+h^T(A+A^T)x + h^TAh\\
+	&= f(x)+h^T(A+A^T)x + \frac 12 h^T(A+A^T)h
+\end{aligned}$ donc la hessienne de $f$ en $x$ est $A+A^T$. Il suffit de montrer que $A+A^T$ est semi-définie positive, ou encore que $B:=\frac{A+A^T}2$ l'est.\\
+La quasi-convexité de $f$ est équivalente à la convexité de $\{x\in \mathbb R^n,\; x^TAx\leq t\}$ pour tout $t\in \mathbb R$, et donc à la convexité de $\{x\in \mathbb R^n,\; x^TBx\leq t\}$. Soit $\mu$ une valeur propre de $B$ et $x$ un vecteur propre de norme $1$ associé à $\mu$. Soit $C=\{x\in \mathbb R^n,\; x^TBx\leq \mu\}$. On a $x\in C$ et $-x\in C$ donc $0 = \frac 12 x + \frac 12 (-x)\in C$, ie $0\leq \mu$. Donc $B\in S_n^+(\mathbb R)$.
 
 \subsection{} \noindent\fbox{
 \parbox{\linewidth}{
